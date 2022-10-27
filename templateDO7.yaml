@@ -1,0 +1,1179 @@
+date_format: [
+   ['(\d{2}\s*\w{3}\s*\d{4})','%d%b%Y'],
+   ['(\d{2}\/\d{1,2}\/\d{4})','%d/%m/%Y'],
+   ['(\d{4}-\d{1,2}-\d{2})','%Y-%m-%d'],
+]
+
+quantity_format: [
+   ['[a,A][r,R][y,Y]','ary'],
+   ['[q,Q][t,T][y,Y]','QTY'],
+   ['[q,Q][u,U][a,A][n,N][t,T][i,I][t,T][y,Y]','Quantity'],
+]
+
+companies: [
+["1",'[a,A][1,I,\/,\\,!,i]*[s,S]\s*[m,M][a,A][n,N][u,U][f,F][a,A][c,C][t,T][u,U][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"AIS MANUFACTURING PTE LTD"],
+["2",'[f,F][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[s,S][a,A]\s*[f,F][0,O,o][R,P,K,r,p,k]*[j,J][a,A][d,D][0,O,o][s,S]\s*[s,S][a,A]\s*[d,D][e,E]\s*[c,C][v,V]',"FRISA FORJADOS SA DE CV"],
+["3",'[t,T][s,S][h,H]\s*[s,S][y,Y][n,N][e,E][R,P,K,r,p,k]*[g,G][y,Y]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"TSH SYNERGY PTE LTD"],
+["4",'[1,I,\/,\\,!,i]*[R,P,K,r,p,k]*[c,C]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"IPC INDUSTRIES SDN BHD"],
+["5",'[R,P,K,r,p,k]*[e,E][l,L][1,I,\/,\\,!,i]*[a,A][n,N][c,C][e,E]\s*[m,M][e,E][t,T][a,A][l,L][c,C][e,E][n,N][t,T][e,E][R,P,K,r,p,k]*\s*[a,A][s,S][1,I,\/,\\,!,i]*[a,A]\s*[R,P,K,r,p,k]*[a,A][c,C][1,I,\/,\\,!,i]*[f,F][1,I,\/,\\,!,i]*[c,C]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"RELIANCE METALCENTER ASIA PACIFIC PTE LTD"],
+["6",'[a,A][t,T][t,T][R,P,K,r,p,k]*[a,A][c,C][t,T][1,I,\/,\\,!,i]*[v,V][e,E]\s*[v,V][e,E][n,N][t,T][u,U][R,P,K,r,p,k]*[e,E]\s*\([j,J][b,B]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ATTRACTIVE VENTURE (JB) SDN BHD"],
+["7",'[n,N][0,O,o][v,V][a,A][t,T][e,E][c,C][h,H]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"NOVATECH PRECISION SDN BHD"],
+["8",'[m,M][1,I,\/,\\,!,i]*[c,C][R,P,K,r,p,k]*[0,O,o]\s*[s,S][c,C][R,P,K,r,p,k]*[e,E][e,E][n,N]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[0,O,o][d,D][u,U][c,C][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MICRO SCREEN PRODUCTION SDN BHD"],
+["9",'[g,G][R,P,K,r,p,k]*[e,E][a,A][t,T]\s*[R,P,K,r,p,k]*[e,E][e,E][R,P,K,r,p,k]*[s,S]\s*\(\s*[m,M]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"GREAT PEERS ( M ) SDN BHD"],
+["10",'[t,T][s,S][h,H]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TSH PRECISION TECHNOLOGY SDN BHD"],
+["11",'[f,F][1,I,\/,\\,!,i]*[n,N][e,E][t,T][e,E][c,C][h,H]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]\s*-*\s*[s,S][g,G][d,D]',"FINETECH PRECISION SDN BHD - SGD"],
+["12",'[f,F][1,I,\/,\\,!,i]*[n,N][e,E][t,T][e,E][c,C][h,H]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]\s*-*\s*[m,M][y,Y][R,P,K,r,p,k]*',"FINETECH PRECISION SDN BHD - MYR"],
+["13",'[e,E][x,X][c,C][e,E][l,L][l,L][e,E][n,N][t,T]\s*[R,P,K,r,p,k]*[0,O,o][l,L][l,L][e,E][R,P,K,r,p,k]*\s*[s,S][h,H][a,A][f,F][t,T]\s*[s,S][R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[a,A][l,L][1,I,\/,\\,!,i]*[s,S][t,T]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"EXCELLENT ROLLER SHAFT SPECIALIST SDN BHD"],
+["14",'[e,E]\s*[s,S][t,T][e,E][e,E][l,L]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"E STEEL SDN BHD"],
+["15",'[a,A][d,D][v,V][a,A][n,N][c,C][e,E]\s*[b,B][0,O,o][l,L][t,T][s,S]\s*\(\s*[j,J][0,O,o][h,H][0,O,o][R,P,K,r,p,k]*\s*\)\s*[s,S][d,D][n,N][.,\,]*\s*[b,B][h,H][d,D]',"ADVANCE BOLTS ( JOHOR ) SDN. BHD"],
+["16",'[u,U][.,\,]*[R,P,K,r,p,k]*[.,\,]*[l,L]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"U.K.L INDUSTRIES SDN BHD"],
+["17",'[g,G][.,\,]*[s,S]\s*[s,S][t,T][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][e,E][R,P,K,r,p,k]*[y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"G.S STATIONERY SDN BHD"],
+["18",'[m,M][a,A][x,X][s,S][0,O,o][0,O,o][n,N]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MAXSOON (M) SDN BHD"],
+["19",'[n,N][s,S][t,T]\s*[f,F][a,A][s,S][t,T][e,E][n,N][e,E][R,P,K,r,p,k]*\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"NST FASTENER SDN BHD"],
+["20",'[t,T][a,A][g,G]\s*[a,A][l,L][l,L][1,I,\/,\\,!,i]*[a,A][n,N][c,C][e,E]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TAG ALLIANCE (M) SDN BHD"],
+["21",'[R,P,K,r,p,k]*[.,\,]*[t,T][.,\,]*\s*[s,S][1,I,\/,\\,!,i]*[n,N][t,T][e,E][R,P,K,r,p,k]*[t,T][e,E][c,C][h,H]',"P.T. SINTERTECH"],
+["22",'[t,T][s,S][h,H]\s*[c,C][0,O,o][n,N][t,T][R,P,K,r,p,k]*[a,A][c,C][t,T]\s*[m,M][a,A][n,N][u,U][f,F][a,A][t,T][u,U][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]\s*-*\s*[w,W][h,H]',"TSH CONTRACT MANUFATURING SDN BHD - WH"],
+["23",'[t,T][s,S][h,H]\s*[c,C][0,O,o][n,N][t,T][R,P,K,r,p,k]*[a,A][c,C][t,T]\s*[m,M][a,A][n,N][u,U][f,F][a,A][c,C][t,T][u,U][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]\s*-*\s*[m,M][c,C][h,H]',"TSH CONTRACT MANUFACTURING SDN BHD - MCH"],
+["24",'[s,S][c,C][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][t,T]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SCRINT TECHNOLOGY (M) SDN BHD"],
+["25",'[l,L][a,A][s,S][e,E][R,P,K,r,p,k]*[t,T][e,E][c,C][h,H]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*\([j,J][0,O,o][h,H][0,O,o][R,P,K,r,p,k]*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"LASERTECH INDUSTRIES (JOHOR) SDN BHD"],
+["26",'[g,G][R,P,K,r,p,k]*[e,E][a,A][t,T]\s*[u,U][t,T][0,O,o][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"GREAT UTOPIAN SDN BHD"],
+["28",'[n,N][0,O,o][v,V][a,A][t,T][e,E][c,C][h,H]\s*[m,M][a,A][n,N][u,U][f,F][a,A][c,C][t,T][u,U][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"NOVATECH MANUFACTURING SDN BHD"],
+["29",'[a,A][m,M][e,E]\s*[m,M][a,A][n,N][u,U][f,F][a,A][c,C][t,T][u,U][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"AME MANUFACTURING SDN BHD"],
+["31",'[b,B][e,E][s,S][t,T]\s*[l,L][1,I,\/,\\,!,i]*[n,N][e,E]\s*[t,T][0,O,o][0,O,o][l,L][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"BEST LINE TOOLING SDN BHD"],
+["32",'[b,B][e,E][y,Y][e,E]\s*[a,A][l,L][u,U][m,M][1,I,\/,\\,!,i]*[n,N][1,I,\/,\\,!,i]*[u,U][m,M]\s*[t,T][R,P,K,r,p,k]*[a,A][d,D][1,I,\/,\\,!,i]*[n,N][g,G]\s*\([j,J][b,B]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"BEYE ALUMINIUM TRADING (JB) SDN BHD"],
+["33",'[b,B][0,O,o][s,S][s,S][a,A][R,P,K,r,p,k]*[d,D]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"BOSSARD (M) SDN BHD"],
+["34",'[c,C][.,\,]*[t,T][.,\,]*\s*[s,S][t,T][a,A][b,B][1,I,\/,\\,!,i]*[l,L]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"C.T. STABIL SDN BHD"],
+["35",'[c,C][0,O,o][l,L][0,O,o][u,U][R,P,K,r,p,k]*\s*[t,T][0,O,o][R,P,K,r,p,k]*\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"COLOUR TOP SDN BHD"],
+["36",'[y,Y][a,A][m,M][a,A][z,Z][a,A][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*\s*[m,M][a,A][z,Z][a,A][R,P,K,r,p,k]*\s*[s,S][1,I,\/,\\,!,i]*[n,N][g,G][a,A][R,P,K,r,p,k]*[0,O,o][R,P,K,r,p,k]*[e,E]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"YAMAZAKI MAZAK SINGAPORE PTE LTD"],
+["37",'[x,X][1,I,\/,\\,!,i]*[n,N]\s*[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*[a,A][g,G][1,I,\/,\\,!,i]*[n,N][g,G]\s*[e,E][n,N][t,T][e,E][R,P,K,r,p,k]*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[s,S][e,E]',"XIN PACKAGING ENTERPRISE"],
+["38",'[v,V][a,A][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[0,O,o][u,U][s,S]\s*[R,P,K,r,p,k]*[e,E][s,S][0,O,o][u,U][R,P,K,r,p,k]*[c,C][e,E][s,S]\s*\(\s*[m,M]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"VARIOUS RESOURCES ( M ) SDN BHD"],
+["39",'[v,V][1,I,\/,\\,!,i]*[n,N][t,T][e,E][c,C][h,H]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]',"VINTECH TECHNOLOGY ENGINEERING"],
+["40",'[t,T][s,S][R,P,K,r,p,k]*\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TSK INDUSTRIES SDN BHD"],
+["41",'[t,T][s,S][R,P,K,r,p,k]*\s*[d,D][e,E][n,N][R,P,K,r,p,k]*[0,O,o]\s*[c,C][0,O,o][.,\,]*\s*[l,L][t,T][d,D]',"TSK DENKO CO. LTD"],
+["42",'[t,T][h,H][l,L]\s*[m,M][e,E][t,T][a,A][l,L]\s*[w,W][0,O,o][R,P,K,r,p,k]*[R,P,K,r,p,k]*\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"THL METAL WORK SDN BHD"],
+["43",'[t,T][c,C][w,W]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*\(\s*[m,M]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]-*[m,M][y,Y][R,P,K,r,p,k]*',"TCW PRECISION ENGINEERING ( M ) SDN BHD-MYR"],
+["44",'[t,T][e,E][g,G][s,S]\s*[a,A][s,S][1,I,\/,\\,!,i]*[a,A]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TEGS ASIA INDUSTRIES SDN BHD"],
+["45",'[s,S][1,I,\/,\\,!,i]*[m,M][0,O,o][n,N][1,I,\/,\\,!,i]*\s*[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*[a,A][g,G][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SIMONI PACKAGING SDN BHD"],
+["46",'[R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[c,C][h,H][R,P,K,r,p,k]*[0,O,o][R,P,K,r,p,k]*[t,T]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"RICHPORT TECHNOLOGY SDN BHD"],
+["47",'[R,P,K,r,p,k]*[0,O,o][w,W][e,E][R,P,K,r,p,k]*\s*[e,E][x,X][c,C][e,E][l,L]\s*[l,L][u,U][b,B][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[c,C][a,A][n,N][t,T][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"POWER EXCEL LUBRICANTS SDN BHD"],
+["48",'[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][f,F][e,E][R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][d,D]\s*[a,A][l,L][l,L][0,O,o][y,Y][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"PREFERRED ALLOYS SDN BHD"],
+["49",'[R,P,K,r,p,k]*[R,P,K,r,p,k]*[0,O,o][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N]\s*[t,T][0,O,o][0,O,o][l,L][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"PROKIN TOOLING SDN BHD"],
+["50",'[m,M][1,I,\/,\\,!,i]*[t,T][R,P,K,r,p,k]*[0,O,o][n,N][t,T][e,E][c,C]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MITRONTEC TECHNOLOGY SDN BHD"],
+["51",'[m,M][1,I,\/,\\,!,i]*[c,C][R,P,K,r,p,k]*[0,O,o]\s*[s,S][c,C][R,P,K,r,p,k]*[e,E][e,E][n,N]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[0,O,o][d,D][u,U][c,C][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MICRO SCREEN PRODUCTION SDN BHD"],
+["52",'[R,P,K,r,p,k]*[s,S]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[t,T][0,O,o][0,O,o][l,L][s,S]\s*\(\s*[j,J][0,O,o][h,H][0,O,o][R,P,K,r,p,k]*\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"KS PRECISION TOOLS ( JOHOR ) SDN BHD"],
+["53",'[1,I,\/,\\,!,i]*-*[c,C][h,H][a,A][m,M][R,P,K,r,p,k]*\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"I-CHAMP TECHNOLOGY PTE LTD"],
+["54",'[R,P,K,r,p,k]*\s*&*\s*[l,L]\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"K & L SUPPLY SDN BHD"],
+["55",'[h,H][0,O,o][f,F][f,F][m,M][a,A][n,N][n,N]\s*[q,Q][u,U][a,A][l,L][1,I,\/,\\,!,i]*[t,T][y,Y]\s*[t,T][0,O,o][0,O,o][l,L][s,S]\s*\(\s*[m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"HOFFMANN QUALITY TOOLS ( MALAYSIA ) SDN BHD"],
+["56",'[d,D][u,U][R,P,K,r,p,k]*[a,A]\s*[t,T][0,O,o][0,O,o][l,L][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"DURA TOOLS SDN BHD"],
+["57",'[s,S][u,U][R,P,K,r,p,k]*[e,E][R,P,K,r,p,k]*\s*[m,M][u,U][l,L][t,T][1,I,\/,\\,!,i]*[R,P,K,r,p,k]*[l,L][e,E]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SUPER MULTIPLE SDN BHD"],
+["58",'[s,S][u,U][m,M][1,I,\/,\\,!,i]*[t,T][e,E][c,C]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SUMITEC SDN BHD"],
+["59",'[s,S][e,E][n,N][g,G]\s*[d,D][a,A][t,T][t,T]\s*[h,H][a,A][R,P,K,r,p,k]*[d,D][w,W][a,A][R,P,K,r,p,k]*[e,E]\s*\(\s*[m,M]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SENG DATT HARDWARE ( M ) SDN BHD"],
+["60",'[d,D][e,E][c,C][h,H][0,O,o]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"DECHO PRECISION ENGINEERING (M) SDN BHD"],
+["61",'[c,C][R,P,K,r,p,k]*[e,E][a,A][t,T][e,E]\s*[s,S][u,U][c,C][c,C][e,E][s,S][s,S]\s*[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*[a,A][g,G][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[e,E][s,S]',"CREATE SUCCESS PACKAGING SUPPLIES"],
+["62",'[c,C][t,T][a,A][e,E]\s*[s,S][0,O,o][l,L][u,U][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"CTAE SOLUTION SDN BHD"],
+["63",'[d,D][R,P,K,r,p,k]*\s*[R,P,K,r,p,k]*[0,O,o][w,W][d,D][e,E][R,P,K,r,p,k]*\s*[m,M][a,A][n,N][u,U][f,F][a,A][c,C][t,T][u,U][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"DP POWDER MANUFACTURING SDN BHD"],
+["64",'[d,D][s,S][n,N]\s*[a,A][d,D][v,V][a,A][n,N][c,C][e,E][d,D]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*\(\s*[m,M]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"DSN ADVANCED TECHNOLOGY ( M ) SDN BHD"],
+["65",'[e,E][x,X][c,C][e,E][l,L]\s*[s,S][0,O,o][l,L][1,I,\/,\\,!,i]*[d,D][R,P,K,r,p,k]*[a,A][c,C]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"EXCEL SOLIDPAC INDUSTRIES SDN BHD"],
+["66",'[e,E][n,N][h,H][a,A][n,N][c,C][e,E]\s*[c,C][0,O,o][n,N][n,N][e,E][c,C][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ENHANCE CONNECTION SDN BHD"],
+["67",'[e,E][u,U][R,P,K,r,p,k]*[0,O,o]\s*[b,B][a,A][s,S][e,E]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*\([j,J][b,B]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"EURO BASE TECHNOLOGY (JB) SDN BHD"],
+["68",'[e,E][c,C][0,O,o]\s*[t,T][0,O,o][0,O,o][l,L][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][0,O,o][l,L][u,U][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][s,S]',"ECO TOOLING SOLUTIONS"],
+["69",'[h,H][a,A][y,Y][n,N][e,E][s,S]\s*[1,I,\/,\\,!,i]*[n,N][t,T][e,E][R,P,K,r,p,k]*[n,N][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][a,A][l,L][.,\,]*\s*[1,I,\/,\\,!,i]*[n,N][c,C][.,\,]*',"HAYNES INTERNATIONAL, INC."],
+["70",'[h,H][1,I,\/,\\,!,i]*[l,L][l,L][t,T][e,E][c,C]\s*[m,M][a,A][R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][t,T][1,I,\/,\\,!,i]*[n,N][g,G]\s*\([m,M]\)\s*[s,S][d,D][n,N][.,\,]*\s*[b,B][h,H][d,D][.,\,]*',"HILLTEC MARKETING (M) SDN. BHD."],
+["71",'[h,H][e,E][b,B][e,E][1,I,\/,\\,!,i]*\s*[f,F][1,I,\/,\\,!,i]*[t,T][e,E][x,X][c,C][a,A][s,S][t,T][1,I,\/,\\,!,i]*[n,N][g,G]\s*[t,T][R,P,K,r,p,k]*[a,A][d,D][1,I,\/,\\,!,i]*[n,N][g,G]\s*[c,C][0,O,o][.,\,]*[.,\,]*[l,L][t,T][d,D]',"HEBEI FITEXCASTING TRADING CO.,LTD"],
+["72",'[R,P,K,r,p,k]*[s,S][c,C]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][e,E][R,P,K,r,p,k]*[v,V][1,I,\/,\\,!,i]*[c,C][e,E][s,S]',"KSC ENGINEERING SERVICES"],
+["73",'[1,I,\/,\\,!,i]*[R,P,K,r,p,k]*[m,M]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*\([j,J][b,B]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"IPM TECHNOLOGY (JB) SDN BHD"],
+["74",'[m,M][c,C][t,T][R,P,K,r,p,k]*[0,O,o]\s*[h,H][a,A][R,P,K,r,p,k]*[d,D][w,W][a,A][R,P,K,r,p,k]*[e,E]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MCTRO HARDWARE SDN BHD"],
+["75",'[l,L][v,V][c,C]\s*[e,E][c,C][0,O,o][R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"LVC ECOPACK SDN BHD"],
+["76",'[l,L][e,E][0,O,o]\s*[a,A][u,U][t,T][0,O,o][m,M][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[t,T][R,P,K,r,p,k]*[a,A][d,D][1,I,\/,\\,!,i]*[n,N][g,G]',"LEO AUTOMATION TRADING"],
+["77",'[R,P,K,r,p,k]*-*[t,T][e,E][c,C][h,H]\s*[s,S][0,O,o][l,L][u,U][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][s,S]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"K-TECH SOLUTIONS (M) SDN BHD"],
+["78",'[n,N][t,T][l,L][h,H]\s*[t,T][0,O,o][0,O,o][l,L][s,S]\s*[s,S][d,D][n,N][.,\,]*\s*[b,B][h,H][d,D][.,\,]*',"NTLH TOOLS SDN. BHD."],
+["79",'[n,N][e,E][w,W]\s*[m,M][e,E][t,T][a,A][l,L]\s*[s,S][R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[a,A][l,L][1,I,\/,\\,!,i]*[s,S][t,T]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"NEW METAL SPECIALIST SDN BHD"],
+["80",'[n,N][e,E][w,W][l,L][1,I,\/,\\,!,i]*[R,P,K,r,p,k]*[e,E]\s*[m,M][a,A][c,C][h,H][1,I,\/,\\,!,i]*[n,N][e,E]\s*[s,S][0,O,o][l,L][u,U][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"NEWLIKE MACHINE SOLUTIONS SDN BHD"],
+["81",'[m,M][t,T][R,P,K,r,p,k]*\s*[s,S][a,A][n,N][d,D][1,I,\/,\\,!,i]*\s*[e,E][l,L][e,E][c,C][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[c,C]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MTR SANDI ELECTRIC (M) SDN BHD"],
+["82",'[s,S][f,F]\s*[a,A][s,S][1,I,\/,\\,!,i]*[a,A]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SF ASIA INDUSTRIAL SDN BHD"],
+["83",'[s,S][0,O,o][y,Y][e,E][e,E]\s*\([j,J][0,O,o][h,H][0,O,o][R,P,K,r,p,k]*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SOYEE (JOHOR) SDN BHD"],
+["84",'[s,S][l,L]\s*[m,M][e,E][t,T][a,A][l,L][s,S]\s*\(\s*[m,M]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SL METALS ( M ) SDN BHD"],
+["85",'[t,T][0,O,o][0,O,o][l,L]\s*[s,S][t,T][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*\([R,P,K,r,p,k]*[l,L]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TOOL STATION (KL) SDN BHD"],
+["86",'[t,T][0,O,o][y,Y][0,O,o]\s*[s,S][h,H][0,O,o]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[0,O,o][d,D][u,U][c,C][t,T][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TOYO SHO INDUSTRIAL PRODUCTS SDN BHD"],
+["87",'[t,T][w,W][1,I,\/,\\,!,i]*[n,N][v,V][a,A][c,C]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TWINVAC INDUSTRIES SDN BHD"],
+["88",'[u,U][a,A]\s*[m,M][a,A][t,T][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"UA MATERIALS SDN BHD"],
+["89",'[v,V][1,I,\/,\\,!,i]*[s,S][t,T][a,A]\s*[1,I,\/,\\,!,i]*[n,N][s,S][t,T][R,P,K,r,p,k]*[u,U][m,M][e,E][n,N][t,T]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"VISTA INSTRUMENT SDN BHD"],
+["90",'[t,T][s,S][t,T]\s*[1,I,\/,\\,!,i]*[n,N][c,C]',"TST INC"],
+["91",'[s,S][c,C][m,M][1,I,\/,\\,!,i]*\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SCMI PRECISION SDN BHD"],
+["92",'[m,M][e,E][1,I,\/,\\,!,i]*\s*[j,J][1,I,\/,\\,!,i]*[a,A]\s*[e,E][l,L][e,E][c,C][t,T][R,P,K,r,p,k]*[0,O,o][n,N][1,I,\/,\\,!,i]*[c,C]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MEI JIA ELECTRONIC SDN BHD"],
+["93",'[s,S][t,T][a,A][n,N][d,D][a,A][R,P,K,r,p,k]*[d,D]\s*[b,B][0,O,o][x,X]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"STANDARD BOX INDUSTRY SDN BHD"],
+["94",'[t,T][0,O,o][0,O,o][l,L]\s*[s,S][t,T][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*\([R,P,K,r,p,k]*[l,L]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TOOL STATION (KL) SDN BHD"],
+["95",'[t,T][0,O,o][0,O,o][l,L]\s*[s,S][t,T][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*\([R,P,K,r,p,k]*[l,L]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TOOL STATION (KL) SDN BHD"],
+["96",'[a,A][e,E][R,P,K,r,p,k]*[0,O,o][c,C][h,H][e,E][m,M]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"AEROCHEM INDUSTRIES SDN BHD"],
+["97",'[b,B][e,E][s,S][t,T]\s*[l,L][1,I,\/,\\,!,i]*[n,N][e,E]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"BEST LINE INDUSTRIAL SDN BHD"],
+["98",'[m,M][1,I,\/,\\,!,i]*[t,T][s,S][u,U][b,B][1,I,\/,\\,!,i]*[s,S][h,H][1,I,\/,\\,!,i]*\s*[e,E][l,L][e,E][c,C][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[c,C]\s*[s,S][a,A][l,L][e,E][s,S]\s*[m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\s*[s,S][d,D][n,N][.,\,]*\s*[b,B][h,H][d,D]',"MITSUBISHI ELECTRIC SALES MALAYSIA SDN. BHD"],
+["99",'[c,C]\s*[f,F]\s*[u,U][n,N][1,I,\/,\\,!,i]*[f,F][0,O,o][R,P,K,r,p,k]*[m,M]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"C F UNIFORM SDN BHD"],
+["100",'[a,A][s,S][t,T][e,E][e,E][m,M]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[0,O,o][d,D][u,U][c,C][t,T][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ASTEEM PRODUCTS SDN BHD"],
+["101",'[d,D][a,A][1,I,\/,\\,!,i]*-*[1,I,\/,\\,!,i]*[c,C][h,H][1,I,\/,\\,!,i]*\s*[a,A][u,U][t,T][0,O,o]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"DAI-ICHI AUTO INDUSTRIES SDN BHD"],
+["102",'[f,F][a,A][n,N][u,U][c,C]\s*[m,M][e,E][c,C][h,H][a,A][t,T][R,P,K,r,p,k]*[0,O,o][n,N][1,I,\/,\\,!,i]*[c,C][s,S]\s*\([m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"FANUC MECHATRONICS (MALAYSIA) SDN BHD"],
+["103",'[m,M][e,E][g,G][a,A][h,H]\s*[m,M][a,A][c,C][h,H][1,I,\/,\\,!,i]*[n,N][e,E][R,P,K,r,p,k]*[y,Y]',"MEGAH MACHINERY"],
+["104",'[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][f,F][e,E][R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][d,D]\s*[a,A][l,L][l,L][0,O,o][y,Y][s,S]\s*[R,P,K,r,p,k]*[t,T][e,E][.,\,]*\s*[l,L][t,T][d,D][.,\,]*',"PREFERRED ALLOYS PTE. LTD."],
+["105",'[m,M][a,A][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][0,O,o]\s*[a,A][s,S][1,I,\/,\\,!,i]*[a,A]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"MAKINO ASIA PTE LTD"],
+["106",'[b,B][a,A][y,Y]\s*[s,S][e,E][a,A][l,L]\s*[c,C][0,O,o][m,M][R,P,K,r,p,k]*[a,A][n,N][y,Y][.,\,]*\s*[1,I,\/,\\,!,i]*[n,N][c,C]',"BAY SEAL COMPANY, INC"],
+["107",'[b,B][l,L][u,U][e,E]\s*[0,O,o][c,C][e,E][a,A][n,N]\s*[d,D][a,A][t,T][a,A]\s*[s,S][0,O,o][l,L][u,U][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"BLUE OCEAN DATA SOLUTIONS SDN BHD"],
+["108",'[R,P,K,r,p,k]*[v,V][c,C]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"KVC INDUSTRIAL SUPPLIES SDN BHD"],
+["109",'[m,M][a,A][y,Y][d,D][e,E][n,N][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MAYDENKI SDN BHD"],
+["110",'[R,P,K,r,p,k]*[e,E][d,D][a,A][1,I,\/,\\,!,i]*\s*[1,I,\/,\\,!,i]*[R,P,K,r,p,k]*[a,A][n,N]\s*[d,D][a,A][n,N]\s*[b,B][u,U][R,P,K,r,p,k]*[u,U][n,N][g,G]\s*[m,M][e,E][n,N][g,G]\s*[y,Y][a,A][n,N][g,G]',"KEDAI IKAN DAN BURUNG MENG YANG"],
+["111",'[s,S][R,P,K,r,p,k]*\s*[t,T][e,E][c,C]\s*[c,C][0,O,o][.,\,]*[.,\,]*\s*[l,L][t,T][d,D]',"SK TEC CO., LTD"],
+["112",'[R,P,K,r,p,k]*[R,P,K,r,p,k]*[0,O,o]-*[a,A][R,P,K,r,p,k]*[t,T]\s*[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*[a,A][g,G][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"PRO-ART PACKAGING SDN BHD"],
+["113",'[s,S][h,H][a,A][n,N][g,G][h,H][a,A][1,I,\/,\\,!,i]*\s*[w,W][e,E][c,C][a,A][n,N]\s*[1,I,\/,\\,!,i]*[m,M][R,P,K,r,p,k]*\s*&*\s*[e,E][x,X][R,P,K,r,p,k]*\s*[c,C][0,O,o][.,\,]*[.,\,]*\s*[l,L][t,T][d,D]',"SHANGHAI WECAN IMP & EXP CO., LTD"],
+["114",'[R,P,K,r,p,k]*[u,U][n,N][s,S][h,H][a,A][n,N]\s*[z,Z][h,H][0,O,o][u,U][R,P,K,r,p,k]*[e,E][n,N]\s*[t,T][R,P,K,r,p,k]*[a,A][d,D][1,I,\/,\\,!,i]*[n,N][g,G]\s*[c,C][0,O,o][.,\,]*\s*[l,L][t,T][d,D]',"KUNSHAN ZHOUREN TRADING CO. LTD"],
+["115",'[s,S][y,Y]\s*[R,P,K,r,p,k]*[0,O,o][l,L][y,Y][m,M][e,E][R,P,K,r,p,k]*\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SY POLYMER INDUSTRIES SDN BHD"],
+["116",'[h,H][1,I,\/,\\,!,i]*[s,S][a,A][R,P,K,r,p,k]*[a,A]\s*\([s,S][1,I,\/,\\,!,i]*[n,N][g,G][a,A][R,P,K,r,p,k]*[0,O,o][R,P,K,r,p,k]*[e,E]\)\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"HISAKA (SINGAPORE) PTE LTD"],
+["117",'[a,A][l,L][R,P,K,r,p,k]*[h,H][a,A]\s*[n,N][e,E][w,W][t,T][0,O,o][n,N][e,E]\s*[s,S][0,O,o][l,L][u,U][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ALPHA NEWTONE SOLUTIONS SDN BHD"],
+["118",'[u,U][c,C][a,A][l,L]\s*[t,T][e,E][c,C][h,H]''[s,S]\([m,M]\)[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"UCAL TECH'S(M)SDN BHD"],
+["119",'[1,I,\/,\\,!,i]*[n,N][t,T][e,E][c,C]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"INTEC ENGINEERING PTE LTD"],
+["120",'[m,M][e,E][a,A][s,S][u,U][t,T][e,E][c,C][h,H]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MEASUTECH (M) SDN BHD"],
+["121",'[R,P,K,r,p,k]*[e,E][g,G][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[e,E][R,P,K,r,p,k]*[s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"REGION SUPPLIERS SDN BHD"],
+["122",'[a,A][d,D][v,V][a,A][n,N][c,C][e,E]\s*[l,L][1,I,\/,\\,!,i]*[t,T][e,E]\s*[e,E][l,L][e,E][c,C][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[c,C][a,A][l,L]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ADVANCE LITE ELECTRICAL SDN BHD"],
+["123",'[f,F][1,I,\/,\\,!,i]*[c,C][t,T][R,P,K,r,p,k]*[0,O,o][n,N]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"FICTRON INDUSTRIAL SUPPLIES SDN BHD"],
+["124",'[R,P,K,r,p,k]*[s,S][h,H]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"PSH TECHNOLOGY SDN BHD"],
+["125",'[s,S][u,U][c,C][c,C][e,E][s,S][s,S]\s*[t,T][0,O,o][0,O,o][l,L][1,I,\/,\\,!,i]*[n,N][g,G]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]',"SUCCESS TOOLING ENGINEERING"],
+["126",'[x,X][1,I,\/,\\,!,i]*[n,N]\s*[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*[a,A][g,G][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N][.,\,]*\s*[b,B][h,H][d,D][.,\,]*',"XIN PACKAGING SDN. BHD."],
+["127",'[t,T][h,H][R,P,K,r,p,k]*[e,E][e,E]\s*[s,S]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[s,S][e,E][R,P,K,r,p,k]*[v,V][1,I,\/,\\,!,i]*[c,C][e,E]\s*&*\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[e,E][s,S]',"THREE S INDUSTRIAL SERVICE & SUPPLIES"],
+["128",'[e,E][t,T][e,E][R,P,K,r,p,k]*[n,N][a,A][l,L]\s*[e,E][x,X][R,P,K,r,p,k]*[0,O,o][s,S][u,U][R,P,K,r,p,k]*[e,E]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ETERNAL EXPOSURE SDN BHD"],
+["129",'[m,M][a,A][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][0,O,o]\s*[m,M][a,A][c,C][h,H][1,I,\/,\\,!,i]*[n,N][e,E]\s*[t,T][0,O,o][0,O,o][l,L][s,S]\s*\([m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MAKINO MACHINE TOOLS (MALAYSIA) SDN BHD"],
+["130",'[l,L][e,E][s,S][0,O,o][s,S][h,H][0,O,o][R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"LESOSHOPPE SDN BHD"],
+["131",'[l,L]\s*[a,A][n,N][d,D]\s*[R,P,K,r,p,k]*\s*[t,T][R,P,K,r,p,k]*[a,A][d,D][1,I,\/,\\,!,i]*[n,N][g,G]',"L AND K TRADING"],
+["132",'[0,O,o][R,P,K,r,p,k]*[t,T][1,I,\/,\\,!,i]*[m,M][u,U][s,S]\s*[c,C][0,O,o][n,N][t,T][R,P,K,r,p,k]*[0,O,o][l,L]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[y,Y]\s*[R,P,K,r,p,k]*[l,L][t,T]',"OPTIMUS CONTROL INDUSTRY PLT"],
+["133",'[a,A][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[w,W][e,E][l,L][l,L]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ARIWELL SDN BHD"],
+["134",'[m,M][1,I,\/,\\,!,i]*[R,P,K,r,p,k]*[a,A][z,Z][0,O,o]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[e,E][s,S]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MIKAZO INDUSTRIES (M) SDN BHD"],
+["135",'[e,E][c,C][0,O,o]\s*[a,A][u,U][t,T][0,O,o][m,M][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][y,Y][s,S][t,T][e,E][m,M]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ECO AUTOMATION SYSTEM SDN BHD"],
+["136",'[t,T][a,A][c,C]-*[t,T][0,O,o][0,O,o][l,L][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TAC-TOOLS SDN BHD"],
+["137",'[j,J][z,Z]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"JZ INDUSTRY SDN BHD"],
+["138",'[s,S][c,C][m,M][1,I,\/,\\,!,i]*\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SCMI PRECISION SDN BHD"],
+["139",'[t,T][R,P,K,r,p,k]*[e,E][s,S][c,C][a,A][l,L]\s*\([m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TRESCAL (MALAYSIA) SDN BHD"],
+["140",'[a,A][c,C][c,C][R,P,K,r,p,k]*[e,E][t,T][e,E][c,C][h,H]\s*\([m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ACCRETECH (MALAYSIA) SDN BHD"],
+["141",'[g,G][u,U][h,H][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*\(\s*[m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"GUHRING ( MALAYSIA ) SDN BHD"],
+["142",'[t,T][h,H][y,Y][s,S][s,S][e,E][n,N][R,P,K,r,p,k]*[R,P,K,r,p,k]*[u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*\s*[m,M][a,A][t,T][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[n,N][.,\,]*[a,A][.,\,]*\s*[c,C][0,O,o][R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][R,P,K,r,p,k]*\s*[a,A][n,N][d,D]\s*[b,B][R,P,K,r,p,k]*[a,A][s,S][s,S]\s*[s,S][a,A][l,L][e,E][s,S]\s*[1,I,\/,\\,!,i]*[n,N][c,C][.,\,]*\s*[l,L][0,O,o][s,S]\s*[a,A][n,N][g,G][e,E][l,L][e,E][s,S]\s*[d,D][1,I,\/,\\,!,i]*[v,V][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]',"THYSSENKRUPP MATERIAL N.A. COPPER AND BRASS SALES INC. LOS ANGELES DIVISION"],
+["143",'[s,S][R,P,K,r,p,k]*\s*[h,H][u,U][b,B]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SK HUB SDN BHD"],
+["144",'[t,T][e,E][c,C][h,H][n,N][0,O,o][b,B][a,A][s,S][e,E]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TECHNOBASE INDUSTRY SDN BHD"],
+["145",'[g,G]\s*[c,C][a,A][l,L][1,I,\/,\\,!,i]*[b,B][R,P,K,r,p,k]*[a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[s,S][d,D][n,N][.,\,]*\s*[b,B][h,H][d,D][.,\,]*',"G CALIBRATION SDN. BHD."],
+["146",'[a,A][l,L][1,I,\/,\\,!,i]*[m,M][e,E][x,X]\s*[a,A][c,C][R,P,K,r,p,k]*\s*[a,A][s,S][1,I,\/,\\,!,i]*[a,A]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ALIMEX ACP ASIA SDN BHD"],
+["147",'[R,P,K,r,p,k]*[e,E][v,V][0,O,o][t,T][e,E][c,C][h,H]\s*[t,T][R,P,K,r,p,k]*[a,A][d,D][1,I,\/,\\,!,i]*[n,N][g,G]',"REVOTECH TRADING"],
+["148",'[f,F][R,P,K,r,p,k]*[0,O,o][n,N][t,T][R,P,K,r,p,k]*[e,E][n,N]\s*\([m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"FRONTKEN (MALAYSIA) SDN BHD"],
+["149",'[R,P,K,r,p,k]*[z,Z]\s*[c,C][a,A][n,N][v,V][a,A][s,S]\s*[t,T][R,P,K,r,p,k]*[a,A][d,D][1,I,\/,\\,!,i]*[n,N][g,G]',"KZ CANVAS TRADING"],
+["150",'[a,A][n,N][s,S]\s*[f,F][u,U][t,T][u,U][R,P,K,r,p,k]*[e,E]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"ANS FUTURE SDN BHD"],
+["151",'[t,T][e,E][c,C][h,H][e,E][m,M]\s*[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*[a,A][g,G][1,I,\/,\\,!,i]*[n,N][g,G]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"TECHEM PACKAGING INDUSTRIAL SUPPLIES SDN BHD"],
+["152",'[t,T]&*[0,O,o]\s*[s,S][0,O,o][l,L][u,U][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"T&O SOLUTIONS SDN BHD"],
+["153",'[R,P,K,r,p,k]*[R,P,K,r,p,k]*\s*[m,M][a,A][R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][t,T][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"PK MARKETING SDN BHD"],
+["154",'[v,V][f,F]\s*[f,F][a,A][s,S][t,T][e,E][n,N][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][y,Y][s,S][t,T][e,E][m,M][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"VF FASTENING SYSTEMS SDN BHD"],
+["155",'[g,G][a,A][v,V][1,I,\/,\\,!,i]*[s,S][h,H][.,\,]*\s*[1,I,\/,\\,!,i]*[n,N][c,C]',"GAVISH, INC"],
+["156",'[c,C][h,H][0,O,o][n,N][g,G]\s*&*\s*[c,C][0,O,o][.,\,]*',"CHONG & CO."],
+["157",'[1,I,\/,\\,!,i]*[m,M][e,E]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*\([j,J][0,O,o][h,H][0,O,o][R,P,K,r,p,k]*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"IME TECHNOLOGY (JOHOR) SDN BHD"],
+["158",'[1,I,\/,\\,!,i]*[m,M][e,E]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"IME TECHNOLOGY SDN BHD"],
+["159",'[m,M][e,E][g,G][a,A][c,C][u,U][b,B][e,E][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"MEGACUBES SDN BHD"],
+["160",'[s,S][m,M][c,C]\s*[a,A][u,U][t,T][0,O,o][m,M][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*\([m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SMC AUTOMATION (MALAYSIA) SDN BHD"],
+["161",'[R,P,K,r,p,k]*[e,E][n,N][t,T][a,A][g,G][0,O,o][n,N]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][1,I,\/,\\,!,i]*[e,E][s,S]\s*[g,G][R,P,K,r,p,k]*[0,O,o][u,U][R,P,K,r,p,k]*[.,\,]*\s*[1,I,\/,\\,!,i]*[n,N][c,C]',"PENTAGON TECHNOLOGIES GROUP, INC"],
+["162",'[b,B][u,U][b,B][b,B][l,L][e,E]\s*[w,W][R,P,K,r,p,k]*[a,A][R,P,K,r,p,k]*\s*8*8*\s*[e,E][n,N][t,T][e,E][R,P,K,r,p,k]*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[s,S][e,E]',"BUBBLE WRAP 88 ENTERPRISE"],
+["163",'[j,J][t,T][e,E]\s*[a,A][s,S][1,I,\/,\\,!,i]*[a,A]\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[e,E][R,P,K,r,p,k]*[s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"JTE ASIA INDUSTRIAL SUPPLIERS SDN BHD"],
+["164",'[a,A][m,M][e,E]\s*[m,M][a,A][n,N][u,U][f,F][a,A][c,C][t,T][u,U][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"AME MANUFACTURING SDN BHD"],
+["165",'[a,A][l,L][u,U][R,P,K,r,p,k]*[u,U][t,T][e,E][R,P,K,r,p,k]*\s*[1,I,\/,\\,!,i]*[n,N][d,D][u,U][s,S][t,T][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[a,A][l,L]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"ALUPUTER INDUSTRIAL PTE LTD"],
+["166",'[t,T][c,C][w,W]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*\(\s*[m,M]\s*\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]-*[s,S][g,G][d,D]',"TCW PRECISION ENGINEERING ( M ) SDN BHD-SGD"],
+["167",'[g,G][e,E]\s*[c,C][h,H][e,E][m,M][1,I,\/,\\,!,i]*[c,C][a,A][l,L][s,S]\s*[s,S][u,U][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[e,E][s,S]',"GE CHEMICALS SUPPLIES"],
+["168",'[s,S][0,O,o][l,L][1,I,\/,\\,!,i]*[d,D]\s*[l,L][a,A][b,B][e,E][l,L][s,S]\s*[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*[a,A][g,G][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SOLID LABELS PACKAGING SDN BHD"],
+["169",'[R,P,K,r,p,k]*[0,O,o][l,L][l,L][e,E][d,D]\s*[a,A][l,L][l,L][0,O,o][y,Y][s,S]\s*[s,S][1,I,\/,\\,!,i]*[n,N][g,G][a,A][R,P,K,r,p,k]*[0,O,o][R,P,K,r,p,k]*[e,E]\s*[l,L][t,T][d,D]',"ROLLED ALLOYS SINGAPORE LTD"],
+["170",'[m,M][a,A][v,V][0,O,o][m,M]\s*[b,B][v,V]',"MAVOM BV"],
+["171",'[R,P,K,r,p,k]*[a,A][w,W][a,A]\s*[m,M][a,A][c,C][h,H][1,I,\/,\\,!,i]*[n,N][e,E]\s*[t,T][0,O,o][0,O,o][l,L][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"KAWA MACHINE TOOLS SDN BHD"],
+["172",'[u,U][n,N][1,I,\/,\\,!,i]*[v,V][e,E][R,P,K,r,p,k]*[s,S][a,A][l,L]\s*[f,F][0,O,o][R,P,K,r,p,k]*[R,P,K,r,p,k]*[l,L][1,I,\/,\\,!,i]*[f,F][t,T]\s*&*\s*[e,E][q,Q][u,U][1,I,\/,\\,!,i]*[R,P,K,r,p,k]*[m,M][e,E][n,N][t,T]\s*[s,S][e,E][R,P,K,r,p,k]*[v,V][1,I,\/,\\,!,i]*[c,C][e,E][s,S]',"UNIVERSAL FORKLIFT & EQUIPMENT SERVICES"],
+["173",'[h,H][w,W][a,A][c,C][h,H][e,E][0,O,o][n,N]\s*[a,A][s,S][1,I,\/,\\,!,i]*[a,A]\s*[R,P,K,r,p,k]*[a,A][c,C][1,I,\/,\\,!,i]*[f,F][1,I,\/,\\,!,i]*[c,C]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"HWACHEON ASIA PACIFIC PTE LTD"],
+["174",'[j,J][e,E][v,V][e,E][R,P,K,r,p,k]*[a,A]\s*[b,B][v,V]',"JEVEKA BV"],
+["175",'[R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[c,C][h,H][R,P,K,r,p,k]*[0,O,o][R,P,K,r,p,k]*[t,T]\s*[t,T][e,E][c,C][h,H][n,N][0,O,o][l,L][0,O,o][g,G][y,Y]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"RICHPORT TECHNOLOGY PTE LTD"],
+["176",'[1,I,\/,\\,!,i]*[n,N][t,T][e,E][c,C]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]\s*-*\s*[m,M][y,Y][R,P,K,r,p,k]*',"INTEC PRECISION ENGINEERING SDN BHD - MYR"],
+["177",'[1,I,\/,\\,!,i]*[n,N][t,T][e,E][c,C]\s*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[s,S][1,I,\/,\\,!,i]*[0,O,o][n,N]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]\s*-*\s*[s,S][g,G][d,D]',"INTEC PRECISION ENGINEERING SDN BHD - SGD"],
+["178",'[s,S][R,P,K,r,p,k]*[y,Y][l,L][0,O,o][g,G]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"SKYLOG SDN BHD"],
+["179",'[a,A][u,U][t,T][0,O,o][R,P,K,r,p,k]*[R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][t,T]\s*[e,E][n,N][t,T][e,E][R,P,K,r,p,k]*[R,P,K,r,p,k]*[R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[s,S][e,E]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"AUTOPRINT ENTERPRISE SDN BHD"],
+["180",'[f,F][0,O,o][s,S][R,P,K,r,p,k]*[0,O,o][c,C]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"FOSROC SDN BHD"],
+["181",'[c,C][0,O,o][0,O,o][l,L][m,M][a,A][R,P,K,r,p,k]*-*[t,T][a,A]\s*[c,C][0,O,o][a,A][t,T][1,I,\/,\\,!,i]*[n,N][g,G]\s*&*\s*[s,S][y,Y][s,S][t,T][e,E][m,M][s,S]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"COOLMAR-TA COATING & SYSTEMS PTE LTD"],
+["182",'[y,Y][a,A][m,M][a,A][z,Z][a,A][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*\s*[m,M][a,A][z,Z][a,A][R,P,K,r,p,k]*\s*[s,S][1,I,\/,\\,!,i]*[n,N][g,G][a,A][R,P,K,r,p,k]*[0,O,o][R,P,K,r,p,k]*[e,E]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"YAMAZAKI MAZAK SINGAPORE PTE LTD"],
+["183",'[R,P,K,r,p,k]*[u,U][x,X][1,I,\/,\\,!,i]*\s*[s,S][R,P,K,r,p,k]*[e,E][c,C][1,I,\/,\\,!,i]*[a,A][l,L]\s*[a,A][l,L][l,L][0,O,o][y,Y]\s*\([s,S][h,H][a,A][n,N][g,G][h,H][a,A][1,I,\/,\\,!,i]*\)\s*[c,C][0,O,o][.,\,]*\s*[l,L][t,T][d,D]',"PUXI SPECIAL ALLOY (SHANGHAI) CO. LTD"],
+["184",'[a,A][g,G][1,I,\/,\\,!,i]*[l,L][e,E]\s*[t,T][0,O,o][0,O,o][l,L][s,S]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"AGILE TOOLS ENGINEERING PTE LTD"],
+["185",'[t,T][e,E][a,A][m,M]\s*[h,H][u,U][b,B]\s*\([s,S][u,U][z,Z][h,H][0,O,o][u,U]\)\s*[c,C][0,O,o][.,\,]*[.,\,]*\s*[l,L][t,T][d,D]',"TEAM HUB (SUZHOU) CO., LTD"],
+["186",'[l,L][e,E][0,O,o][n,N][g,G]\s*[c,C][h,H][0,O,o][n,N][g,G]\s*[s,S][t,T][e,E][e,E][l,L]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"LEONG CHONG STEEL SDN BHD"],
+["187",'[c,C][a,A][R,P,K,r,p,k]*[l,L]\s*[z,Z][e,E][1,I,\/,\\,!,i]*[s,S][s,S]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"CARL ZEISS SDN BHD"],
+["188",'[s,S][e,E][t,T][s,S][c,C][0,O,o]\s*[s,S][e,E][R,P,K,r,p,k]*[v,V][1,I,\/,\\,!,i]*[c,C][e,E][s,S]\s*[R,P,K,r,p,k]*[t,T][e,E]\s*[l,L][t,T][d,D]',"SETSCO SERVICES PTE LTD"],
+["189",'[0,O,o][u,U][t,T][g,G][a,A][s,S][s,S][1,I,\/,\\,!,i]*[n,N][g,G]\s*[s,S][e,E][R,P,K,r,p,k]*[v,V][1,I,\/,\\,!,i]*[c,C][e,E][s,S]\s*[1,I,\/,\\,!,i]*[n,N][t,T][e,E][R,P,K,r,p,k]*[n,N][a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N][a,A][l,L]',"OUTGASSING SERVICES INTERNATIONAL"],
+["190",'[R,P,K,r,p,k]*[R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[m,M][e,E]\s*[c,C][h,H][1,I,\/,\\,!,i]*[n,N][a,A]\s*\([s,S][h,H][a,A][n,N][g,G][h,H][a,A][1,I,\/,\\,!,i]*\)\s*[c,C][0,O,o][.,\,]*[.,\,]*\s*[l,L][t,T][d,D]',"PRIME CHINA (SHANGHAI) CO,. LTD"],
+["191",'[d,D][n,N][t,T]\s*[R,P,K,r,p,k]*[a,A][1,I,\/,\\,!,i]*[n,N][t,T]\s*\([m,M][a,A][l,L][a,A][y,Y][s,S][1,I,\/,\\,!,i]*[a,A]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"DNT PAINT (MALAYSIA) SDN BHD"],
+["192",'[j,J][u,U]\s*[s,S][e,E][n,N][g,G]\s*[h,H][0,O,o][n,N][g,G]\s*\([m,M]\)\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"JU SENG HONG (M) SDN BHD"],
+["193",'[c,C][e,E][l,L][e,E][s,S][t,T][1,I,\/,\\,!,i]*[c,C][a,A]\s*[c,C][0,O,o][R,P,K,r,p,k]*[R,P,K,r,p,k]*[0,O,o][R,P,K,r,p,k]*[a,A][t,T][1,I,\/,\\,!,i]*[0,O,o][n,N]',"CELESTICA CORPORATION"],
+["194",'[l,L][1,I,\/,\\,!,i]*[f,F][t,T][0,O,o][n,N]\s*[t,T][e,E][c,C][h,H]\s*[e,E][n,N][g,G][1,I,\/,\\,!,i]*[n,N][e,E][e,E][R,P,K,r,p,k]*[1,I,\/,\\,!,i]*[n,N][g,G]',"LIFTON TECH ENGINEERING"],
+["195",'[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*\s*[R,P,K,r,p,k]*[l,L][u,U][s,S]\s*[R,P,K,r,p,k]*[a,A][c,C][R,P,K,r,p,k]*[a,A][g,G][1,I,\/,\\,!,i]*[n,N][g,G]\s*[t,T][R,P,K,r,p,k]*[a,A][d,D][1,I,\/,\\,!,i]*[n,N][g,G]',"PACK PLUS PACKAGING TRADING"],
+["196",'[y,Y][u,U][R,P,K,r,p,k]*[e,E][R,P,K,r,p,k]*[a,A]\s*[s,S][d,D][n,N]\s*[b,B][h,H][d,D]',"YUREKA SDN BHD"],
+]
+
+"AIS MANUFACTURING PTE LTD":
+  regex:
+      do_num: '[a,A][1,I,\/,\,!,i][s,S]-*(\d{4}-*\d{4})'
+  do_prefix: 'AIS-'
+
+"FRISA FORJADOS SA DE CV":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TSH SYNERGY PTE LTD":
+  regex:
+      do_num: '[t,T][s,S][h,H]-*(\d{4}-*\d{4})'
+  do_prefix: 'TSH-'
+
+"IPC INDUSTRIES SDN BHD":
+  regex:
+      do_num: '(\d{4}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: ''
+
+"RELIANCE METALCENTER ASIA PACIFIC PTE LTD":
+  regex:
+      do_num: '[b,B][0,O,o][l,L]-*(\d{5})'
+  do_prefix: 'BOL-'
+
+"ATTRACTIVE VENTURE (JB) SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"NOVATECH PRECISION SDN BHD":
+  regex:
+      do_num: '[n,N][t,T][R,P,K,r,p,k]-*[d,D][0,O,o](\d{4}-*\d{4})'
+  do_prefix: 'NTP-DO'
+
+"MICRO SCREEN PRODUCTION SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"GREAT PEERS ( M ) SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"TSH PRECISION TECHNOLOGY SDN BHD":
+  regex:
+      do_num: '[t,T][R,P,K,r,p,k][t,T]-*[d,D][0,O,o](\d{4}-*\d{4})'
+  do_prefix: 'TPT-DO'
+
+"FINETECH PRECISION SDN BHD - SGD":
+  regex:
+      do_num: '[f,F][t,T][d,D]-*(\d{4}-*\d{2})'
+  do_prefix: 'FTD-'
+
+"FINETECH PRECISION SDN BHD - MYR":
+  regex:
+      do_num: '[f,F][t,T][d,D]-*(\d{4}-*\d{2})'
+  do_prefix: 'FTD-'
+
+"EXCELLENT ROLLER SHAFT SPECIALIST SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"E STEEL SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"ADVANCE BOLTS ( JOHOR ) SDN. BHD":
+  regex:
+      do_num: '[j,J][d,D][0,O,o]-*(\d{8})'
+  do_prefix: 'JDO-'
+
+"U.K.L INDUSTRIES SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"G.S STATIONERY SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"MAXSOON (M) SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4}-*\d{3})'
+  do_prefix: 'DO-'
+
+"NST FASTENER SDN BHD":
+  regex:
+      do_num: '[n,N][s,S][t,T](\d{5})'
+  do_prefix: 'NST'
+
+"TAG ALLIANCE (M) SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"P.T. SINTERTECH":
+  regex:
+      do_num: '[t,T][s,S][h,H]-*(\d{9})'
+  do_prefix: 'TSH-'
+
+"TSH CONTRACT MANUFATURING SDN BHD - WH":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TSH CONTRACT MANUFACTURING SDN BHD - MCH":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SCRINT TECHNOLOGY (M) SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"LASERTECH INDUSTRIES (JOHOR) SDN BHD":
+  regex:
+      do_num: '[j,J][b,B](\d{5})'
+  do_prefix: 'JB'
+
+"GREAT UTOPIAN SDN BHD":
+  regex:
+      do_num: '[u,U][t,T][0,O,o][R,P,K,r,p,k][1,I,\/,\,!,i][a,A][n,N]-*(\d{7})'
+  do_prefix: 'UTOPIAN-'
+
+"NOVATECH MANUFACTURING SDN BHD":
+  regex:
+      do_num: '[n,N][t,T][m,M]-*[d,D][0,O,o](\d{4}-*\d{4})'
+  do_prefix: 'NTM-DO'
+
+"AME MANUFACTURING SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"BEST LINE TOOLING SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"BEYE ALUMINIUM TRADING (JB) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"BOSSARD (M) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"C.T. STABIL SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o][1,I,\/,\,!,i][t,T][e,E][1,I,\/,\,!,i](\d{2}[1,I,\/,\,!,i]\d{5})'
+  do_prefix: 'DO/TE/'
+
+"COLOUR TOP SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"YAMAZAKI MAZAK SINGAPORE PTE LTD":
+  regex:
+      do_num: '[y,Y][m,M][s,S][g,G](\d{6}-*\d{5})'
+  do_prefix: 'YMSG'
+
+"XIN PACKAGING ENTERPRISE":
+  regex:
+      do_num: '[d,D][0,O,o](\d{5})'
+  do_prefix: 'DO'
+
+"VARIOUS RESOURCES ( M ) SDN BHD":
+  regex:
+      do_num: '[v,V][R,P,K,r,p,k][d,D][0,O,o][1,I,\/,\,!,i](\d{6})'
+  do_prefix: 'VRDO/'
+
+"VINTECH TECHNOLOGY ENGINEERING":
+  regex:
+      do_num: '[v,V][t,T][e,E](\d{4}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'VTE'
+
+"TSK INDUSTRIES SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"TSK DENKO CO. LTD":
+  regex:
+      do_num: '[j,J](\d{2}-*\d{1}-*\d{8}[1,I,\/,\,!,i]\d{2})'
+  do_prefix: 'J'
+
+"THL METAL WORK SDN BHD":
+  regex:
+      do_num: '[t,T](\d{2}[1,I,\/,\,!,i]\d{2}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'T'
+
+"TCW PRECISION ENGINEERING ( M ) SDN BHD-MYR":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{7})'
+  do_prefix: 'DO-'
+
+"TEGS ASIA INDUSTRIES SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{7})'
+  do_prefix: 'DO'
+
+"SIMONI PACKAGING SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"RICHPORT TECHNOLOGY SDN BHD":
+  regex:
+      do_num: '[m,M]-*[d,D][0,O,o](\d{8}-*\d{3})'
+  do_prefix: 'M-DO'
+
+"POWER EXCEL LUBRICANTS SDN BHD":
+  regex:
+      do_num: '[R,P,K,r,p,k][1,I,\/,\,!,i](\d{1}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'PI'
+
+"PREFERRED ALLOYS SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{4})'
+  do_prefix: 'DO'
+
+"PROKIN TOOLING SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"MITRONTEC TECHNOLOGY SDN BHD":
+  regex:
+      do_num: '[m,M][1,I,\/,\,!,i][t,T][d,D][0,O,o]-*(\d{4}-*\d{4})'
+  do_prefix: 'MITDO-'
+
+"MICRO SCREEN PRODUCTION SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"KS PRECISION TOOLS ( JOHOR ) SDN BHD":
+  regex:
+      do_num: 'Delivery\s*[O,0]rder\s*N[o,0].*\s*[:,;,+]*\s*(\d{5})'
+  do_prefix: ''
+
+"I-CHAMP TECHNOLOGY PTE LTD":
+  regex:
+      do_num: 'Delivery\s*Number\s*[c,C]*(\d{5})'
+  do_prefix: 'C'
+
+"K & L SUPPLY SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"HOFFMANN QUALITY TOOLS ( MALAYSIA ) SDN BHD":
+  regex:
+      do_num: '(\d{10})'
+  do_prefix: ''
+
+"DURA TOOLS SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"SUPER MULTIPLE SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"SUMITEC SDN BHD":
+  regex:
+      do_num: '[s,S][1,I,\/,\,!,i](\d{4}-*\d{4})'
+  do_prefix: 'SI'
+
+"SENG DATT HARDWARE ( M ) SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{6})'
+  do_prefix: 'DO'
+
+"DECHO PRECISION ENGINEERING (M) SDN BHD":
+  regex:
+      do_num: '[d,D][c,C]-*[d,D](\d{2}[1,I,\/,\,!,i]\d{5})'
+  do_prefix: 'DC-D'
+
+"CREATE SUCCESS PACKAGING SUPPLIES":
+  regex:
+      do_num: '[c,C][s,S][R,P,K,r,p,k](\d{5})'
+  do_prefix: 'CSP'
+
+"CTAE SOLUTION SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"DP POWDER MANUFACTURING SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{5})'
+  do_prefix: 'DO'
+
+"DSN ADVANCED TECHNOLOGY ( M ) SDN BHD":
+  regex:
+      do_num: '(\d{4}-*\d{3})'
+  do_prefix: ''
+
+"EXCEL SOLIDPAC INDUSTRIES SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V]-*(\d{4}-*\d{3})'
+  do_prefix: 'INV-'
+
+"ENHANCE CONNECTION SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i]-*(\d{6})'
+  do_prefix: 'I-'
+
+"EURO BASE TECHNOLOGY (JB) SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{5})'
+  do_prefix: 'DO'
+
+"ECO TOOLING SOLUTIONS":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"HAYNES INTERNATIONAL, INC.":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"HILLTEC MARKETING (M) SDN. BHD.":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'DO-'
+
+"HEBEI FITEXCASTING TRADING CO.,LTD":
+  regex:
+      do_num: '(\d{2}[f,F][R,P,K,r,p,k]\d{3})'
+  do_prefix: ''
+
+"KSC ENGINEERING SERVICES":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V](\d{6})'
+  do_prefix: 'INV'
+
+"IPM TECHNOLOGY (JB) SDN BHD":
+  regex:
+      do_num: '[j,J][b,B][1,I,\/,\,!,i][v,V]-*(\d{4}-*\d{3})'
+  do_prefix: 'JBIV-'
+
+"MCTRO HARDWARE SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"LVC ECOPACK SDN BHD":
+  regex:
+      do_num: '[l,L][v,V][c,C](\d{8}[.,\,][t,T][s,S]'
+  do_prefix: 'LVC'
+
+"LEO AUTOMATION TRADING":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"K-TECH SOLUTIONS (M) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"NTLH TOOLS SDN. BHD.":
+  regex:
+      do_num: '[1,I,\/,\,!,i][v,V]-*(\d{4}[1,I,\/,\,!,i]\d{3})'
+  do_prefix: 'IV-'
+
+"NEW METAL SPECIALIST SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"NEWLIKE MACHINE SOLUTIONS SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"MTR SANDI ELECTRIC (M) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SF ASIA INDUSTRIAL SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SOYEE (JOHOR) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SL METALS ( M ) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TOOL STATION (KL) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TOYO SHO INDUSTRIAL PRODUCTS SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"TWINVAC INDUSTRIES SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"UA MATERIALS SDN BHD":
+  regex:
+      do_num: '[j,J][b,B][0,O,o][u,U][t,T][1,I,\/,\,!,i](\d{5})'
+  do_prefix: 'JBOUT/'
+
+"VISTA INSTRUMENT SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"TST INC":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SCMI PRECISION SDN BHD":
+  regex:
+      do_num: '[s,S](\d{7})'
+  do_prefix: 'S'
+
+"MEI JIA ELECTRONIC SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"STANDARD BOX INDUSTRY SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4}-*\d{2}-*[j,J]\d{4})'
+  do_prefix: 'DO-'
+
+"TOOL STATION (KL) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TOOL STATION (KL) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"AEROCHEM INDUSTRIES SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"BEST LINE INDUSTRIAL SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"MITSUBISHI ELECTRIC SALES MALAYSIA SDN. BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"C F UNIFORM SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4}-*\d{3})'
+  do_prefix: 'DO-'
+
+"ASTEEM PRODUCTS SDN BHD":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"DAI-ICHI AUTO INDUSTRIES SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"FANUC MECHATRONICS (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N](\d{7})'
+  do_prefix: 'IN'
+
+"MEGAH MACHINERY":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4})'
+  do_prefix: 'DO-'
+
+"PREFERRED ALLOYS PTE. LTD.":
+  regex:
+      do_num: '[d,D][0,O,o]#*(\d{4})'
+  do_prefix: 'DO#'
+
+"MAKINO ASIA PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"BAY SEAL COMPANY, INC":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"BLUE OCEAN DATA SOLUTIONS SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"KVC INDUSTRIAL SUPPLIES SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V](\d{10})'
+  do_prefix: 'INV'
+
+"MAYDENKI SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"KEDAI IKAN DAN BURUNG MENG YANG":
+  regex:
+      do_num: '[c,C](\d{6})'
+  do_prefix: 'C'
+
+"SK TEC CO., LTD":
+  regex:
+      do_num: '(\d{4}[b,B]\d{5})'
+  do_prefix: ''
+
+"PRO-ART PACKAGING SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{4}-*\d{5})'
+  do_prefix: 'DO'
+
+"SHANGHAI WECAN IMP & EXP CO., LTD":
+  regex:
+      do_num: '[c,C][v,V]-*[c,C][h,H](\d{5}-*\d{1})'
+  do_prefix: 'CV-CH'
+
+"KUNSHAN ZHOUREN TRADING CO. LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SY POLYMER INDUSTRIES SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V]-*(\d{4}-*\d{4})'
+  do_prefix: 'INV-'
+
+"HISAKA (SINGAPORE) PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"ALPHA NEWTONE SOLUTIONS SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o][1,I,\/,\,!,i](\d{2}-*\d{4}-*\d{5})'
+  do_prefix: 'DO/'
+
+"UCAL TECH'S(M)SDN BHD":
+  regex:
+      do_num: '[u,U][t,T][j,J][g,G][R,P,K,r,p,k][1,I,\/,\,!,i](\d{4}-*\d{4})'
+  do_prefix: 'UTJGP/'
+
+"INTEC ENGINEERING PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"MEASUTECH (M) SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"REGION SUPPLIERS SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][1,I,\/,\,!,i][j,J](\d{4}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'IN/J'
+
+"ADVANCE LITE ELECTRICAL SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"FICTRON INDUSTRIAL SUPPLIES SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"PSH TECHNOLOGY SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"SUCCESS TOOLING ENGINEERING":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"XIN PACKAGING SDN. BHD.":
+  regex:
+      do_num: '[d,D][0,O,o](\d{5})'
+  do_prefix: 'DO'
+
+"THREE S INDUSTRIAL SERVICE & SUPPLIES":
+  regex:
+      do_num: '[d,D][0,O,o](\d{2}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'DO'
+
+"ETERNAL EXPOSURE SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{7})'
+  do_prefix: 'DO'
+
+"MAKINO MACHINE TOOLS (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '(\d{10})'
+  do_prefix: ''
+
+"LESOSHOPPE SDN BHD":
+  regex:
+      do_num: '[j,J][j,J][1,I,\/,\,!,i](\d{5})'
+  do_prefix: 'JJI'
+
+"L AND K TRADING":
+  regex:
+      do_num: '(\d{4}-*\d{4})'
+  do_prefix: ''
+
+"OPTIMUS CONTROL INDUSTRY PLT":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"ARIWELL SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"MIKAZO INDUSTRIES (M) SDN BHD":
+  regex:
+      do_num: '(\d{10})'
+  do_prefix: ''
+
+"ECO AUTOMATION SYSTEM SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TAC-TOOLS SDN BHD":
+  regex:
+      do_num: '[t,T][t,T](\d{6})'
+  do_prefix: 'TT'
+
+"JZ INDUSTRY SDN BHD":
+  regex:
+      do_num: '[d,D](\d{6})'
+  do_prefix: 'D'
+
+"SCMI PRECISION SDN BHD":
+  regex:
+      do_num: '[s,S](\d{7})'
+  do_prefix: 'S'
+
+"TRESCAL (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '[n,N][j,J](\d{8})'
+  do_prefix: 'NJ'
+
+"ACCRETECH (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"GUHRING ( MALAYSIA ) SDN BHD":
+  regex:
+      do_num: '(\d{9})'
+  do_prefix: ''
+
+"THYSSENKRUPP MATERIAL N.A. COPPER AND BRASS SALES INC. LOS ANGELES DIVISION":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SK HUB SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TECHNOBASE INDUSTRY SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"G CALIBRATION SDN. BHD.":
+  regex:
+      do_num: '[d,D][0,O,o](\d{2}-*[b,B]\d{4})'
+  do_prefix: 'DO'
+
+"ALIMEX ACP ASIA SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"REVOTECH TRADING":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{7})'
+  do_prefix: 'DO-'
+
+"FRONTKEN (MALAYSIA) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"KZ CANVAS TRADING":
+  regex:
+      do_num: '(\d{4}-*\d{4})'
+  do_prefix: ''
+
+"ANS FUTURE SDN BHD":
+  regex:
+      do_num: '[R,P,K,r,p,k][a,A]-*(\d{5})'
+  do_prefix: 'KA-'
+
+"TECHEM PACKAGING INDUSTRIAL SUPPLIES SDN BHD":
+  regex:
+      do_num: '[d,D]-*(\d{5})'
+  do_prefix: 'D-'
+
+"T&O SOLUTIONS SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"PK MARKETING SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V](\d{8})'
+  do_prefix: 'INV'
+
+"VF FASTENING SYSTEMS SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"GAVISH, INC":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"CHONG & CO.":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"IME TECHNOLOGY (JOHOR) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"IME TECHNOLOGY SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"MEGACUBES SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SMC AUTOMATION (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '(\d{7})'
+  do_prefix: ''
+
+"PENTAGON TECHNOLOGIES GROUP, INC":
+  regex:
+      do_num: '[c,C][a,A](\d{6})'
+  do_prefix: 'CA'
+
+"BUBBLE WRAP 88 ENTERPRISE":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"JTE ASIA INDUSTRIAL SUPPLIERS SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"AME MANUFACTURING SDN BHD":
+  regex:
+      do_num: '[a,A][m,M][e,E]-*(\d{8})'
+  do_prefix: 'AME-'
+
+"ALUPUTER INDUSTRIAL PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TCW PRECISION ENGINEERING ( M ) SDN BHD-SGD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{7})'
+  do_prefix: 'DO-'
+
+"GE CHEMICALS SUPPLIES":
+  regex:
+      do_num: '[1,I,\/,\,!,i]-*(\d{2}[1,I,\/,\,!,i]\d{2}-*\d{5})'
+  do_prefix: 'I-'
+
+"SOLID LABELS PACKAGING SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"ROLLED ALLOYS SINGAPORE LTD":
+  regex:
+      do_num: '(\d{7}-*\d{1})'
+  do_prefix: ''
+
+"MAVOM BV":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"KAWA MACHINE TOOLS SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"UNIVERSAL FORKLIFT & EQUIPMENT SERVICES":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"HWACHEON ASIA PACIFIC PTE LTD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"JEVEKA BV":
+  regex:
+      do_num: '[c,C][1,I,\/,\,!,i](\d{7})'
+  do_prefix: 'CI'
+
+"RICHPORT TECHNOLOGY PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"INTEC PRECISION ENGINEERING SDN BHD - MYR":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"INTEC PRECISION ENGINEERING SDN BHD - SGD":
+  regex:
+      do_num: '[c,C][m,M][u,U]-*(\d{8})'
+  do_prefix: 'CMU-'
+
+"SKYLOG SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"AUTOPRINT ENTERPRISE SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"FOSROC SDN BHD":
+  regex:
+      do_num: '[m,M][y,Y](\d{1}[g,G]\d{6})'
+  do_prefix: 'MY'
+
+"COOLMAR-TA COATING & SYSTEMS PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"YAMAZAKI MAZAK SINGAPORE PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"PUXI SPECIAL ALLOY (SHANGHAI) CO. LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"AGILE TOOLS ENGINEERING PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TEAM HUB (SUZHOU) CO., LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"LEONG CHONG STEEL SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"CARL ZEISS SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SETSCO SERVICES PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"OUTGASSING SERVICES INTERNATIONAL":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"PRIME CHINA (SHANGHAI) CO,. LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"DNT PAINT (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '[j,J](\d{6})'
+  do_prefix: 'J'
+
+"JU SENG HONG (M) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"CELESTICA CORPORATION":
+  regex:
+      do_num: '[a,A][1,I,\/,\,!,i][s,S]-*(\d{4}-*\d{4})'
+  do_prefix: 'AIS-'
+
+"LIFTON TECH ENGINEERING":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"PACK PLUS PACKAGING TRADING":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"YUREKA SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+

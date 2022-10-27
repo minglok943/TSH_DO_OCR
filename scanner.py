@@ -18,7 +18,16 @@ from dateutil.parser import parse
 
 from regexGen import *
 
-with open('templateDO6.yaml', 'r') as file:
+def nothing(x):
+    pass
+
+cv2.namedWindow('tune')
+cv2.createTrackbar('x', 'tune', 0, 1280, nothing)
+cv2.createTrackbar('x1', 'tune', 0, 1280, nothing)
+cv2.createTrackbar('y', 'tune', 0, 720, nothing)
+cv2.createTrackbar('y1', 'tune', 0, 720, nothing)
+
+with open('templateDO7.yaml', 'r') as file:
     companyYaml = yaml.safe_load(file)
 
 def mySqlTable(results, description):
@@ -85,8 +94,10 @@ class DO:
         self.companyNameRegex =''
         self.itemDetails = [] # item_id, quantity, part_number
         self.itemDetected = [] # item_id, quantity, part_number
+        self.itemQuantityToBeDetected = [] # item_id, quantity, part_number
         self.partNumberRegex = []
         self.startSearchItem = False
+        self.startSearchQuantity = False
         self.do_date = ''
         self.dateFound = False
         self.companyNameMatched = False
@@ -131,20 +142,8 @@ class DO:
                     secondGnome.echo(echoStr)
                     self.companyNameFoundFromPO = True
                     self.po_number = poLike.group(1)
-                    """
-                    self.companyNameRegex = genRegex(self.companyName)
-
-                    comMatch = re.search(self.companyNameRegex, text)
-                    if comMatch != None:
-                        self.po_number = poLike.group(1)
-                        print("Company id ", self.companyID)
-                        print("Company is ", self.companyName)
-                        self.companyNameFound = True
-                        echoStr = 'Company Detected: '+self.companyName
-                        secondGnome.echo(echoStr)
-                        self.register(self.companyName)
-                        self.cvBoardInitialize(board)
-                    """
+            else:
+                secondGnome.echo("no PO record")
 
     def register(self, compName):
         for key, rePattern in companyYaml[compName]['regex'].items():
@@ -208,8 +207,10 @@ class DO:
         self.companyNameFromPO = ''
         self.itemDetails.clear()
         self.itemDetected.clear()
+        self.itemQuantityToBeDetected.clear()
         self.partNumberRegex.clear()
         self.startSearchItem = False
+        self.startSearchQuantity = False
         self.do_date = ''
         self.dateFound = False
         self.companyNameMatched = False
@@ -381,6 +382,111 @@ class DO:
         for i in record:
             self.itemDetails.append(temp[i])
 
+    def getQuantity(self, img):
+        data = pytesseract.image_to_data(img, output_type='dict')
+        stringLoc = []
+        quantityY = []
+        quantityX = 0
+        quantityW = 0
+        for i in range(0, len(data['text'])):
+            x = data['left'][i]
+            y = data['top'][i]
+            w = data['width'][i]
+            h = data['height'][i]
+            text = data['text'][i]
+            text = "".join(text).strip()
+            for ele in companyYaml['quantity_format']:
+                match = re.search(ele[0], text)
+                if match != None:
+                    #secondGnome.echo("found x")
+                    #secondGnome.echo(match.group())
+                    print(text)
+                    quantityX = x - 20
+                    quantityW = w + 50
+                    print("x = ", quantityX)
+                    print("w = ", quantityW)
+                    break
+
+            if text.isspace() == False:
+                if len(stringLoc)==0:
+                    stringLoc.append([text,[x,y,w,h]])
+                else:
+                    inserted = False
+                    for i in stringLoc:
+                        if y >= i[1][1]-3 and y<=i[1][1]+3:
+                            i[0] = i[0]+" "+text
+                            i[1][2] += w
+                            inserted = True
+                            break
+                    if inserted == False:
+                        stringLoc.append([text,[x,y,w,h]])
+
+        # itemDetails[0] = purchase_order_items.id
+        # itemDetails[1] = purchase_order_items.item_id
+        # itemDetails[2] = purchase_order_items.quantity
+        # itemDetails[3] = inventories.part_number
+        
+        # stringLoc = [text, (x,y,w,h)]
+        # Find Y
+        for item_index, i in enumerate(self.itemDetected):
+            for j in stringLoc:
+                if self.itemQuantityToBeDetected[item_index] == True:
+                    match = re.search(genRegexCapitalInsensitive(i[3]), j[0])
+                    if match != None:
+                        # [y, h] of item
+                        #secondGnome.echo("found y")
+                        if len(quantityY) == 0:
+                            quantityY.append( [j[1][1]-20, j[1][3]+50, item_index] )
+                        else:
+                            # sort in ascending order by y
+                            inserted = False
+                            for index, k in enumerate(quantityY):
+                                if (j[1][1]-20) < k[0]:
+                                    quantityY.insert(index, [j[1][1]-20, j[1][3]+50, item_index] )
+                                    inserted = True
+                                    break
+                            if inserted == False:
+                                quantityY.append( [j[1][1]-20, j[1][3]+50, item_index] )
+                        break
+
+        # Find X
+        """
+        for i in stringLoc:
+            print(i[0])
+            match = re.search('QTY', i[0])
+            if match != None:
+                secondGnome.echo("found x")
+                quantityX = i[1][0] - 10
+                quantityW = i[1][2] + 10
+        """
+        
+        if quantityX != 0 and len(quantityY) != 0:
+            #secondGnome.echo("draw box")
+            for i in quantityY:
+                print("quantityY")
+                print(i)
+                    # [y, h] of item
+                cv2.rectangle(img,
+                      (quantityX, i[0]),
+                      (quantityX + quantityW, i[0] + i[1]),
+                      (0, 0, 255), 2)
+                cropped = img[i[0]:i[0]+i[1], quantityX:quantityX+quantityW]
+           #     cv2.imwrite("cropped.jpg", cropped)
+                if cropped.shape[0] and cropped.shape[1]:
+                    cv2.imshow("cropped", cv2.resize(cropped,(640,480)))
+                    cv2.moveWindow("cropped", 0, 4000)
+                #quantityY.append( [j[1][1]-20, j[1][3]+50, item_index] )
+                    cropped = cv2.resize(cropped, (int(3.0*cropped.shape[1]),int(3.0*cropped.shape[0])))
+                    text = pytesseract.image_to_string(cropped)
+                    #secondGnome.echo(text)
+                    match = re.search('\s*(\d*,*\d*,*\d*,*\d*,*\d*,*\d*.\d{2,4})\s*.*', text)
+                    if match!=None:
+                        qty = match.group(1)
+                        echoStr = self.itemDetected[i[2]][3]+" | "+qty
+                        secondGnome.echo(echoStr)
+                        self.itemQuantityToBeDetected[i[2]] = False
+    
+
     def cvBoardInitialize(self, cvMat):
         
         cvMat = cv2.putText(cvMat, self.companyNameFromYaml, (50, 50), font, 
@@ -481,6 +587,9 @@ while True:
                 d_o.searchItem(ocr_text)
                 if len(d_o.itemDetails) == 0:
                     d_o.startSearchItem = False
+                    for item in d_o.itemDetected:
+                        d_o.itemQuantityToBeDetected.append(True)
+                    d_o.startSearchQuantity = True
             elif d_o.dateFound == False:
                 d_o.searchDate(ocr_text)
             else: 
@@ -489,6 +598,9 @@ while True:
             if echoOnce == False:
                 echoOnce = True
                 secondGnome.echo("Everything ready, Press i to insert to Database")
+        
+        if d_o.startSearchQuantity:
+            d_o.getQuantity(frame)
 
     cv2.imshow("Result", board)
     cv2.moveWindow("Result", 650, 0)
@@ -499,6 +611,13 @@ while True:
     
     #cv2.imshow("Warped", cv2.resize(warped, (int(0.75 * warped.shape[1]), int(0.75 * warped.shape[0]))))
     #cv2.moveWindow("Warped", 0, 450)
+    x = cv2.getTrackbarPos('x', 'tune')
+    x1 = cv2.getTrackbarPos('x1', 'tune')
+    y = cv2.getTrackbarPos('y', 'tune')
+    y1 = cv2.getTrackbarPos('y1', 'tune')
+    cropped = frame[y:y1,x:x1]
+    if cropped.shape[0] != 0 and cropped.shape[1] != 0:
+        cv2.imshow("cropped", cv2.resize(cropped, (int(3.0*cropped.shape[1]), int(3.0*cropped.shape[0]))))
 
     if pressed_key == 27:
         break
@@ -516,6 +635,9 @@ while True:
         secondGnome.send('clear')
     elif pressed_key == ord('i'):
         d_o.insertDatabase()
+    elif pressed_key == ord('c'):
+        test_text = pytesseract.image_to_string(cropped)
+        secondGnome.echo(test_text)
 
 cv2.destroyAllWindows()
 secondGnome.kill()
