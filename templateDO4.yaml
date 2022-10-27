@@ -1,0 +1,976 @@
+date_format: [
+   ['(\d{2}\s*\w{3}\s*\d{4})','%d%b%Y'],
+   ['(\d{2}\/\d{1,2}\/\d{4})','%d/%m/%Y'],
+   ['(\d{4}-\d{1,2}-\d{2})','%Y-%m-%d'],
+]
+
+"AIS MANUFACTURING PTE LTD":
+  regex:
+      do_num: '[a,A][1,I,\/,\,!,i][s,S]-*(\d{4}-*\d{4})'
+  do_prefix: 'AIS-'
+
+"FRISA FORJADOS SA DE CV":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TSH SYNERGY PTE LTD":
+  regex:
+      do_num: '[t,T][s,S][h,H]-*(\d{4}-*\d{4})'
+  do_prefix: 'TSH-'
+
+"IPC INDUSTRIES SDN BHD":
+  regex:
+      do_num: '(\d{4}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: ''
+
+"RELIANCE METALCENTER ASIA PACIFIC PTE LTD":
+  regex:
+      do_num: '[b,B][0,O,o][l,L]-*(\d{5})'
+  do_prefix: 'BOL-'
+
+"ATTRACTIVE VENTURE (JB) SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"NOVATECH PRECISION SDN BHD":
+  regex:
+      do_num: '[n,N][t,T][R,P,K,r,p,k]-*[d,D][0,O,o](\d{4}-*\d{4})'
+  do_prefix: 'NTP-DO'
+
+"MICRO SCREEN PRODUCTION SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"GREAT PEERS ( M ) SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"TSH PRECISION TECHNOLOGY SDN BHD":
+  regex:
+      do_num: '[t,T][R,P,K,r,p,k][t,T]-*[d,D][0,O,o](\d{4}-*\d{4})'
+  do_prefix: 'TPT-DO'
+
+"FINETECH PRECISION SDN BHD - SGD":
+  regex:
+      do_num: '[f,F][t,T][d,D]-*(\d{4}-*\d{2})'
+  do_prefix: 'FTD-'
+
+"FINETECH PRECISION SDN BHD - MYR":
+  regex:
+      do_num: '[f,F][t,T][d,D]-*(\d{4}-*\d{2})'
+  do_prefix: 'FTD-'
+
+"EXCELLENT ROLLER SHAFT SPECIALIST SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"E STEEL SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"ADVANCE BOLTS ( JOHOR ) SDN. BHD":
+  regex:
+      do_num: '[j,J][d,D][0,O,o]-*(\d{8})'
+  do_prefix: 'JDO-'
+
+"U.K.L INDUSTRIES SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"G.S STATIONERY SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"MAXSOON (M) SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4}-*\d{3})'
+  do_prefix: 'DO-'
+
+"NST FASTENER SDN BHD":
+  regex:
+      do_num: '[n,N][s,S][t,T](\d{5})'
+  do_prefix: 'NST'
+
+"TAG ALLIANCE (M) SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"P.T. SINTERTECH":
+  regex:
+      do_num: '[t,T][s,S][h,H]-*(\d{9})'
+  do_prefix: 'TSH-'
+
+"TSH CONTRACT MANUFATURING SDN BHD - WH":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TSH CONTRACT MANUFACTURING SDN BHD - MCH":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SCRINT TECHNOLOGY (M) SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"LASERTECH INDUSTRIES (JOHOR) SDN BHD":
+  regex:
+      do_num: '[j,J][b,B](\d{5})'
+  do_prefix: 'JB'
+
+"GREAT UTOPIAN SDN BHD":
+  regex:
+      do_num: '[u,U][t,T][0,O,o][R,P,K,r,p,k][1,I,\/,\,!,i][a,A][n,N]-*(\d{7})'
+  do_prefix: 'UTOPIAN-'
+
+"NOVATECH MANUFACTURING SDN BHD":
+  regex:
+      do_num: '[n,N][t,T][m,M]-*[d,D][0,O,o](\d{4}-*\d{4})'
+  do_prefix: 'NTM-DO'
+
+"AME MANUFACTURING SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"BEST LINE TOOLING SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"BEYE ALUMINIUM TRADING (JB) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"BOSSARD (M) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"C.T. STABIL SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o][1,I,\/,\,!,i][t,T][e,E][1,I,\/,\,!,i](\d{2}[1,I,\/,\,!,i]\d{5})'
+  do_prefix: 'DO/TE/'
+
+"COLOUR TOP SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"YAMAZAKI MAZAK SINGAPORE PTE LTD":
+  regex:
+      do_num: '[y,Y][m,M][s,S][g,G](\d{6}-*\d{5})'
+  do_prefix: 'YMSG'
+
+"XIN PACKAGING ENTERPRISE":
+  regex:
+      do_num: '[d,D][0,O,o](\d{5})'
+  do_prefix: 'DO'
+
+"VARIOUS RESOURCES ( M ) SDN BHD":
+  regex:
+      do_num: '[v,V][R,P,K,r,p,k][d,D][0,O,o][1,I,\/,\,!,i](\d{6})'
+  do_prefix: 'VRDO/'
+
+"VINTECH TECHNOLOGY ENGINEERING":
+  regex:
+      do_num: '[v,V][t,T][e,E](\d{4}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'VTE'
+
+"TSK INDUSTRIES SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"TSK DENKO CO. LTD":
+  regex:
+      do_num: '[j,J](\d{2}-*\d{1}-*\d{8}[1,I,\/,\,!,i]\d{2})'
+  do_prefix: 'J'
+
+"THL METAL WORK SDN BHD":
+  regex:
+      do_num: '[t,T](\d{2}[1,I,\/,\,!,i]\d{2}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'T'
+
+"TCW PRECISION ENGINEERING ( M ) SDN BHD-MYR":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{7})'
+  do_prefix: 'DO-'
+
+"TEGS ASIA INDUSTRIES SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{7})'
+  do_prefix: 'DO'
+
+"SIMONI PACKAGING SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"RICHPORT TECHNOLOGY SDN BHD":
+  regex:
+      do_num: '[m,M]-*[d,D][0,O,o](\d{8}-*\d{3})'
+  do_prefix: 'M-DO'
+
+"POWER EXCEL LUBRICANTS SDN BHD":
+  regex:
+      do_num: '[R,P,K,r,p,k][1,I,\/,\,!,i](\d{1}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'PI'
+
+"PREFERRED ALLOYS SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{4})'
+  do_prefix: 'DO'
+
+"PROKIN TOOLING SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"MITRONTEC TECHNOLOGY SDN BHD":
+  regex:
+      do_num: '[m,M][1,I,\/,\,!,i][t,T][d,D][0,O,o]-*(\d{4}-*\d{4})'
+  do_prefix: 'MITDO-'
+
+"MICRO SCREEN PRODUCTION SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"KS PRECISION TOOLS ( JOHOR ) SDN BHD":
+  regex:
+      do_num: 'Delivery\s*[O,0]rder\s*N[o,0].*\s*[:,;,+]*\s*(\d{5})'
+  do_prefix: ''
+
+"I-CHAMP TECHNOLOGY PTE LTD":
+  regex:
+      do_num: 'Delivery\s*Number\s*[c,C]*(\d{5})'
+  do_prefix: 'C'
+
+"K & L SUPPLY SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"HOFFMANN QUALITY TOOLS ( MALAYSIA ) SDN BHD":
+  regex:
+      do_num: '(\d{10})'
+  do_prefix: ''
+
+"DURA TOOLS SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"SUPER MULTIPLE SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"SUMITEC SDN BHD":
+  regex:
+      do_num: '[s,S][1,I,\/,\,!,i](\d{4}-*\d{4})'
+  do_prefix: 'SI'
+
+"SENG DATT HARDWARE ( M ) SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{6})'
+  do_prefix: 'DO'
+
+"DECHO PRECISION ENGINEERING (M) SDN BHD":
+  regex:
+      do_num: '[d,D][c,C]-*[d,D](\d{2}[1,I,\/,\,!,i]\d{5})'
+  do_prefix: 'DC-D'
+
+"CREATE SUCCESS PACKAGING SUPPLIES":
+  regex:
+      do_num: '[c,C][s,S][R,P,K,r,p,k](\d{5})'
+  do_prefix: 'CSP'
+
+"CTAE SOLUTION SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"DP POWDER MANUFACTURING SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{5})'
+  do_prefix: 'DO'
+
+"DSN ADVANCED TECHNOLOGY ( M ) SDN BHD":
+  regex:
+      do_num: '(\d{4}-*\d{3})'
+  do_prefix: ''
+
+"EXCEL SOLIDPAC INDUSTRIES SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V]-*(\d{4}-*\d{3})'
+  do_prefix: 'INV-'
+
+"ENHANCE CONNECTION SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i]-*(\d{6})'
+  do_prefix: 'I-'
+
+"EURO BASE TECHNOLOGY (JB) SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{5})'
+  do_prefix: 'DO'
+
+"ECO TOOLING SOLUTIONS":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"HAYNES INTERNATIONAL, INC.":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"HILLTEC MARKETING (M) SDN. BHD.":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'DO-'
+
+"HEBEI FITEXCASTING TRADING CO.,LTD":
+  regex:
+      do_num: '(\d{2}[f,F][R,P,K,r,p,k]\d{3})'
+  do_prefix: ''
+
+"KSC ENGINEERING SERVICES":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V](\d{6})'
+  do_prefix: 'INV'
+
+"IPM TECHNOLOGY (JB) SDN BHD":
+  regex:
+      do_num: '[j,J][b,B][1,I,\/,\,!,i][v,V]-*(\d{4}-*\d{3})'
+  do_prefix: 'JBIV-'
+
+"MCTRO HARDWARE SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"LVC ECOPACK SDN BHD":
+  regex:
+      do_num: '[l,L][v,V][c,C](\d{8}[.,\,][t,T][s,S]'
+  do_prefix: 'LVC'
+
+"LEO AUTOMATION TRADING":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"K-TECH SOLUTIONS (M) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"NTLH TOOLS SDN. BHD.":
+  regex:
+      do_num: '[1,I,\/,\,!,i][v,V]-*(\d{4}[1,I,\/,\,!,i]\d{3})'
+  do_prefix: 'IV-'
+
+"NEW METAL SPECIALIST SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"NEWLIKE MACHINE SOLUTIONS SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"MTR SANDI ELECTRIC (M) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SF ASIA INDUSTRIAL SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SOYEE (JOHOR) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SL METALS ( M ) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TOOL STATION (KL) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TOYO SHO INDUSTRIAL PRODUCTS SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"TWINVAC INDUSTRIES SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"UA MATERIALS SDN BHD":
+  regex:
+      do_num: '[j,J][b,B][0,O,o][u,U][t,T][1,I,\/,\,!,i](\d{5})'
+  do_prefix: 'JBOUT/'
+
+"VISTA INSTRUMENT SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"TST INC":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SCMI PRECISION SDN BHD":
+  regex:
+      do_num: '[s,S](\d{7})'
+  do_prefix: 'S'
+
+"MEI JIA ELECTRONIC SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"STANDARD BOX INDUSTRY SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4}-*\d{2}-*[j,J]\d{4})'
+  do_prefix: 'DO-'
+
+"TOOL STATION (KL) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TOOL STATION (KL) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"AEROCHEM INDUSTRIES SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"BEST LINE INDUSTRIAL SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"MITSUBISHI ELECTRIC SALES MALAYSIA SDN. BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"C F UNIFORM SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4}-*\d{3})'
+  do_prefix: 'DO-'
+
+"ASTEEM PRODUCTS SDN BHD":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"DAI-ICHI AUTO INDUSTRIES SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"FANUC MECHATRONICS (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N](\d{7})'
+  do_prefix: 'IN'
+
+"MEGAH MACHINERY":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{4})'
+  do_prefix: 'DO-'
+
+"PREFERRED ALLOYS PTE. LTD.":
+  regex:
+      do_num: '[d,D][0,O,o]#*(\d{4})'
+  do_prefix: 'DO#'
+
+"MAKINO ASIA PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"BAY SEAL COMPANY, INC":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"BLUE OCEAN DATA SOLUTIONS SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"KVC INDUSTRIAL SUPPLIES SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V](\d{10})'
+  do_prefix: 'INV'
+
+"MAYDENKI SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"KEDAI IKAN DAN BURUNG MENG YANG":
+  regex:
+      do_num: '[c,C](\d{6})'
+  do_prefix: 'C'
+
+"SK TEC CO., LTD":
+  regex:
+      do_num: '(\d{4}[b,B]\d{5})'
+  do_prefix: ''
+
+"PRO-ART PACKAGING SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{4}-*\d{5})'
+  do_prefix: 'DO'
+
+"SHANGHAI WECAN IMP & EXP CO., LTD":
+  regex:
+      do_num: '[c,C][v,V]-*[c,C][h,H](\d{5}-*\d{1})'
+  do_prefix: 'CV-CH'
+
+"KUNSHAN ZHOUREN TRADING CO. LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SY POLYMER INDUSTRIES SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V]-*(\d{4}-*\d{4})'
+  do_prefix: 'INV-'
+
+"HISAKA (SINGAPORE) PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"ALPHA NEWTONE SOLUTIONS SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o][1,I,\/,\,!,i](\d{2}-*\d{4}-*\d{5})'
+  do_prefix: 'DO/'
+
+"UCAL TECH'S(M)SDN BHD":
+  regex:
+      do_num: '[u,U][t,T][j,J][g,G][R,P,K,r,p,k][1,I,\/,\,!,i](\d{4}-*\d{4})'
+  do_prefix: 'UTJGP/'
+
+"INTEC ENGINEERING PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"MEASUTECH (M) SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"REGION SUPPLIERS SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][1,I,\/,\,!,i][j,J](\d{4}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'IN/J'
+
+"ADVANCE LITE ELECTRICAL SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"FICTRON INDUSTRIAL SUPPLIES SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"PSH TECHNOLOGY SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"SUCCESS TOOLING ENGINEERING":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"XIN PACKAGING SDN. BHD.":
+  regex:
+      do_num: '[d,D][0,O,o](\d{5})'
+  do_prefix: 'DO'
+
+"THREE S INDUSTRIAL SERVICE & SUPPLIES":
+  regex:
+      do_num: '[d,D][0,O,o](\d{2}[1,I,\/,\,!,i]\d{4})'
+  do_prefix: 'DO'
+
+"ETERNAL EXPOSURE SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o](\d{7})'
+  do_prefix: 'DO'
+
+"MAKINO MACHINE TOOLS (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '(\d{10})'
+  do_prefix: ''
+
+"LESOSHOPPE SDN BHD":
+  regex:
+      do_num: '[j,J][j,J][1,I,\/,\,!,i](\d{5})'
+  do_prefix: 'JJI'
+
+"L AND K TRADING":
+  regex:
+      do_num: '(\d{4}-*\d{4})'
+  do_prefix: ''
+
+"OPTIMUS CONTROL INDUSTRY PLT":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"ARIWELL SDN BHD":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"MIKAZO INDUSTRIES (M) SDN BHD":
+  regex:
+      do_num: '(\d{10})'
+  do_prefix: ''
+
+"ECO AUTOMATION SYSTEM SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TAC-TOOLS SDN BHD":
+  regex:
+      do_num: '[t,T][t,T](\d{6})'
+  do_prefix: 'TT'
+
+"JZ INDUSTRY SDN BHD":
+  regex:
+      do_num: '[d,D](\d{6})'
+  do_prefix: 'D'
+
+"SCMI PRECISION SDN BHD":
+  regex:
+      do_num: '[s,S](\d{7})'
+  do_prefix: 'S'
+
+"TRESCAL (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '[n,N][j,J](\d{8})'
+  do_prefix: 'NJ'
+
+"ACCRETECH (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"GUHRING ( MALAYSIA ) SDN BHD":
+  regex:
+      do_num: '(\d{9})'
+  do_prefix: ''
+
+"THYSSENKRUPP MATERIAL N.A. COPPER AND BRASS SALES INC. LOS ANGELES DIVISION":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SK HUB SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TECHNOBASE INDUSTRY SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{5})'
+  do_prefix: 'DO-'
+
+"G CALIBRATION SDN. BHD.":
+  regex:
+      do_num: '[d,D][0,O,o](\d{2}-*[b,B]\d{4})'
+  do_prefix: 'DO'
+
+"ALIMEX ACP ASIA SDN BHD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{6})'
+  do_prefix: 'DO-'
+
+"REVOTECH TRADING":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{7})'
+  do_prefix: 'DO-'
+
+"FRONTKEN (MALAYSIA) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"KZ CANVAS TRADING":
+  regex:
+      do_num: '(\d{4}-*\d{4})'
+  do_prefix: ''
+
+"ANS FUTURE SDN BHD":
+  regex:
+      do_num: '[R,P,K,r,p,k][a,A]-*(\d{5})'
+  do_prefix: 'KA-'
+
+"TECHEM PACKAGING INDUSTRIAL SUPPLIES SDN BHD":
+  regex:
+      do_num: '[d,D]-*(\d{5})'
+  do_prefix: 'D-'
+
+"T&O SOLUTIONS SDN BHD":
+  regex:
+      do_num: '(\d{6})'
+  do_prefix: ''
+
+"PK MARKETING SDN BHD":
+  regex:
+      do_num: '[1,I,\/,\,!,i][n,N][v,V](\d{8})'
+  do_prefix: 'INV'
+
+"VF FASTENING SYSTEMS SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"GAVISH, INC":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"CHONG & CO.":
+  regex:
+      do_num: '(\d{5})'
+  do_prefix: ''
+
+"IME TECHNOLOGY (JOHOR) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"IME TECHNOLOGY SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"MEGACUBES SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SMC AUTOMATION (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '(\d{7})'
+  do_prefix: ''
+
+"PENTAGON TECHNOLOGIES GROUP, INC":
+  regex:
+      do_num: '[c,C][a,A](\d{6})'
+  do_prefix: 'CA'
+
+"BUBBLE WRAP 88 ENTERPRISE":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"JTE ASIA INDUSTRIAL SUPPLIERS SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"AME MANUFACTURING SDN BHD":
+  regex:
+      do_num: '[a,A][m,M][e,E]-*(\d{8})'
+  do_prefix: 'AME-'
+
+"ALUPUTER INDUSTRIAL PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TCW PRECISION ENGINEERING ( M ) SDN BHD-SGD":
+  regex:
+      do_num: '[d,D][0,O,o]-*(\d{7})'
+  do_prefix: 'DO-'
+
+"GE CHEMICALS SUPPLIES":
+  regex:
+      do_num: '[1,I,\/,\,!,i]-*(\d{2}[1,I,\/,\,!,i]\d{2}-*\d{5})'
+  do_prefix: 'I-'
+
+"SOLID LABELS PACKAGING SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"ROLLED ALLOYS SINGAPORE LTD":
+  regex:
+      do_num: '(\d{7}-*\d{1})'
+  do_prefix: ''
+
+"MAVOM BV":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"KAWA MACHINE TOOLS SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"UNIVERSAL FORKLIFT & EQUIPMENT SERVICES":
+  regex:
+      do_num: '(\d{4})'
+  do_prefix: ''
+
+"HWACHEON ASIA PACIFIC PTE LTD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"JEVEKA BV":
+  regex:
+      do_num: '[c,C][1,I,\/,\,!,i](\d{7})'
+  do_prefix: 'CI'
+
+"RICHPORT TECHNOLOGY PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"INTEC PRECISION ENGINEERING SDN BHD - MYR":
+  regex:
+      do_num: '[d,D][0,O,o](\d{8})'
+  do_prefix: 'DO'
+
+"INTEC PRECISION ENGINEERING SDN BHD - SGD":
+  regex:
+      do_num: '[c,C][m,M][u,U]-*(\d{8})'
+  do_prefix: 'CMU-'
+
+"SKYLOG SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"AUTOPRINT ENTERPRISE SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"FOSROC SDN BHD":
+  regex:
+      do_num: '[m,M][y,Y](\d{1}[g,G]\d{6})'
+  do_prefix: 'MY'
+
+"COOLMAR-TA COATING & SYSTEMS PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"YAMAZAKI MAZAK SINGAPORE PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"PUXI SPECIAL ALLOY (SHANGHAI) CO. LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"AGILE TOOLS ENGINEERING PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"TEAM HUB (SUZHOU) CO., LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"LEONG CHONG STEEL SDN BHD":
+  regex:
+      do_num: '(\d{8})'
+  do_prefix: ''
+
+"CARL ZEISS SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"SETSCO SERVICES PTE LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"OUTGASSING SERVICES INTERNATIONAL":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"PRIME CHINA (SHANGHAI) CO,. LTD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"DNT PAINT (MALAYSIA) SDN BHD":
+  regex:
+      do_num: '[j,J](\d{6})'
+  do_prefix: 'J'
+
+"JU SENG HONG (M) SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"CELESTICA CORPORATION":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"LIFTON TECH ENGINEERING":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"PACK PLUS PACKAGING TRADING":
+  regex:
+      do_num: ''
+  do_prefix: ''
+
+"YUREKA SDN BHD":
+  regex:
+      do_num: ''
+  do_prefix: ''
+

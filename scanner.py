@@ -14,7 +14,11 @@ from secondTerminal import Term
 import yaml
 from fuzzywuzzy import fuzz
 
-with open('templateDO.yaml', 'r') as file:
+from dateutil.parser import parse
+
+from regexGen import *
+
+with open('templateDO4.yaml', 'r') as file:
     companyYaml = yaml.safe_load(file)
 
 def mySqlTable(results, description):
@@ -82,25 +86,45 @@ class DO:
         self.numField = 0
         self.companyNameFound = False
         self.companyName = ''
+        self.companyNameRegex =''
         self.itemDetails = [] # item_id, quantity, part_number
         self.itemDetected = [] # item_id, quantity, part_number
         self.partNumberRegex = []
         self.startSearchItem = False
+        self.do_date = ''
+        self.dateFound = False
+
     def searchCompany(self, text):
-        self.companyID = 0 # my own index, not same with the database company id
-        for i in companyYaml['companies']:
-            comStr = re.search(i[1], text)
-            if comStr != None:
-                print("Company id ", i[0])
-                print("Company is ", i[2])
-                self.companyName = i[2]
-                self.companyNameFound = True
-                echoStr = 'Company Detected: '+self.companyName
-                secondGnome.echo(echoStr)
-                self.register(self.companyName)
-                self.cvBoardInitialize(board)
-            else:
-                self.companyID += 1
+        self.companyID = 0 
+        poLike = re.search('T-P[0,O]-(\d{8})',text)
+        if poLike != None:
+            query = 'select supplier_id from purchase_orders where po_number=\''+poLike.group(1)+'\''
+            myCursor.execute(query)
+            descr = myCursor.description
+            qResults = myCursor.fetchall()
+            if qResults:
+                mySqlTable(qResults, descr)
+                self.companyID = qResults[0][0]
+                query = 'select name from suppliers where id='+str(self.companyID)
+                myCursor.execute(query)
+                descr = myCursor.description
+                qResults = myCursor.fetchall()
+                
+                if qResults:
+                    mySqlTable(qResults, descr)
+                    self.companyName = qResults[0][0]
+                    self.companyNameRegex = genRegex(self.companyName)
+
+                    comMatch = re.search(self.companyNameRegex, text)
+                    if comMatch != None:
+                        self.po_number = poLike.group(1)
+                        print("Company id ", self.companyID)
+                        print("Company is ", self.companyName)
+                        self.companyNameFound = True
+                        echoStr = 'Company Detected: '+self.companyName
+                        secondGnome.echo(echoStr)
+                        self.register(self.companyName)
+                        self.cvBoardInitialize(board)
 
     def register(self, compName):
         for key, rePattern in companyYaml[compName]['regex'].items():
@@ -130,8 +154,27 @@ class DO:
                     echoStr = self.field[i] + ': ' + self.resStr[i]
                     secondGnome.echo(echoStr)
                     self.cvBoardShowRes(board, i)
+
+    def searchDate(self, text):
+        for i in companyYaml['date_format']:
+            dateMatch = re.findall(i[0], text)
+            if dateMatch != None:
+                for j in dateMatch:
+                    datestr = j
+                    datestr = datestr.replace(" ", "")
+                    try:
+                        realDate = datetime.strptime(datestr, i[1]).date()
+                        self.do_date = realDate.strftime('%Y-%m-%d')
+                        echoStr = "do_date = "+self.do_date
+                        secondGnome.echo(echoStr)
+                    except ValueError:
+                        pass
+                if self.do_date != '':
+                    self.dateFound = True
+
     
     def next(self):
+        self.po_number = ''
         self.field.clear()
         self.rePattern.clear()
         self.queried = False
@@ -145,10 +188,12 @@ class DO:
         self.itemDetected.clear()
         self.partNumberRegex.clear()
         self.startSearchItem = False
+        self.do_date = ''
+        self.dateFound = False
 
     def checkDatabase(self):
         self.queried = True
-        query = Q1+self.resStr[1]+'\''
+        query = Q1+self.resStr[0]+'\''
         secondGnome.echo(query)
         myCursor.execute(query)
         descr = myCursor.description
@@ -160,7 +205,7 @@ class DO:
                 secondGnome.echo('more than one record')
             else:
                 # check if there is record of DO based on do number
-                if self.resStr[1] == qResults[0][1]:
+                if self.resStr[0] == qResults[0][1]:
                     secondGnome.echo('Record Found')
                     secondGnome.echo('Loading item details based on PO ...')
                     self.loadItemDetails()
@@ -172,9 +217,12 @@ class DO:
             if key == ord('i'):
                 self.insertDatabase()
                 self.startSearchItem = True
+            else:
+                self.next()
+                board = np.zeros((360,900,3), np.uint8) 
 
     def insertDatabase(self):
-        query = Q2+self.resStr[2]+'\'' # query po_number id 
+        query = Q2+self.po_number+'\'' # query po_number id 
         secondGnome.echo(query)
         myCursor.execute(query)
         descr = myCursor.description
@@ -186,8 +234,9 @@ class DO:
                 secondGnome.echo('more than one record') 
             else:
                 po_id = qResults[0][0]
-                val = (self.resStr[0], self.resStr[1],\
-                        po_id, companyYaml['companies'][self.companyID][0])
+                    #supplier_do_date, supplier_do_number, po_number, supplier_id
+                val = (self.do_date, self.resStr[0],\
+                        po_id, self.companyID)
                 print(val)
                 myCursor.execute(Q3, val)
                 db.commit()
@@ -198,7 +247,7 @@ class DO:
         Q4 = "drop temporary table if exists tempPO;"
         Q5 = "create temporary table tempPO select poi.item_id, poi.quantity, i.part_number\
         from purchase_order_items poi inner join inventories i on poi.item_id=i.id \
-        where poi.po_id=(select id from purchase_orders where po_number='"+self.resStr[2]+"');"
+        where poi.po_id=(select id from purchase_orders where po_number='"+self.po_number+"');"
         ## resStr[0] = date, [1]=do_num, [2]=po_number
         Q6 = "select * from tempPO;"
         myCursor.execute(Q4)
@@ -211,38 +260,50 @@ class DO:
             mySqlTable(res, descr)
             for row in res:
                 self.itemDetails.append(row)
+          #  print("Load")
+           # print(self.itemDetails)
         else:
             secondGnome.echo("No PO record or No part_number record !!!")
 
     def searchItem(self, text):
         record = []
         for index, item_detail in enumerate(self.itemDetails):
-            match = re.search(self.itemDetails[index][2], text)
+            match = re.search(genRegexCapitalInsensitive(self.itemDetails[index][2]), text)
+            #secondGnome.echo(genRegexCapitalInsensitive(self.itemDetails[index][2]))
             if match != None:
-                record.append(index)
-                echoStr = str(index+1)+') Found item with id '+str(item_detail[0])\
+                echoStr = 'Found item with id '+str(item_detail[0])\
                     +' \''+item_detail[2]+'\''
                 #echoStr = 'Found item with id '+str(detail[index][0])
                 secondGnome.echo(echoStr)
             #score = fuzz.ratio(item_detail[2], text)
             #if score > conf:
                 #record.append(index)
+            else:
+                record.append(index) ## remaining 
         #if len(record
         for i in record:
             self.itemDetected.append(self.itemDetails[i])
+            #print("Detected")
+            #print(self.itemDetected)
 
+        temp = self.itemDetails.copy()
+        self.itemDetails.clear()
         for i in record:
-            self.itemDetails.pop(i)
+            self.itemDetails.append(temp[i])
 
     def cvBoardInitialize(self, cvMat):
+        
         cvMat = cv2.putText(cvMat, self.companyName, (50, 50), font, 
                        fontScale, color, thickness, cv2.LINE_AA)
+        cvMat = cv2.putText(cvMat, self.po_number, (50, 85), font, 
+               fontScale, color, thickness, cv2.LINE_AA)
+
         for i in range(0, self.numField):
-            cvMat = cv2.putText(cvMat, self.field[i]+'  :  ', (50, 85+offset*i), font, 
+            cvMat = cv2.putText(cvMat, self.field[i]+'  :  ', (50, 120+offset*i), font, 
                        fontScale, color, thickness, cv2.LINE_AA)
 
     def cvBoardShowRes(self, cvMat, i):
-            cvMat = cv2.putText(cvMat, self.resStr[i], (450, 85+offset*i), font, 
+            cvMat = cv2.putText(cvMat, self.resStr[i], (450, 120+offset*i), font, 
                        fontScale, color, thickness, cv2.LINE_AA)
 ##################################################################################################
 
@@ -291,6 +352,7 @@ while True:
     scan_detection(frame_copy)
 
     cv2.imshow("input", cv2.resize(frame, (640, 360)))
+    #cv2.imshow("input", frame)
     cv2.moveWindow("input", 0, 0)
 
     warped = four_point_transform(frame_copy, document_contour.reshape(4, 2))
@@ -300,220 +362,29 @@ while True:
    # allFound = jobFound+salesFound+termsFound+dateFound+totalFound+invoiceNoFound
     if (d_o.numFieldFound != d_o.numField and d_o.numField != 0) \
             or d_o.companyNameFound == False\
+            or d_o.dateFound == False\
             or d_o.startSearchItem == True:
-        ocr_text = pytesseract.image_to_string(warped)
+        #ocr_text = pytesseract.image_to_string(warped)
+        ocr_text = pytesseract.image_to_string(frame)
         if d_o.companyNameFound == False:
             d_o.searchCompany(ocr_text)
         elif d_o.startSearchItem == True:
             d_o.searchItem(ocr_text)
+            if len(d_o.itemDetails) == 0:
+                d_o.startSearchItem = False
+        elif d_o.dateFound == False:
+            d_o.searchDate(ocr_text)
         else: 
             d_o.search(ocr_text)
-        #print(ocr_text)
-       # d = pytesseract.image_to_data(warped, output_type=Output.DICT)
-    #
-     #   n_boxes = len(d['text'])
-      #  for i in range(n_boxes):
-       #     if int(d['conf'][i]) > 60:
-        #        jobOrder = re.search(r'\w{2}(\d{8})', d['text'][i])
-         #       salesOrder = re.search(r'\w{2}(\d{8})', d['text'][i])
-          #      match = re.search(r'\d{4}-\d{2}-\d{2}', d['text'][i])
-           #     total_amount = re.search(r'(\d*,\d*.\d{2,4})', d['text'][i])
-            #    sub_amount = re.search(r'(\d*,\d*.\d{2,4})', d['text'][i])
-             #   invoiceNo = re.search(r'(TCM-\d{8})', d['text'][i])
-              #  if jobOrder != None or salesOrder != None or match != None or total_amount != None\
-               #     or sub_amount != None or invoiceNo != None:
-                #    (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
-                 #   warped = cv2.rectangle(warped, (x, y), (x + w, y + h), (0, 255, 0), 3)
 
     cv2.imshow("Result", board)
     cv2.moveWindow("Result", 650, 0)
     
-    if d_o.queried == False and (d_o.numFieldFound == d_o.numField and d_o.numField != 0):
+    if d_o.queried == False and (d_o.numFieldFound == d_o.numField and d_o.numField != 0) and d_o.dateFound == True:
         d_o.checkDatabase()
-#    allFound = jobFound+salesFound+termsFound+dateFound+totalFound+subFound+invoiceNoFound
-    # if (d_o.allFound == d_o.numField != 0) and queried == 0:
-    #     queried = 1
-    #     query = Q1+invNoStr+'\''
-    #     secondGnome.echo(query)
-    #     myCursor.execute(query)
-    #     descr = myCursor.description
-    #     qResults = myCursor.fetchall()
-        
-    #     if qResults:
-    #         mySqlTable(qResults, descr)
-    #         if len(qResults) > 1:
-    #             print("more than one record")
-    #             board = cv2.putText(board, "More than one record!", (50, 50+offset*6), font, 
-    #                fontScale, (125, 255, 0), thickness, cv2.LINE_AA)
-    #         else:
-    #             check = 0
-    #             record = []
-    #             check += (qResults[0][0]==invDateStr)
-    #             print('1', check)
-    #             if qResults[0][0]!=invDateStr:
-    #                 board = cv2.putText(board, "Error!", (750, 50+offset*0), font, 
-    #                                 fontScale, (0, 0, 255), thickness, cv2.LINE_AA)
-    #                 record.append(0)
-    #                 dateFound = 0
-
-    #             check += (qResults[0][1]==invNoStr)
-    #             print('2', check)
-    #             if qResults[0][1]!=invNoStr:
-    #                 board = cv2.putText(board, "Error!", (750, 50+offset*1), font, 
-    #                                 fontScale, (0, 0, 255), thickness, cv2.LINE_AA)
-    #                 record.append(1)
-    #                 invoiceNoFound = 0
-
-    #             check += (qResults[0][2]==salesNumStr)
-    #             print('3', check)
-    #             if qResults[0][2]!=salesNumStr:
-    #                 record.append(3)
-    #                 salesFound = 0
-    #                 board = cv2.putText(board, "Error!", (750, 50+offset*3), font, 
-    #                                 fontScale, (0, 0, 255), thickness, cv2.LINE_AA)
-                
-    #             check += (qResults[0][3]==jobNumStr)
-    #             print('4', check)
-    #             if qResults[0][3]!=jobNumStr:
-    #                 record.append(2)
-    #                 jobFound = 0
-    #                 board = cv2.putText(board, "Error!", (750, 50+offset*2), font, 
-    #                                 fontScale, (0, 0, 255), thickness, cv2.LINE_AA)
-    #             check += (qResults[0][4]==termStr)
-    #             print('5', check)
-                
-    #             if qResults[0][4]!=termStr:
-    #                 record.append(4)
-    #                 termsFound = 0
-    #                 board = cv2.putText(board, "Error!", (750, 50+offset*4), font, 
-    #                                 fontScale, (0, 0, 255), thickness, cv2.LINE_AA)
-                
-    #             #check += (qResults[0][5]==subStr)
-    #             check += (str(qResults[0][5])==totalStr)
-    #             print('6', check)
-    #             if (str(qResults[0][5])!=totalStr):
-    #                 record.append(5)
-    #                 totalFound = 0
-    #                 board = cv2.putText(board, "Error!", (750, 50+offset*5), font, 
-    #                                 fontScale, (0, 0, 255), thickness, cv2.LINE_AA)
-
-    #             if check == numData:
-    #                 print("Record Matched")
-    #                 board = cv2.line(board, (0,65+offset*6-6), (900,65+offset*6-6), (0,0,0), 33) 
-    #                 board = cv2.putText(board, "Record Matched !", (250, 65+offset*6), font, 
-    #                                 fontScale, (0, 255, 0), thickness, cv2.LINE_AA)
-    #             else:
-    #                 print("Not matched")
-    #                 print('q{} i{}', qResults[0][0], invDateStr)
-    #                 #print('q', type(qResults[0][0], type(invDateStr))
-    #                 print('q{} i{}', qResults[0][1], invNoStr)
-    #                 print('q{} i{}', qResults[0][2], salesNumStr)
-    #                 print('q{} i{}', qResults[0][3], jobNumStr)
-    #                 print('q{} i{}', qResults[0][4], termStr)
-    #                 print('q{} i{}', qResults[0][5], totalStr)
-    #                 print(type(qResults[0][5]), type(totalStr))
-    #                 board = cv2.putText(board, "Record Not Matched! Scan again", (150, 65+offset*6), font, 
-    #                                 fontScale, (0, 0, 255), thickness, cv2.LINE_AA)
-    #                 cv2.imshow("Result", board)
-    #                 cv2.waitKey(2000)
-    #                 queried = 0
-    #                 for i in record:
-    #                     board = cv2.line(board, (450,50+offset*i-6), (900,50+offset*i-6), (0,0,0), 33) 
-
-
-                
-    #     else:
-    #         print("No record found")
-    #         board = cv2.putText(board, "No record found!", (200, 65+offset*6), font, 
-    #                fontScale, (0,0,255), thickness, cv2.LINE_AA)
-        
-
-    # if jobFound == 0:
-    #     jobOrder = re.search(r'JOB\s+ORDER\s+NUMBER:*\s+\w{2}(\d{8})', ocr_text)
-    #     if jobOrder != None:
-    #         jobString = "JO"
-    #         jobString += jobOrder.group(1)
-    #         jobNumStr = jobOrder.group(1)
-    #         jobNumStr = jobNumStr.replace(" ", "")
-    #         print('Job Order Number is', jobOrder.group(1))
-    #         jobFound = 1
-    #         board = cv2.putText(board, jobString, (450, 50+offset*2), font, 
-    #                         fontScale, (255,0,0), thickness, cv2.LINE_AA)
-
-    # if salesFound == 0:
-    #     salesOrder = re.search(r'SALES\s+ORDER\s+NUMBER:*\s+\w{2}(\d{8})', ocr_text)
-    #     if salesOrder != None:
-    #         salesOrderString = "Sales Order Number is SO"
-    #         salesOrderString+=salesOrder.group(1)
-    #         salesString = "SO"
-    #         salesString += salesOrder.group(1)
-    #         salesNumStr = salesOrder.group(1)
-    #         salesNumStr = salesNumStr.replace(" ", "")
-    #         #print('Sales Order Number is SO', salesOrder.group(1))
-    #         #print(salesOrderString)
-    #         salesFound = 1
-    #         board = cv2.putText(board, salesString, (450, 50+offset*3), font, 
-    #                         fontScale, (255,0,0), thickness, cv2.LINE_AA)
-
-    # if termsFound == 0:
-    #     terms = re.search(r'TERMS:*\s+(\d{1,3}\s+Days)', ocr_text)
-    #     if terms != None:
-    #         termStr = terms.group(1)
-    #         print('Terms is ', terms.group(1))
-    #         termsFound = 1
-    #         board = cv2.putText(board, terms.group(1), (450, 50+offset*4), font, 
-    #                         fontScale, (255,0,0), thickness, cv2.LINE_AA)
-
-    # if dateFound == 0:
-    #     match = re.search(r'\d{4}-\d{2}-\d{2}', ocr_text)
-    #     if match != None:
-    #         date_str = match.group()
-    #         date_str = date_str.replace(" ", "")
-    #         date = datetime.strptime(date_str, '%Y-%m-%d').date()
-    #         invDateStr = date
-    #         print('date is', date)
-    #         dateFound = 1
-    #         board = cv2.putText(board, match.group(), (450, 50), font, 
-    #                         fontScale, (255,0,0), thickness, cv2.LINE_AA)
     
-    # if totalFound == 0:
-    #     total_amount = re.search(r'TOTAL\s+AMOUNT\s*.*\s+(\d*,*\d*,*\d*,*\d*,*\d*,*\d*.\d{2,4})', ocr_text)
-    #     if total_amount != None:
-    #         totalAmountString = "SGD "
-    #         totalAmountString += total_amount.group(1)
-    #         totalStr = total_amount.group(1)
-    #         totalStr = totalStr.replace(" ", "")
-    #         totalStr = totalStr.replace(",","")
-    #         print('total amount is', total_amount.group(1))
-    #         totalFound = 1
-    #         board = cv2.putText(board, totalAmountString, (450, 50+offset*5), font, 
-    #                         fontScale, (255,0,0), thickness, cv2.LINE_AA)
-
-    # if subFound == 0:
-    #     sub_amount = re.search(r'SUB\s+AMOUNT\s+\|\s+(\d*,*\d*,*\d*,*\d*,*\d*,*\d*.\d{2,4})', ocr_text)
-    #     if sub_amount != None:
-    #         subAmountString = "SGD "
-    #         subAmountString += sub_amount.group(1)
-    #         subStr = sub_amount.group(1)
-    #         subStr = subStr.replace(" ", "")
-    #         print('sub amount is', sub_amount.group(1))
-    #         subFound = 1
-    #         #board = cv2.putText(board, subAmountString, (450, 50+offset*5), font, 
-    #          #               fontScale, (255,0,0), thickness, cv2.LINE_AA)
-
-    # if invoiceNoFound == 0:
-    #     #invoiceNo = re.search(r'DELIVERY\s+ORDER\s+NUMBER\s+:\s+(\w{1,3}-\d{1,8})', ocr_text)
-    #     invoiceNo = re.search(r'DELIVERY\s+ORDER\s+NUMBER:*\s+(TCM-)(\d{8})', ocr_text)
-    #     if invoiceNo != None:
-    #         invNoStr = invoiceNo.group(2)
-    #         invNoStr = invNoStr.replace(" ", "")
-    #         print('Invoice Number is', invoiceNo.group(1)+invoiceNo.group(2))
-    #         invoiceNoFound = 1
-    #         board = cv2.putText(board, invoiceNo.group(1)+invoiceNo.group(2), (450, 50+offset), font, 
-    #                         fontScale, (255,0,0), thickness, cv2.LINE_AA)
-    
-    cv2.imshow("Warped", cv2.resize(warped, (int(0.75 * warped.shape[1]), int(0.75 * warped.shape[0]))))
-    cv2.moveWindow("Warped", 0, 450)
+    #cv2.imshow("Warped", cv2.resize(warped, (int(0.75 * warped.shape[1]), int(0.75 * warped.shape[0]))))
+    #cv2.moveWindow("Warped", 0, 450)
 
     if pressed_key == 27:
         break
