@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from imutils.perspective import four_point_transform
 import pytesseract
-
+from pytesseract import Output
 import re
 from datetime import datetime
 
@@ -106,9 +106,6 @@ while True:
     #cv2.imshow("input", frame_crop)
     cv2.moveWindow("input", 0, 0)
     warped = four_point_transform(frame_copy, document_contour.reshape(4, 2))
-    cv2.imshow("Warped", cv2.resize(warped, (int(scale * warped.shape[1]), int(scale * warped.shape[0]))))
-    #cv2.imshow("Warped", warped)
-    cv2.moveWindow("Warped", 0, 650)
     lowThres = cv2.getTrackbarPos('low', 'tune')
     highThres = cv2.getTrackbarPos('high', 'tune')
     processed = image_processing(warped, lowThres, highThres)
@@ -121,9 +118,25 @@ while True:
         
     ocr_text = pytesseract.image_to_string(warped)
     #print(ocr_text)
+    d = pytesseract.image_to_data(warped, output_type=Output.DICT)
     
+    n_boxes = len(d['text'])
+    for i in range(n_boxes):
+        if int(d['conf'][i]) > 60:
+            jobOrder = re.search(r'\w{2}(\d{8})', d['text'][i])
+            salesOrder = re.search(r'\w{2}(\d{8})', d['text'][i])
+            match = re.search(r'\d{4}-\d{2}-\d{2}', d['text'][i])
+            total_amount = re.search(r'(\d*,\d*.\d{2,4})', d['text'][i])
+            sub_amount = re.search(r'(\d*,\d*.\d{2,4})', d['text'][i])
+            invoiceNo = re.search(r'(TCM-\d{8})', d['text'][i])
+            if jobOrder != None or salesOrder != None or match != None or total_amount != None\
+                or sub_amount != None or invoiceNo != None:
+                (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
+                warped = cv2.rectangle(warped, (x, y), (x + w, y + h), (0, 255, 0), 3)
+
     cv2.imshow("Result", board)
     cv2.moveWindow("Result", 650, 0)
+
     if jobFound == 0:
         jobOrder = re.search(r'JOB\s+ORDER\s+NUMBER:*\s+\w{2}(\d{8})', ocr_text)
         if jobOrder != None:
@@ -192,6 +205,10 @@ while True:
             invoiceNoFound = 1
             board = cv2.putText(board, invoiceNo.group(1), (450, 50+offset), font, 
                             fontScale, (255,0,0), thickness, cv2.LINE_AA)
+    
+    cv2.imshow("Warped", cv2.resize(warped, (int(0.75 * warped.shape[1]), int(0.75 * warped.shape[0]))))
+    #cv2.imshow("Warped", warped)
+    cv2.moveWindow("Warped", 0, 450)
 
     if pressed_key == 27:
         break
