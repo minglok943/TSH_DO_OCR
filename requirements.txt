@@ -1,0 +1,6 @@
+imutils==0.5.4
+mysql_connector_repackaged==0.3.1
+numpy==1.17.4
+opencv_contrib_python==4.5.1.48
+pdfplumber==0.5.27
+pytesseract==0.3.7
