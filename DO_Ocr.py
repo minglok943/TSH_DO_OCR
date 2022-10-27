@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import time
 import sys
 from PyQt5 import uic
 from PyQt5.QtCore import *
@@ -52,6 +53,7 @@ class MyWindow(QWidget):
         self.Worker1.itemAdd.connect(self.add_item)
         self.Worker1.itemAddDetected.connect(self.add_detected_item)
         self.Worker1.itemQuantityUpdate.connect(self.add_quantity)
+        self.Worker1.infoUpdate.connect(self.update_info)
          
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
@@ -60,12 +62,17 @@ class MyWindow(QWidget):
         self.companyNameRetakeButton.clicked.connect(self.on_click_companyName)
         self.doDateRetakeButton.clicked.connect(self.on_click_do_date)
         self.doNumberRetakeButton.clicked.connect(self.on_click_do_number)
+        self.insertButton.clicked.connect(self.on_click_insert)
+        self.nextButton.clicked.connect(self.on_click_next)
 
         self.tPOLineEdit.editingFinished.connect(self.po_key_in)
         self.companyNameLineEdit.editingFinished.connect(self.companyName_key_in)
         self.dO_dateLineEdit.editingFinished.connect(self.doDate_key_in)
         self.dO_numberLineEdit.editingFinished.connect(self.doNumber_key_in)
-    
+
+        self.logoLabel.setPixmap(QPixmap('logo.PNG').scaled(self.logoLabel.size(), Qt.KeepAspectRatio))
+        self.infoTextBrowser.setReadOnly(True)
+
     def po_key_in(self):
         print(self.tPOLineEdit.text())
 
@@ -105,6 +112,20 @@ class MyWindow(QWidget):
         print('retake do number')
         self.dO_numberLineEdit.setText('')
     
+    def on_click_insert(self):
+        self.Worker1.d_o.insertDatabase()
+
+    def on_click_next(self):
+        self.tPOLineEdit.setText('')
+        self.companyNameLineEdit.setText('')
+        self.dO_dateLineEdit.setText('')
+        self.dO_numberLineEdit.setText('')
+        for i in range(0, len(self.Worker1.d_o.itemDetected)):
+            self.itemComboList[i].clear()
+            self.orderedEditList[i].setText('')
+            self.receivedEditList[i].setText('')
+        self.Worker1.d_o.next()
+
     def ImageUpdateSlot(self, Image):
         self.feedLabel.setPixmap(QPixmap.fromImage(Image))
 
@@ -132,13 +153,33 @@ class MyWindow(QWidget):
             self.itemComboList[i].setCurrentText('Press to select ...')
 
     def add_detected_item(self, itemDetected):
-        print(itemDetected)
+        #print(itemDetected)
         for index, item in enumerate(itemDetected):
             self.itemComboList[index].setCurrentText(item[3])
             self.orderedEditList[index].setText(str(item[2]))
 
     def add_quantity(self, index, quantity):
         self.receivedEditList[index].setText(quantity)
+
+    def update_info(self, info):
+        self.infoTextBrowser.setText(info)
+
+        self.scrollbar = self.infoTextBrowser.verticalScrollBar()
+        try:
+            time.sleep(0.1) #needed for the refresh
+            self.scrollbar.setValue(10000) #try input different high value
+
+        except:
+            pass #when it is not available
+        """
+        horScrollBar = self.infoTextBrowser.horizontalScrollBar()
+        verScrollBar = self.infoTextBrowser.verticalScrollBar()
+        scrollIsAtEnd = verScrollBar.maximum() - verScrollBar.value() <= 10
+
+        if scrollIsAtEnd:
+            verScrollBar.setValue(verScrollBar.maximum()) # Scrolls to the bottom
+            horScrollBar.setValue(0) # scroll to the left
+        """
 
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
@@ -165,6 +206,8 @@ class Worker1(QThread):
     itemQuantityUpdate = pyqtSignal(int ,str)
     lastQuantityDetectedCount = 0
     statusQuantity = []
+    infoUpdate = pyqtSignal(str)
+    lastDebugString = ''
 
     def run(self):
         self.ThreadActive = True
@@ -179,6 +222,10 @@ class Worker1(QThread):
             if ret:
                 self.d_o.run(frame)
                 
+                if self.lastDebugString != self.d_o.debugString:
+                    self.infoUpdate.emit(self.d_o.debugString)
+                    self.lastDebugString = self.d_o.debugString
+
                 if self.d_o.po_number != '' and self.statusPo == False:
                     self.poNumberUpdate.emit(self.d_o.po_number)
                     self.statusPo = True

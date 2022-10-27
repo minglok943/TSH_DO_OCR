@@ -37,7 +37,8 @@ class DO:
         self.debugEnable = debugEnable
         if self.debugEnable == True:
             self.secondGnome = Term(width=105,height=31)
-        
+        self.debugString = ''
+
         self.showQuantityCrop = showQuantityCrop
         self.po_number = ''
         self.field = []
@@ -76,9 +77,11 @@ class DO:
                     self.register(self.companyNameFromYaml)
                     self.cvBoardInitialize()
                     self.companyNameMatched = True
+                    self.debugString += "Company Found From PO number matched with DO\n"
                     if self.debugEnable == True:
                         self.secondGnome.echo("Company Found From PO number matched with DO")
                 else:
+                    self.debugString += "Company Found From PO number not matched with DO\n"
                     if self.debugEnable == True:
                         self.secondGnome.echo("Company Found from PO number not matched with DO")
                     self.companyNameFoundFromYaml = False
@@ -124,12 +127,14 @@ class DO:
                 if self.echoOnce == False:
                     self.echoOnce = True
                     self.startSearchQuantity = True
+                    self.debugString += "Start Search Quantity\n"
                     if self.debugEnable == True:
                         self.secondGnome.echo("Start Search Quantity")
             
             if self.startSearchQuantity:
                 self.getQuantity(frame)
         if self.queried == False and (self.numFieldFound == self.numField and self.numField != 0) and self.dateFound == True:
+            self.debugString += "Checking Database...\n"
             if self.debugEnable == True:
                 self.secondGnome.echo("checkDatabase")
             self.checkDatabase()
@@ -144,6 +149,8 @@ class DO:
                 self.companyNameFromYaml = i[2]
                 self.companyNameFoundFromYaml = True
                 echoStr = 'Company Detected: '+self.companyNameFromYaml
+                self.debugString += echoStr
+                self.debugString += "\n"
                 if self.debugEnable == True:
                     self.secondGnome.echo(echoStr)
                 #print(comStr.group())
@@ -160,8 +167,7 @@ class DO:
             descr = self.myCursor.description
             qResults = self.myCursor.fetchall()
             if qResults:
-                if self.debugEnable == True:
-                    self.mySqlTable(qResults, descr)
+                self.mySqlTable(qResults, descr)
                 self.poId = qResults[0][0]
                 self.companyID = qResults[0][1]
                 query = 'select name from suppliers where id='+str(self.companyID)
@@ -170,15 +176,17 @@ class DO:
                 qResults = self.myCursor.fetchall()
                 
                 if qResults:
-                    if self.debugEnable == True:
-                        self.mySqlTable(qResults, descr)
+                    self.mySqlTable(qResults, descr)
                     self.companyNameFromPO = qResults[0][0]
                     echoStr = "company Name From PO num = "+self.companyNameFromPO
+                    self.debugString += echoStr 
+                    self.debugString += "\n"
                     if self.debugEnable == True:
                         self.secondGnome.echo(echoStr)
                     self.companyNameFoundFromPO = True
                     self.po_number = poLike.group(1)
             else:
+                self.debugString += "no PO record\n"
                 if self.debugEnable == True:
                     self.secondGnome.echo("no PO record")
 
@@ -208,6 +216,8 @@ class DO:
                     self.fieldFound[i] = 1
                     self.numFieldFound += 1
                     echoStr = self.field[i] + ': ' + self.resStr[i]
+                    self.debugString += echoStr
+                    self.debugString += "\n"
                     if self.debugEnable == True:
                         self.secondGnome.echo(echoStr)
                     self.cvBoardShowRes(i)
@@ -223,6 +233,8 @@ class DO:
                         realDate = datetime.strptime(datestr, i[1]).date()
                         self.do_date = realDate.strftime('%Y-%m-%d')
                         echoStr = "do_date = "+self.do_date
+                        self.debugString += echoStr
+                        self.debugString += "\n"
                         if self.debugEnable == True:
                             self.secondGnome.echo(echoStr)
                     except ValueError:
@@ -232,6 +244,7 @@ class DO:
 
     
     def next(self):
+        self.debugString = ''
         self.po_number = ''
         self.field.clear()
         self.rePattern.clear()
@@ -263,6 +276,8 @@ class DO:
         Q1 = "select id, grn_number, po_number, supplier_id\
         from goodsreceiptsnotes where supplier_do_number='"
         query = Q1+self.resStr[0]+'\''
+        self.debugString += query
+        self.debugString += "\n"
         if self.debugEnable == True:
             self.secondGnome.echo(query)
         self.myCursor.execute(query)
@@ -270,12 +285,13 @@ class DO:
         qResults = self.myCursor.fetchall()
         
         if qResults:
-            if self.debugEnable == True:
-                self.mySqlTable(qResults, descr)
+            self.mySqlTable(qResults, descr)
             if len(qResults) > 1:
+                self.debugString += "more than one record\n"
                 if self.debugEnable == True:
                     self.secondGnome.echo('more than one record')
             else:
+                self.debugString += "Record Found\n"
                 if self.debugEnable == True:
                     self.secondGnome.echo('Record Found')
                 self.goodsreceiptsnotesExist = True
@@ -287,6 +303,7 @@ class DO:
                     #self.startSearchItem = True
                 """
         else:
+            self.debugString += "No record found\n"
             if self.debugEnable == True:
                 self.secondGnome.echo('No record found !!!')
             self.goodsreceiptsnotesExist = False
@@ -300,6 +317,7 @@ class DO:
                 self.next()
                 board = np.zeros((360,900,3), np.uint8)
             """
+        self.debugString += "Loading item details base on PO ...\n"
         if self.debugEnable == True:
             self.secondGnome.echo('Loading item details based on PO ...')
         self.loadItemDetails()
@@ -312,10 +330,14 @@ class DO:
             qResults = self.myCursor.fetchall()
             self.grn_id = qResults[0][0]+1
             self.grn_number = str(int(qResults[0][1])+1)
+            self.debugString += "inserting goodsreceiptsnotes\n"
             if self.debugEnable == True:
                 self.secondGnome.echo("inserting goodsreceiptsnotes")
             val = (self.grn_number, self.do_date, self.resStr[0],\
                     self.poId, self.companyID)
+            self.debugString += "INSERT INTO goodsreceiptsnotes(grn_number, supplier_do_date, supplier_do_number, po_number, supplier_id) VALUES (%s,%s,%s,%s,%s)\n"
+            self.debugString += str(val)
+            self.debugString += '\n'
             if self.debugEnable == True:
                 self.secondGnome.echo(str(val))
             Q3 = "insert into\
@@ -323,8 +345,9 @@ class DO:
                                 po_number, supplier_id)\
             VALUES (%s,%s,%s,%s,%s)"
             self.myCursor.execute(Q3, val)
-            db.commit()
+            self.db.commit()
         else: 
+            self.debugString += 'goodsreceiptsnotes record exist\n'
             if self.debugEnable == True:
                 self.secondGnome.echo("goodsreceiptsnotes record exist")
 
@@ -342,17 +365,24 @@ class DO:
                 exist = self.myCursor.fetchall()
                 #print(exist)
                 if not exist:
+                    self.debugString += "inserting goodrecieptsnoteitems\n"
                     if self.debugEnable == True:
                         self.secondGnome.echo("inserting goodrecieptsnoteitems")
                     Q6 = "insert into goodrecieptsnoteitems(grn_id, po_item_id, item_id, ordered_quantity,recieving_quantity)\
                     VALUES(%s,%s,%s,%s,%s)"
                     val1 = (self.grn_id, item[0], item[1], item[2], self.itemQuantityToBeDetected[index][1])
+                    self.debugString += Q6
+                    self.debugString += '\n'
+                    self.debugString += str(val1)
+                    self.debugString += '\n'
                     if self.debugEnable == True:
                         self.secondGnome.echo(str(val1))
                     self.myCursor.execute(Q6, val1)
-                    db.commit()
+                    self.db.commit()
                 else:
                     echoStr = item[3]+"with item_id="+str(item[1])+", po_item_id="+str(item[0])+" exist in goodrecieptsnoteitems"
+                    self.debugString += echoStr
+                    self.debugString += '\n'
                     if self.debugEnable == True:
                         self.secondGnome.echo(echoStr)
         
@@ -399,13 +429,13 @@ class DO:
         res = self.myCursor.fetchall()
 
         if res:
-            if self.debugEnable == True:
-                self.mySqlTable(res, descr)
+            self.mySqlTable(res, descr)
             for row in res:
                 self.itemDetails.append(row)
           #  print("Load")
            # print(self.itemDetails)
         else:
+            self.debugString += 'No PO record or No part_number record\n'
             if self.debugEnable == True:
                 self.secondGnome.echo("No PO record or No part_number record !!!")
 
@@ -423,6 +453,8 @@ class DO:
                 echoStr = 'Found item with id '+str(item_detail[1])\
                     +' \''+item_detail[3]+'\''
                 #echoStr = 'Found item with id '+str(detail[index][0])
+                self.debugString += echoStr
+                self.debugString += '\n'
                 if self.debugEnable == True:
                     self.secondGnome.echo(echoStr)
             #score = fuzz.ratio(item_detail[2], text)
@@ -461,7 +493,7 @@ class DO:
             for ele in self.companyYaml['quantity_format']:
                 match = re.search(ele[0], text)
                 if match != None:
-                    cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                    cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
                     #self.secondGnome.echo("found x")
                     #secondGnome.echo(match.group())
                     #print(text)
@@ -522,7 +554,7 @@ class DO:
                     if match != None:
                         # [y, h] of item
                         #self.secondGnome.echo("found y")
-                        cv2.rectangle(img, (j[1][0], j[1][1]), (j[1][0]+j[1][2], j[1][1]+j[1][3]), (0, 255, 0), 2)
+                        cv2.rectangle(img, (j[1][0], j[1][1]), (j[1][0]+j[1][2], j[1][1]+j[1][3]), (0, 0, 255), 2)
                         if len(quantityY) == 0:
                             quantityY.append( [j[1][1]-20, j[1][3]+50, item_index] )
                         else:
@@ -571,7 +603,11 @@ class DO:
                     match = re.search('\s*(\d*,*\d*,*\d*,*\d*,*\d*,*\d*.\d{2,4})\s*.*', text)
                     if match!=None:
                         qty = match.group(1)
+                        # eliminate possible error eg. 50.04 -> 50.00
+                        qty = str(int(float(qty)))+'.00'
                         echoStr = self.itemDetected[i[2]][3]+" | "+qty
+                        self.debugString += echoStr
+                        self.debugString += '\n'
                         if self.debugEnable == True:
                             self.secondGnome.echo(echoStr)
                         self.itemQuantityToBeDetected[i[2]][0] = False
@@ -624,17 +660,32 @@ class DO:
             tavnit += " %-"+"%ss |" % (w)
             seperator += '-'*w + '--+'
         #print(seperator)
-        self.secondGnome.echo(seperator)
+        self.debugString += seperator
+        self.debugString += '\n'
+        if self.debugEnable == True:
+            self.secondGnome.echo(seperator)
         tmp = tavnit % tuple(columns)
         #print(tmp)
-        self.secondGnome.echo(tmp)
+        self.debugString += tmp
+        self.debugString += '\n'
+        if self.debugEnable == True:
+            self.secondGnome.echo(tmp)
         #print(seperator)
-        self.secondGnome.echo(seperator)
+        self.debugString += seperator
+        self.debugString += '\n'
+        if self.debugEnable == True:
+            self.secondGnome.echo(seperator)
         for row in results:
             tmp = tavnit % row
             #print(tmp)
-            self.secondGnome.echo(tmp)
+            self.debugString += tmp
+            self.debugString += '\n'
+            if self.debugEnable == True:
+                self.secondGnome.echo(tmp)
         #print(seperator)
-        self.secondGnome.echo(seperator)
+        self.debugString += seperator
+        self.debugString += '\n'
+        if self.debugEnable == True:
+            self.secondGnome.echo(seperator)
 ##################################################################################################
 

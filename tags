@@ -1,0 +1,169 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DO	DO_Processing.py	/^class DO:$/;"	c
+ImageUpdate	DO_Ocr.py	/^    ImageUpdate = pyqtSignal(QImage)$/;"	v	class:Worker1
+ImageUpdateSlot	DO_Ocr.py	/^    def ImageUpdateSlot(self, Image):$/;"	m	class:MyWindow
+MyWindow	DO_Ocr.py	/^class MyWindow(QWidget):$/;"	c
+Term	secondTerminal.py	/^class Term:$/;"	c
+Worker1	DO_Ocr.py	/^class Worker1(QThread):$/;"	c
+__init__	DO_Ocr.py	/^    def __init__(self):$/;"	m	class:MyWindow
+__init__	DO_Processing.py	/^    def __init__(self, debugEnable, showQuantityCrop):$/;"	m	class:DO
+__init__	secondTerminal.py	/^    def __init__(self, width=80, height=24, winX=1400, winY=1400): #open a gnome-terminal at the bottom right on default$/;"	m	class:Term
+add_detected_item	DO_Ocr.py	/^    def add_detected_item(self, itemDetected):$/;"	m	class:MyWindow
+add_item	DO_Ocr.py	/^    def add_item(self, itemDetails):$/;"	m	class:MyWindow
+add_quantity	DO_Ocr.py	/^    def add_quantity(self, index, quantity):$/;"	m	class:MyWindow
+allCom	genYaml.py	/^allCom = []$/;"	v
+app	DO_Ocr.py	/^    app = QApplication(sys.argv)$/;"	v
+cap	Parts/scanner_0.py	/^cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)$/;"	v
+cap	Parts/scanner_1.py	/^cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)$/;"	v
+cap	Parts/scanner_2.py	/^cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)$/;"	v
+cap	Parts/scanner_3.py	/^cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)$/;"	v
+cap	Parts/scanner_4.py	/^cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)$/;"	v
+cap	Parts/scanner_5.py	/^cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)$/;"	v
+cap	Parts/scanner_6.py	/^cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)$/;"	v
+cap	scanner.py	/^cap = cv2.VideoCapture(0, cv2.CAP_V4L2)$/;"	v
+center_text	Parts/scanner_5.py	/^def center_text(image, text):$/;"	f
+center_text	Parts/scanner_6.py	/^def center_text(image, text):$/;"	f
+checkDatabase	DO_Processing.py	/^    def checkDatabase(self):$/;"	m	class:DO
+companyNameUpdate	DO_Ocr.py	/^    companyNameUpdate = pyqtSignal(str)$/;"	v	class:Worker1
+companyName_key_in	DO_Ocr.py	/^    def companyName_key_in(self, text):$/;"	m	class:MyWindow
+companyYaml	genYaml.py	/^    companyYaml = yaml.safe_load(file)$/;"	v
+count	Parts/scanner_5.py	/^count = 0$/;"	v
+count	Parts/scanner_6.py	/^count = 0$/;"	v
+count	scanner.py	/^count = 0$/;"	v
+cropped	scanner.py	/^    cropped = frame[y:y1,x:x1]$/;"	v
+cvBoardInitialize	DO_Processing.py	/^    def cvBoardInitialize(self):$/;"	m	class:DO
+cvBoardShowRes	DO_Processing.py	/^    def cvBoardShowRes(self, i):$/;"	m	class:DO
+d_o	scanner.py	/^d_o = DO(debugEnable=True, showQuantityCrop=True)$/;"	v
+database	genYaml.py	/^        database="ERP"$/;"	v
+dateRegexWithPattern	genYaml.py	/^dateRegexWithPattern = [$/;"	v
+db	genYaml.py	/^db = mysql.connect($/;"	v
+doDateUpdate	DO_Ocr.py	/^    doDateUpdate = pyqtSignal(str)$/;"	v	class:Worker1
+doDate_key_in	DO_Ocr.py	/^    def doDate_key_in(self):$/;"	m	class:MyWindow
+doNumberUpdate	DO_Ocr.py	/^    doNumberUpdate = pyqtSignal(str)$/;"	v	class:Worker1
+doNumber_key_in	DO_Ocr.py	/^    def doNumber_key_in(self):$/;"	m	class:MyWindow
+echo	secondTerminal.py	/^    def echo(self, message):$/;"	m	class:Term
+f	genYaml.py	/^f = open("test.yaml", "w")$/;"	v
+file	Parts/scanner_5.py	/^        file = open("output\/recognized_" + str(count - 1) + ".txt", "w")$/;"	v
+file	Parts/scanner_6.py	/^        file = open("output\/recognized_" + str(count - 1) + ".txt", "w")$/;"	v
+first_page	output/plumber.py	/^    first_page = pdf.pages[0]$/;"	v
+font	Parts/scanner_5.py	/^font = cv2.FONT_HERSHEY_SIMPLEX$/;"	v
+font	Parts/scanner_6.py	/^font = cv2.FONT_HERSHEY_SIMPLEX$/;"	v
+frame	Parts/scanner_0.py	/^    frame = cv2.rotate(frame, cv2.ROTATE_180)$/;"	v
+frame	Parts/scanner_1.py	/^    frame = cv2.rotate(frame, cv2.ROTATE_180)$/;"	v
+frame	Parts/scanner_2.py	/^    frame = cv2.rotate(frame, cv2.ROTATE_180)$/;"	v
+frame	Parts/scanner_3.py	/^    frame = cv2.rotate(frame, cv2.ROTATE_180)$/;"	v
+frame	Parts/scanner_4.py	/^    frame = cv2.rotate(frame, cv2.ROTATE_180)$/;"	v
+frame	Parts/scanner_5.py	/^    frame = cv2.rotate(frame, cv2.ROTATE_180)$/;"	v
+frame	Parts/scanner_6.py	/^    frame = cv2.rotate(frame, cv2.ROTATE_180)$/;"	v
+frame_copy	Parts/scanner_0.py	/^    frame_copy = frame.copy()$/;"	v
+frame_copy	Parts/scanner_1.py	/^    frame_copy = frame.copy()$/;"	v
+frame_copy	Parts/scanner_2.py	/^    frame_copy = frame.copy()$/;"	v
+frame_copy	Parts/scanner_3.py	/^    frame_copy = frame.copy()$/;"	v
+frame_copy	Parts/scanner_4.py	/^    frame_copy = frame.copy()$/;"	v
+frame_copy	Parts/scanner_5.py	/^    frame_copy = frame.copy()$/;"	v
+frame_copy	Parts/scanner_6.py	/^    frame_copy = frame.copy()$/;"	v
+genRegex	regexGen.py	/^def genRegex(text):$/;"	f
+genRegexCapitalInsensitive	regexGen.py	/^def genRegexCapitalInsensitive(text):$/;"	f
+genRegexCapitalInsensitiveAccurate	regexGen.py	/^def genRegexCapitalInsensitiveAccurate(text):$/;"	f
+genRegexWithNum	regexGen.py	/^def genRegexWithNum(text):$/;"	f
+genRegexYaml	regexGen.py	/^def genRegexYaml(text):$/;"	f
+getQuantity	DO_Processing.py	/^    def getQuantity(self, img):$/;"	m	class:DO
+host	genYaml.py	/^        host="localhost",$/;"	v
+image_processing	Parts/scanner_4.py	/^def image_processing(image):$/;"	f
+image_processing	Parts/scanner_5.py	/^def image_processing(image):$/;"	f
+image_processing	Parts/scanner_6.py	/^def image_processing(image):$/;"	f
+infoUpdate	DO_Ocr.py	/^    infoUpdate = pyqtSignal(str)$/;"	v	class:Worker1
+insertDatabase	DO_Processing.py	/^    def insertDatabase(self):$/;"	m	class:DO
+itemAdd	DO_Ocr.py	/^    itemAdd = pyqtSignal(list)$/;"	v	class:Worker1
+itemAddDetected	DO_Ocr.py	/^    itemAddDetected = pyqtSignal(list)$/;"	v	class:Worker1
+itemQuantityUpdate	DO_Ocr.py	/^    itemQuantityUpdate = pyqtSignal(int ,str)$/;"	v	class:Worker1
+kill	secondTerminal.py	/^    def kill(self):$/;"	m	class:Term
+lastDebugString	DO_Ocr.py	/^    lastDebugString = ''$/;"	v	class:Worker1
+lastItemDetectedCount	DO_Ocr.py	/^    lastItemDetectedCount = 0$/;"	v	class:Worker1
+lastQuantityDetectedCount	DO_Ocr.py	/^    lastQuantityDetectedCount = 0$/;"	v	class:Worker1
+loadItemDetails	DO_Processing.py	/^    def loadItemDetails(self):$/;"	m	class:DO
+mouseMoveEvent	DO_Ocr.py	/^    def mouseMoveEvent(self, event):$/;"	m	class:MyWindow
+mousePressEvent	DO_Ocr.py	/^    def mousePressEvent(self, event):$/;"	m	class:MyWindow
+myCursor	genYaml.py	/^myCursor = db.cursor()$/;"	v
+mySqlTable	DO_Processing.py	/^    def mySqlTable(self, results, description):$/;"	m	class:DO
+myWindow	DO_Ocr.py	/^    myWindow = MyWindow()$/;"	v
+next	DO_Processing.py	/^    def next(self):$/;"	m	class:DO
+nothing	scanner.py	/^def nothing(x):$/;"	f
+ocr_text	Parts/scanner_3.py	/^    ocr_text = pytesseract.image_to_string(warped)$/;"	v
+ocr_text	Parts/scanner_4.py	/^    ocr_text = pytesseract.image_to_string(warped)$/;"	v
+ocr_text	Parts/scanner_5.py	/^        ocr_text = pytesseract.image_to_string(warped)$/;"	v
+ocr_text	Parts/scanner_6.py	/^        ocr_text = pytesseract.image_to_string(warped)$/;"	v
+on_click_PO	DO_Ocr.py	/^    def on_click_PO(self):$/;"	m	class:MyWindow
+on_click_companyName	DO_Ocr.py	/^    def on_click_companyName(self):$/;"	m	class:MyWindow
+on_click_do_date	DO_Ocr.py	/^    def on_click_do_date(self):$/;"	m	class:MyWindow
+on_click_do_number	DO_Ocr.py	/^    def on_click_do_number(self):$/;"	m	class:MyWindow
+on_click_insert	DO_Ocr.py	/^    def on_click_insert(self):$/;"	m	class:MyWindow
+on_click_next	DO_Ocr.py	/^    def on_click_next(self):$/;"	m	class:MyWindow
+passwd	genYaml.py	/^        passwd="asdfasdf",$/;"	v
+poNumberUpdate	DO_Ocr.py	/^    poNumberUpdate = pyqtSignal(str)$/;"	v	class:Worker1
+po_key_in	DO_Ocr.py	/^    def po_key_in(self):$/;"	m	class:MyWindow
+pressed_key	Parts/scanner_5.py	/^    pressed_key = cv2.waitKey(1) & 0xFF$/;"	v
+pressed_key	Parts/scanner_6.py	/^    pressed_key = cv2.waitKey(1) & 0xFF$/;"	v
+pressed_key	scanner.py	/^    pressed_key = cv2.waitKey(1) & 0xFF$/;"	v
+processed	Parts/scanner_4.py	/^    processed = image_processing(warped)$/;"	v
+processed	Parts/scanner_4.py	/^    processed = processed[10:processed.shape[0] - 10, 10:processed.shape[1] - 10]$/;"	v
+processed	Parts/scanner_5.py	/^    processed = image_processing(warped)$/;"	v
+processed	Parts/scanner_5.py	/^    processed = processed[10:processed.shape[0] - 10, 10:processed.shape[1] - 10]$/;"	v
+processed	Parts/scanner_6.py	/^    processed = image_processing(warped)$/;"	v
+processed	Parts/scanner_6.py	/^    processed = processed[10:processed.shape[0] - 10, 10:processed.shape[1] - 10]$/;"	v
+q	genYaml.py	/^    q = myCursor.fetchall()$/;"	v
+quantityString	genYaml.py	/^quantityString = [$/;"	v
+register	DO_Processing.py	/^    def register(self, compName):$/;"	m	class:DO
+res	genYaml.py	/^res = myCursor.fetchall()$/;"	v
+result	genYaml.py	/^    result = re.search(row[1], row[2])$/;"	v
+run	DO_Ocr.py	/^    def run(self):$/;"	m	class:Worker1
+run	DO_Processing.py	/^    def run(self, frame):$/;"	m	class:DO
+scale	Parts/scanner_6.py	/^scale = 0.5$/;"	v
+scale	scanner.py	/^scale = 0.5$/;"	v
+scan_detection	Parts/scanner_1.py	/^def scan_detection(image):$/;"	f
+scan_detection	Parts/scanner_2.py	/^def scan_detection(image):$/;"	f
+scan_detection	Parts/scanner_3.py	/^def scan_detection(image):$/;"	f
+scan_detection	Parts/scanner_4.py	/^def scan_detection(image):$/;"	f
+scan_detection	Parts/scanner_5.py	/^def scan_detection(image):$/;"	f
+scan_detection	Parts/scanner_6.py	/^def scan_detection(image):$/;"	f
+scan_detection	scanner.py	/^def scan_detection(image):$/;"	f
+search	DO_Processing.py	/^    def search(self, text):$/;"	m	class:DO
+searchCompanyFromPO	DO_Processing.py	/^    def searchCompanyFromPO(self, text):$/;"	m	class:DO
+searchCompanyFromYaml	DO_Processing.py	/^    def searchCompanyFromYaml(self, text):$/;"	m	class:DO
+searchDate	DO_Processing.py	/^    def searchDate(self, text):$/;"	m	class:DO
+searchItem	DO_Processing.py	/^    def searchItem(self, text):$/;"	m	class:DO
+send	secondTerminal.py	/^    def send(self, cmd):$/;"	m	class:Term
+split	genYaml.py	/^        split = re.split(r'(^[^\\d]+)', i)[1:]$/;"	v
+statusCmp	DO_Ocr.py	/^    statusCmp = False$/;"	v	class:Worker1
+statusDoDate	DO_Ocr.py	/^    statusDoDate = False$/;"	v	class:Worker1
+statusDoNumber	DO_Ocr.py	/^    statusDoNumber = False$/;"	v	class:Worker1
+statusItem	DO_Ocr.py	/^    statusItem = False$/;"	v	class:Worker1
+statusPo	DO_Ocr.py	/^    statusPo = False$/;"	v	class:Worker1
+statusQuantity	DO_Ocr.py	/^    statusQuantity = []$/;"	v	class:Worker1
+stop	DO_Ocr.py	/^    def stop(self):$/;"	m	class:Worker1
+supplier_do_num	genYaml.py	/^supplier_do_num = []$/;"	v
+supplier_do_num_regex	genYaml.py	/^supplier_do_num_regex = []$/;"	v
+supplier_do_prefix	genYaml.py	/^supplier_do_prefix = []$/;"	v
+temp	genYaml.py	/^    temp = []$/;"	v
+test_text	scanner.py	/^        test_text = pytesseract.image_to_string(cropped)$/;"	v
+text	output/plumber.py	/^    text = first_page.extract_text()$/;"	v
+update_company_name	DO_Ocr.py	/^    def update_company_name(self, text):$/;"	m	class:MyWindow
+update_do_date	DO_Ocr.py	/^    def update_do_date(self, text):$/;"	m	class:MyWindow
+update_do_number	DO_Ocr.py	/^    def update_do_number(self, text):$/;"	m	class:MyWindow
+update_info	DO_Ocr.py	/^    def update_info(self, info):$/;"	m	class:MyWindow
+update_po_number	DO_Ocr.py	/^    def update_po_number(self, text):$/;"	m	class:MyWindow
+user	genYaml.py	/^        user="lokcharming",$/;"	v
+warped	Parts/scanner_2.py	/^    warped = four_point_transform(frame_copy, document_contour.reshape(4, 2))$/;"	v
+warped	Parts/scanner_3.py	/^    warped = four_point_transform(frame_copy, document_contour.reshape(4, 2))$/;"	v
+warped	Parts/scanner_4.py	/^    warped = four_point_transform(frame_copy, document_contour.reshape(4, 2))$/;"	v
+warped	Parts/scanner_5.py	/^    warped = four_point_transform(frame_copy, document_contour.reshape(4, 2))$/;"	v
+warped	Parts/scanner_6.py	/^    warped = four_point_transform(frame_copy, document_contour.reshape(4, 2))$/;"	v
+x	scanner.py	/^    x = cv2.getTrackbarPos('x', 'tune')$/;"	v
+x1	scanner.py	/^    x1 = cv2.getTrackbarPos('x1', 'tune')$/;"	v
+y	scanner.py	/^    y = cv2.getTrackbarPos('y', 'tune')$/;"	v
+y1	scanner.py	/^    y1 = cv2.getTrackbarPos('y1', 'tune')$/;"	v
