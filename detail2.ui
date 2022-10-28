@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>921</width>
+    <height>785</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Ubuntu Mono</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>0</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+background-color: rgb(186, 189, 182);</string>
+    </property>
+    <property name="text">
+     <string>goodsreceiptsnotes</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextEdit_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>381</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ubuntu Mono</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-width: 2px;
+border-radius: 20px;
+background-color: rgb(80, 200, 120);</string>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustToContents</enum>
+    </property>
+    <property name="plainText">
+     <string>                 id: 1
+         grn_number: 21100001
+          po_number: 2
+        supplier_id: 19
+ supplier_do_number: NST13217
+   supplier_do_date: 2021-10-25
+supplier_inv_number: NST13217
+  supplier_inv_date: NULL
+      currency_rate: NULL
+         recieve_by: DINDA  AULIVIA SYNTIANY
+             status: 13
+         created_at: 2021-10-25 17:14:29
+         updated_at: 2021-10-25 17:16:44
+         deleted_at: NULL
+              k1_id: NULL</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>320</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(186, 189, 182);
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string>goodreceiptsnoteitems</string>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>350</y>
+      <width>861</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 40px;
+background-color: rgb(233, 185, 110);</string>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>861</width>
+       <height>391</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="confirmButton">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>30</y>
+      <width>181</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+background-color: rgb(115, 210, 22);</string>
+    </property>
+    <property name="text">
+     <string>Confirm</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancelButton">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>120</y>
+      <width>181</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+background-color: rgb(204, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Cancel</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>921</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

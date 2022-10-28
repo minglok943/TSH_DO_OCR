@@ -7,12 +7,18 @@
 DO	DO_Processing.py	/^class DO:$/;"	c
 ImageUpdate	DO_Ocr.py	/^    ImageUpdate = pyqtSignal(QImage)$/;"	v	class:Worker1
 ImageUpdateSlot	DO_Ocr.py	/^    def ImageUpdateSlot(self, Image):$/;"	m	class:MyWindow
+MainWindow	test1.py	/^class MainWindow(QMainWindow):$/;"	c
 MyWindow	DO_Ocr.py	/^class MyWindow(QWidget):$/;"	c
 Term	secondTerminal.py	/^class Term:$/;"	c
+Ui_Form	detail.py	/^class Ui_Form(object):$/;"	c
+Ui_Form	test.py	/^class Ui_Form(object):$/;"	c
+Ui_MainWindow	detail2.py	/^class Ui_MainWindow(object):$/;"	c
 Worker1	DO_Ocr.py	/^class Worker1(QThread):$/;"	c
 __init__	DO_Ocr.py	/^    def __init__(self):$/;"	m	class:MyWindow
+__init__	DO_Ocr.py	/^    def __init__(self, grnString, grnItemList):$/;"	m	class:detailWindow
 __init__	DO_Processing.py	/^    def __init__(self, debugEnable, showQuantityCrop):$/;"	m	class:DO
 __init__	secondTerminal.py	/^    def __init__(self, width=80, height=24, winX=1400, winY=1400): #open a gnome-terminal at the bottom right on default$/;"	m	class:Term
+__init__	test1.py	/^    def __init__(self):$/;"	m	class:MainWindow
 add_detected_item	DO_Ocr.py	/^    def add_detected_item(self, itemDetected):$/;"	m	class:MyWindow
 add_item	DO_Ocr.py	/^    def add_item(self, itemDetails):$/;"	m	class:MyWindow
 add_quantity	DO_Ocr.py	/^    def add_quantity(self, index, quantity):$/;"	m	class:MyWindow
@@ -42,6 +48,7 @@ d_o	scanner.py	/^d_o = DO(debugEnable=True, showQuantityCrop=True)$/;"	v
 database	genYaml.py	/^        database="ERP"$/;"	v
 dateRegexWithPattern	genYaml.py	/^dateRegexWithPattern = [$/;"	v
 db	genYaml.py	/^db = mysql.connect($/;"	v
+detailWindow	DO_Ocr.py	/^class detailWindow(QMainWindow):$/;"	c
 doDateUpdate	DO_Ocr.py	/^    doDateUpdate = pyqtSignal(str)$/;"	v	class:Worker1
 doDate_key_in	DO_Ocr.py	/^    def doDate_key_in(self):$/;"	m	class:MyWindow
 doNumberUpdate	DO_Ocr.py	/^    doNumberUpdate = pyqtSignal(str)$/;"	v	class:Worker1
@@ -78,6 +85,7 @@ image_processing	Parts/scanner_4.py	/^def image_processing(image):$/;"	f
 image_processing	Parts/scanner_5.py	/^def image_processing(image):$/;"	f
 image_processing	Parts/scanner_6.py	/^def image_processing(image):$/;"	f
 infoUpdate	DO_Ocr.py	/^    infoUpdate = pyqtSignal(str)$/;"	v	class:Worker1
+initUI	test1.py	/^    def initUI(self):$/;"	m	class:MainWindow
 insertDatabase	DO_Processing.py	/^    def insertDatabase(self):$/;"	m	class:DO
 itemAdd	DO_Ocr.py	/^    itemAdd = pyqtSignal(list)$/;"	v	class:Worker1
 itemAddDetected	DO_Ocr.py	/^    itemAddDetected = pyqtSignal(list)$/;"	v	class:Worker1
@@ -87,6 +95,7 @@ lastDebugString	DO_Ocr.py	/^    lastDebugString = ''$/;"	v	class:Worker1
 lastItemDetectedCount	DO_Ocr.py	/^    lastItemDetectedCount = 0$/;"	v	class:Worker1
 lastQuantityDetectedCount	DO_Ocr.py	/^    lastQuantityDetectedCount = 0$/;"	v	class:Worker1
 loadItemDetails	DO_Processing.py	/^    def loadItemDetails(self):$/;"	m	class:DO
+main	test1.py	/^def main():$/;"	f
 mouseMoveEvent	DO_Ocr.py	/^    def mouseMoveEvent(self, event):$/;"	m	class:MyWindow
 mousePressEvent	DO_Ocr.py	/^    def mousePressEvent(self, event):$/;"	m	class:MyWindow
 myCursor	genYaml.py	/^myCursor = db.cursor()$/;"	v
@@ -99,7 +108,9 @@ ocr_text	Parts/scanner_4.py	/^    ocr_text = pytesseract.image_to_string(warped)
 ocr_text	Parts/scanner_5.py	/^        ocr_text = pytesseract.image_to_string(warped)$/;"	v
 ocr_text	Parts/scanner_6.py	/^        ocr_text = pytesseract.image_to_string(warped)$/;"	v
 on_click_PO	DO_Ocr.py	/^    def on_click_PO(self):$/;"	m	class:MyWindow
+on_click_cancel	DO_Ocr.py	/^    def on_click_cancel(self):$/;"	m	class:detailWindow
 on_click_companyName	DO_Ocr.py	/^    def on_click_companyName(self):$/;"	m	class:MyWindow
+on_click_confirm	DO_Ocr.py	/^    def on_click_confirm(self):$/;"	m	class:detailWindow
 on_click_do_date	DO_Ocr.py	/^    def on_click_do_date(self):$/;"	m	class:MyWindow
 on_click_do_number	DO_Ocr.py	/^    def on_click_do_number(self):$/;"	m	class:MyWindow
 on_click_insert	DO_Ocr.py	/^    def on_click_insert(self):$/;"	m	class:MyWindow
@@ -121,6 +132,9 @@ quantityString	genYaml.py	/^quantityString = [$/;"	v
 register	DO_Processing.py	/^    def register(self, compName):$/;"	m	class:DO
 res	genYaml.py	/^res = myCursor.fetchall()$/;"	v
 result	genYaml.py	/^    result = re.search(row[1], row[2])$/;"	v
+retranslateUi	detail.py	/^    def retranslateUi(self, Form):$/;"	m	class:Ui_Form
+retranslateUi	detail2.py	/^    def retranslateUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
+retranslateUi	test.py	/^    def retranslateUi(self, Form):$/;"	m	class:Ui_Form
 run	DO_Ocr.py	/^    def run(self):$/;"	m	class:Worker1
 run	DO_Processing.py	/^    def run(self, frame):$/;"	m	class:DO
 scale	Parts/scanner_6.py	/^scale = 0.5$/;"	v
@@ -138,6 +152,9 @@ searchCompanyFromYaml	DO_Processing.py	/^    def searchCompanyFromYaml(self, tex
 searchDate	DO_Processing.py	/^    def searchDate(self, text):$/;"	m	class:DO
 searchItem	DO_Processing.py	/^    def searchItem(self, text):$/;"	m	class:DO
 send	secondTerminal.py	/^    def send(self, cmd):$/;"	m	class:Term
+setupUi	detail.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
+setupUi	detail2.py	/^    def setupUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
+setupUi	test.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
 split	genYaml.py	/^        split = re.split(r'(^[^\\d]+)', i)[1:]$/;"	v
 statusCmp	DO_Ocr.py	/^    statusCmp = False$/;"	v	class:Worker1
 statusDoDate	DO_Ocr.py	/^    statusDoDate = False$/;"	v	class:Worker1

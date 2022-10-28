@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1272</width>
+    <height>830</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPlainTextEdit" name="plainTextEdit_4">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>50</y>
+     <width>361</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-width: 2px;
+border-radius: 20px;
+background-color: rgb(80, 200, 120);</string>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContents</enum>
+   </property>
+   <property name="plainText">
+    <string>                 id: 1
+         grn_number: 21100001
+          po_number: 2
+        supplier_id: 19
+ supplier_do_number: NST13217
+   supplier_do_date: 2021-10-25
+supplier_inv_number: NST13217
+  supplier_inv_date: NULL
+      currency_rate: NULL
+         recieve_by: DINDA  AULIVIA SYNTIANY
+             status: 13
+         created_at: 2021-10-25 17:14:29
+         updated_at: 2021-10-25 17:16:44
+         deleted_at: NULL
+              k1_id: NULL</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>10</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>goodsreceiptsnotes</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>340</y>
+     <width>231</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>goodreceiptsnoteitems</string>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>50</y>
+     <width>611</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>609</width>
+      <height>679</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>10</y>
+       <width>521</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPlainTextEdit" name="plainTextEdit_5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>380</width>
+          <height>231</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-width: 2px;
+border-radius: 20px;
+background-color: rgb(114, 159, 207);</string>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustToContents</enum>
+        </property>
+        <property name="plainText">
+         <string>                id: 1
+            grn_id: 1
+        po_item_id: 2
+         wo_number: null
+           item_id: 7350
+  ordered_quantity: 1000.0000
+recieving_quantity: 1000.0000
+            status: 14
+        created_at: 2021-10-25 17:14:30
+        updated_at: 2021-10-25 17:14:30
+        deleted_at: NULL
+   supinvunitprice: 0.0000
+       supinvtotal: 0.0000</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

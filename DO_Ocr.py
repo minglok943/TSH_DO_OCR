@@ -2,6 +2,7 @@
 
 import time
 import sys
+import math
 from PyQt5 import uic
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -12,6 +13,78 @@ from python_qt_binding.QtCore import *
 
 import cv2
 from DO_Processing import DO
+
+class detailWindow(QMainWindow):
+    def __init__(self, grnString, grnItemList):
+
+        #Qt Stuff..
+        super(detailWindow, self).__init__()
+        uic.loadUi('detail2.ui', self)        #load the .ui file made from Qt designer -- you can also use pyside-uic -o outpit.py input.ui on terminal to see your .ui file converted to python objects.
+        self.vbox = QVBoxLayout()
+        length = len(grnItemList)
+        self.hboxList = []
+        for i in range(0, math.ceil(length)):
+            self.hboxList.append(QHBoxLayout())
+
+        index = 0
+        self.plainTextEdit_4.setPlainText(grnString)
+        for i in range(0,length):
+            plain = QPlainTextEdit()
+            font = QFont()
+            font.setFamily("Ubuntu Mono")
+            font.setPointSize(12)
+            font.setBold(True)
+            font.setWeight(75)
+            plain.setFont(font)
+
+            plain.setGeometry(QRect(60, 50, 271, 231))
+
+            sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+            sizePolicy.setHorizontalStretch(0)
+            sizePolicy.setVerticalStretch(0)
+            sizePolicy.setHeightForWidth(plain.sizePolicy().hasHeightForWidth())
+            plain.setSizePolicy(sizePolicy)
+            plain.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+            plain.setMinimumSize(QSize(271, 231))
+
+            plain.setStyleSheet("border-width: 2px;\n"
+                                "border-radius: 20px;\n"
+                                "background-color: rgb(114, 159, 207);")
+            """
+            plain.setPlainText("                id: 1\n"
+"            grn_id: 1\n"
+"        po_item_id: 2\n"
+"         wo_number: null\n"
+"           item_id: 7350\n"
+"  ordered_quantity: 1000.0000\n"
+"recieving_quantity: 1000.0000\n"
+"            status: 14\n"
+"        created_at: 2021-10-25 17:14:30\n"
+"        updated_at: 2021-10-25 17:14:30\n"
+"        deleted_at: NULL\n"
+"   supinvunitprice: 0.0000\n"
+"       supinvtotal: 0.0000")
+            """
+
+            plain.setPlainText(grnItemList[i])
+            if i%3 == 0 and i!=0:
+                index = index + 1
+            self.hboxList[index].addWidget(plain)
+
+        for hbox in self.hboxList:
+            self.vbox.addLayout(hbox)
+        self.scrollAreaWidgetContents.setLayout(self.vbox)
+
+        self.confirmButton.clicked.connect(self.on_click_confirm)
+        self.cancelButton.clicked.connect(self.on_click_cancel)
+
+
+    def on_click_confirm(self):
+        self.close()
+
+    def on_click_cancel(self):
+        self.close()
+
 
 class MyWindow(QWidget):
     def __init__(self):
@@ -54,6 +127,7 @@ class MyWindow(QWidget):
         self.Worker1.itemAddDetected.connect(self.add_detected_item)
         self.Worker1.itemQuantityUpdate.connect(self.add_quantity)
         self.Worker1.infoUpdate.connect(self.update_info)
+
          
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
@@ -88,6 +162,8 @@ class MyWindow(QWidget):
     @pyqtSlot()
     def on_click_PO(self):
         print('retake PO')
+        self.detWin = detailWindow(self.Worker1.d_o.grnString, self.Worker1.d_o.grnItemList)
+        self.detWin.show()
 
         """
         self.tPOLineEdit.setText('')
