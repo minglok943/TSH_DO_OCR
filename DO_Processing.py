@@ -19,7 +19,7 @@ from dateutil.parser import parse
 from regexGen import *
 
 class DO:
-    def __init__(self, debugEnable, showQuantityCrop):
+    def __init__(self, debugEnable, showQuantityCrop, insertConfirm):
         with open('templateDO7.yaml', 'r') as file:
             self.companyYaml = yaml.safe_load(file)
 
@@ -40,6 +40,8 @@ class DO:
         self.debugString = ''
 
         self.showQuantityCrop = showQuantityCrop
+        self.insertConfirm = insertConfirm
+
         self.po_number = ''
         self.field = []
         self.rePattern = []
@@ -59,12 +61,15 @@ class DO:
         self.partNumberRegex = []
         self.startSearchItem = False
         self.startSearchQuantity = False
+        self.doNumFound = False
         self.do_date = ''
         self.dateFound = False
         self.companyNameMatched = False
         self.echoOnce = False
+        self.goodsreceiptsnotesExist = False
 
         self.grnItemList = []
+        self.grnItemStringList = []
         self.userName = 'Chia Ming Lok'
         self.grn = {
             "id": 'NULL',
@@ -128,34 +133,9 @@ class DO:
         else:
             if (self.numFieldFound != self.numField and self.numField != 0) \
                     or self.dateFound == False:
-                
-                """
-                    or self.startSearchItem == True:
-                """
-
                 #ocr_text = pytesseract.image_to_string(warped)
                 ocr_text = pytesseract.image_to_string(frame)
-    
-                """
-                if self.startSearchItem == True:
-                    self.searchItem(ocr_text)
-                    if len(self.itemDetected) != 0:
-                        self.startSearchQuantity = True
-                        if len(self.itemQuantityToBeDetected) != len(self.itemDetected):
-                            diff = len(self.itemDetected)-len(self.itemQuantityToBeDetected)
-                            for i in range(0, diff):
-                                self.itemQuantityToBeDetected.append([True,0])
-
-                    if len(self.itemDetails) == 0:
-                        self.startSearchItem = False
-                    
-                        for item in self.itemDetected:
-                            #itemQuantityToBeDetected[0] = True/False
-                            #itemQuantityToBeDetected[1] = quantity
-                            self.itemQuantityToBeDetected.append([True,0])
-                        self.startSearchQuantity = True
-                """
-
+                
                 if self.dateFound == False:
                     self.searchDate(ocr_text)
                 else: 
@@ -163,7 +143,7 @@ class DO:
             else:
                 if self.echoOnce == False:
                     self.echoOnce = True
-                    self.startSearchQuantity = True
+                    #self.startSearchQuantity = True
                     self.debugString += "Start Search Quantity\n"
                     if self.debugEnable == True:
                         self.secondGnome.echo("Start Search Quantity")
@@ -240,13 +220,9 @@ class DO:
             if self.fieldFound[i] == 0: # not found
                 find = re.search(self.rePattern[i], text)
                 if find != None:
-                    if self.field[i] == 'date':
-                        dateStr = find.group(1).replace(" ", "")
-                        self.realDate = datetime.strptime(dateStr, \
-                                self.companyYaml[self.companyNameFromYaml]['date_format']).date()
-                        self.resStr[i] = self.realDate.strftime('%Y-%m-%d')
-                    elif self.field[i] == 'do_num':
+                    if self.field[i] == 'do_num':
                         self.resStr[i] = self.companyYaml[self.companyNameFromYaml]['do_prefix'] + find.group(1)
+                        self.doNumFound = True
                     else:
                         self.resStr[i] = find.group(1)
 
@@ -290,6 +266,7 @@ class DO:
         self.fieldFound.clear()
         self.resStr.clear()
         self.numField = 0
+        self.doNumFound = False
         self.companyNameFoundFromYaml = False
         self.companyNameFromYaml = ''
         self.companyNameFoundFromPO = False
@@ -308,11 +285,14 @@ class DO:
         if self.debugEnable == True:
             self.secondGnome.send('clear')
         self.grnItemList.clear()
+        self.grnItemStringList.clear()
+        self.goodsreceiptsnotesExist = False
 
     def checkDatabase(self):
         self.queried = True
-        Q1 = "select id, grn_number, po_number, supplier_id\
-        from goodsreceiptsnotes where supplier_do_number='"
+        Q1 = "select id, grn_number, po_number, supplier_id, \
+                supplier_do_date, recieve_by, created_at, updated_at\
+                from goodsreceiptsnotes where supplier_do_number='"
         query = Q1+self.resStr[0]+'\''
         self.debugString += query
         self.debugString += "\n"
@@ -334,32 +314,64 @@ class DO:
                     self.secondGnome.echo('Record Found')
                 self.goodsreceiptsnotesExist = True
                 self.grn_id = qResults[0][0]
+                self.grn_number = qResults[0][1]
+                self.grn["id"] = self.grn_id
+                self.grn["grn_number"] = self.grn_number
+                self.grn["po_number"] = qResults[0][2]
+                self.grn["supplier_id"] = qResults[0][3]
+                self.grn["supplier_do_number"] = self.resStr[0]
+                self.grn["supplier_do_date"] = qResults[0][4]
+                self.grn["recieve_by"] = qResults[0][5]
+                self.grn["created_at"] = qResults[0][6]
+                self.grn["updated_at"] = qResults[0][7]
+
+                self.grnString = ''
+                for key, value in self.grn.items():
+                    self.grnString += '{:^19}: {}\n'.format(key, value)
+                self.grnString = self.grnString[:self.grnString.rfind('\n')]
+
+                query = "select id, po_item_id, item_id, ordered_quantity, recieving_quantity,\
+                        created_at, updated_at from goodrecieptsnoteitems where grn_id='"+str(self.grn_id)+"'"
+                #secondGnome.echo(query)
+                self.myCursor.execute(query)
+                exist = self.myCursor.fetchall()
+                if exist:
+                    for result in exist:
+                        grnItemString = ''
+                        self.grnItem["id"] = result[0]
+                        self.grnItem["grn_id"] = self.grn_id
+                        self.grnItem["po_item_id"] = result[1]
+                        self.grnItem["item_id"] = result[2]
+                        self.grnItem["ordered_quantity"] = result[3]
+                        self.grnItem["recieving_quantity"] = result[4]
+                        self.grnItem["created_at"] = result[5]
+                        self.grnItem["updated_at"] = result[6]
+                        self.grnItemList.append(self.grnItem)
+                        for key, value in self.grnItem.items():
+                            grnItemString += '{:^19}: {}\n'.format(key, value)
+                        grnItemString = grnItemString[:grnItemString.rfind('\n')]
+                        self.grnItemStringList.append(grnItemString)
                 # check if there is record of DO based on do number
                 """
-                if self.resStr[0] == qResults[0][1]:
-                    #self.loadItemDetails()
-                    #self.startSearchItem = True
                 """
         else:
             self.debugString += "No record found\n"
             if self.debugEnable == True:
                 self.secondGnome.echo('No record found !!!')
+            self.debugString += "Loading item details base on PO ...\n"
+            if self.debugEnable == True:
+                self.secondGnome.echo('Loading item details based on PO ...')
+            self.loadItemDetails()
+            self.startSearchQuantity = True
             self.goodsreceiptsnotesExist = False
-            """
-            secondGnome.echo('Press key i to insert, key p to skip')
-            key = cv2.waitKey(0)
-            if key == ord('i'):
-                self.insertDatabase()
-                self.startSearchItem = True
-            else:
-                self.next()
-                board = np.zeros((360,900,3), np.uint8)
-            """
+
+        """
         self.debugString += "Loading item details base on PO ...\n"
         if self.debugEnable == True:
             self.secondGnome.echo('Loading item details based on PO ...')
         self.loadItemDetails()
         self.startSearchItem = True
+        """
 
     def insertDatabase(self):
 
@@ -372,22 +384,28 @@ class DO:
             if self.debugEnable == True:
                 self.secondGnome.echo("inserting goodsreceiptsnotes")
             nowDateTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            val = (self.grn_number, self.do_date, self.resStr[0],\
+            val = (self.grn_id, self.grn_number, self.do_date, self.resStr[0],\
                     self.poId, self.companyID, nowDateTime, nowDateTime)
-            self.debugString += "INSERT INTO goodsreceiptsnotes(grn_number, supplier_do_date, supplier_do_number, \
-                    po_number, supplier_id, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s)\n"
+            self.debugString += "INSERT INTO goodsreceiptsnotes(id, grn_number, supplier_do_date, supplier_do_number, \
+                    po_number, supplier_id, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)\n"
             self.debugString += str(val)
             self.debugString += '\n'
             if self.debugEnable == True:
                 self.secondGnome.echo(str(val))
             Q3 = "insert into\
-            goodsreceiptsnotes(grn_number, supplier_do_date, supplier_do_number,\
+            goodsreceiptsnotes(id, grn_number, supplier_do_date, supplier_do_number,\
                                 po_number, supplier_id, created_at, updated_at)\
-            VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
             self.myCursor.execute(Q3, val)
-            self.db.commit()
+            if self.insertConfirm == False:
+                self.db.commit()
+            #self.myCursor.execute("select id, grn_number from goodsreceiptsnotes order by grn_number desc limit 1")
+            #qResults = self.myCursor.fetchall()
+            #self.grn_id = qResults[0][0]
             self.grn["id"] = self.grn_id
-            self.grn["number"] = self.grn_number
+            #else:
+            #self.grn["id"] = "AUTO_INCREMENT"
+            self.grn["grn_number"] = self.grn_number
             self.grn["po_number"] = self.poId
             self.grn["supplier_id"] = self.companyID
             self.grn["supplier_do_number"] = self.resStr[0]
@@ -420,17 +438,21 @@ class DO:
                 exist = self.myCursor.fetchall()
                 #print(exist)
                 if not exist:
-                    self.myCursor.execute("select id from goodrecieptsnoteitems order by id desc limit 1")
-                    qResults = self.myCursor.fetchall()
-                    self.grn_item_id = qResults[0][0]+1
+                    if index == 0:
+                        self.myCursor.execute("select id from goodrecieptsnoteitems order by id desc limit 1")
+                        qResults = self.myCursor.fetchall()
+                        self.grn_item_id = qResults[0][0]+1
+                    else:
+                        self.grn_item_id += 1
                     self.debugString += "inserting goodrecieptsnoteitems\n"
                     if self.debugEnable == True:
                         self.secondGnome.echo("inserting goodrecieptsnoteitems")
                     nowDateTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    Q6 = "insert into goodrecieptsnoteitems(grn_id, po_item_id, item_id,\
+                    #if self.insertConfirm == False:
+                    Q6 = "insert into goodrecieptsnoteitems(id, grn_id, po_item_id, item_id,\
                             ordered_quantity,recieving_quantity, created_at, updated_at)\
-                    VALUES(%s,%s,%s,%s,%s,%s,%s)"
-                    val1 = (self.grn_id, item[0], item[1], item[2], self.itemQuantityToBeDetected[index][1], nowDateTime, nowDateTime)
+                    VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"
+                    val1 = (self.grn_item_id, self.grn_id, item[0], item[1], item[2], self.itemQuantityToBeDetected[index][1], nowDateTime, nowDateTime)
                     self.debugString += Q6
                     self.debugString += '\n'
                     self.debugString += str(val1)
@@ -438,10 +460,16 @@ class DO:
                     if self.debugEnable == True:
                         self.secondGnome.echo(str(val1))
                     self.myCursor.execute(Q6, val1)
-                    self.db.commit()
+                    if self.insertConfirm == False:
+                        self.db.commit()
+                    #self.myCursor.execute("select id from goodrecieptsnoteitems order by id desc limit 1")
+                    #qResults = self.myCursor.fetchall()
+                    #self.grn_item_id = qResults[0][0]
+                    self.grnItem["id"] = self.grn_item_id
+                    #else:
+                    #    self.grnItem["id"] = "AUTO_INCREMENT"
                     
                     grnItemString = ''
-                    self.grnItem["id"] = self.grn_item_id
                     self.grnItem["grn_id"] = self.grn_id
                     self.grnItem["po_item_id"] = item[0]
                     self.grnItem["item_id"] = item[1]
@@ -449,11 +477,11 @@ class DO:
                     self.grnItem["recieving_quantity"] = self.itemQuantityToBeDetected[index][1]
                     self.grnItem["created_at"] = nowDateTime
                     self.grnItem["updated_at"] = nowDateTime
-
+                    self.grnItemList.append(self.grnItem)
                     for key, value in self.grnItem.items():
                         grnItemString += '{:^19}: {}\n'.format(key, value)
                     grnItemString = grnItemString[:grnItemString.rfind('\n')]
-                    self.grnItemList.append(grnItemString)
+                    self.grnItemStringList.append(grnItemString)
                 else:
                     echoStr = item[3]+"with item_id="+str(item[1])+", po_item_id="+str(item[0])+" exist in goodrecieptsnoteitems"
                     self.debugString += echoStr
@@ -461,31 +489,54 @@ class DO:
                     if self.debugEnable == True:
                         self.secondGnome.echo(echoStr)
         
-        """
-        Q2 = "select id from purchase_orders where po_number='"
-        query = Q2+self.po_number+'\'' # query po_number id 
-        secondGnome.echo(query)
-        myCursor.execute(query)
-        descr = myCursor.description
-        qResults = myCursor.fetchall()
-        if qResults:
-            mySqlTable(qResults, descr)
-            if len(qResults) > 1:
-                secondGnome.echo('more than one record') 
-            else:
-                po_id = qResults[0][0]
-                    #supplier_do_date, supplier_do_number, po_number, supplier_id
-                val = (self.do_date, self.resStr[0],\
-                        po_id, self.companyID)
-                print(val)
-                Q3 = "insert into\
-                goodsreceiptsnotes(supplier_do_date, supplier_do_number, po_number, supplier_id)\
-                VALUES (%s,%s,%s,%s)"
-                myCursor.execute(Q3, val)
-                db.commit()
-        else:
-            secondGnome.echo('No po_number id record found')
-        """
+
+    def confirm(self):
+        if self.insertConfirm == True:
+            """
+            # insert goodsreceiptsnotes
+            nowDateTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            val = (self.grn_number, self.do_date, self.resStr[0],\
+                    self.poId, self.companyID, nowDateTime, nowDateTime)
+            self.debugString += "INSERT INTO goodsreceiptsnotes(grn_number, supplier_do_date, supplier_do_number, \
+                    po_number, supplier_id, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s)\n"
+            self.debugString += str(val)
+            self.debugString += '\n'
+            if self.debugEnable == True:
+                self.secondGnome.echo(str(val))
+            Q3 = "insert into\
+            goodsreceiptsnotes(grn_number, supplier_do_date, supplier_do_number,\
+                                po_number, supplier_id, created_at, updated_at)\
+            VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            self.myCursor.execute(Q3, val)
+            self.db.commit()
+            self.myCursor.execute("select id, grn_number from goodsreceiptsnotes order by grn_number desc limit 1")
+            qResults = self.myCursor.fetchall()
+            self.grn_id = qResults[0][0]
+            self.grn["id"] = self.grn_id
+
+            # insert goodrecieptsnoteitems
+            for item in self.grnItemList:
+                if self.debugEnable == True:
+                    self.secondGnome.echo("inserting goodrecieptsnoteitems")
+                nowDateTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                Q6 = "insert into goodrecieptsnoteitems(grn_id, po_item_id, item_id,\
+                        ordered_quantity,recieving_quantity, created_at, updated_at)\
+                VALUES(%s,%s,%s,%s,%s,%s,%s)"
+                val1 = (self.grn_id, item["po_item_id"], item["item_id"], item["ordered_quantity"], item["recieving_quantity"], nowDateTime, nowDateTime)
+                self.debugString += Q6
+                self.debugString += '\n'
+                self.debugString += str(val1)
+                self.debugString += '\n'
+                if self.debugEnable == True:
+                    self.secondGnome.echo(str(val1))
+                self.myCursor.execute(Q6, val1)
+                self.db.commit()
+                self.myCursor.execute("select id from goodrecieptsnoteitems order by id desc limit 1")
+                qResults = self.myCursor.fetchall()
+                self.grn_item_id = qResults[0][0]
+                self.grnItem["id"] = self.grn_item_id
+            """
+            self.db.commit()
 
     def loadItemDetails(self):
         # itemDetails[0] = purchase_order_items.id

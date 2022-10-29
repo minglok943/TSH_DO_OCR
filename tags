@@ -15,8 +15,8 @@ Ui_Form	test.py	/^class Ui_Form(object):$/;"	c
 Ui_MainWindow	detail2.py	/^class Ui_MainWindow(object):$/;"	c
 Worker1	DO_Ocr.py	/^class Worker1(QThread):$/;"	c
 __init__	DO_Ocr.py	/^    def __init__(self):$/;"	m	class:MyWindow
-__init__	DO_Ocr.py	/^    def __init__(self, grnString, grnItemList):$/;"	m	class:detailWindow
-__init__	DO_Processing.py	/^    def __init__(self, debugEnable, showQuantityCrop):$/;"	m	class:DO
+__init__	DO_Ocr.py	/^    def __init__(self, DO):$/;"	m	class:detailWindow
+__init__	DO_Processing.py	/^    def __init__(self, debugEnable, showQuantityCrop, insertConfirm):$/;"	m	class:DO
 __init__	secondTerminal.py	/^    def __init__(self, width=80, height=24, winX=1400, winY=1400): #open a gnome-terminal at the bottom right on default$/;"	m	class:Term
 __init__	test1.py	/^    def __init__(self):$/;"	m	class:MainWindow
 add_detected_item	DO_Ocr.py	/^    def add_detected_item(self, itemDetected):$/;"	m	class:MyWindow
@@ -38,6 +38,7 @@ checkDatabase	DO_Processing.py	/^    def checkDatabase(self):$/;"	m	class:DO
 companyNameUpdate	DO_Ocr.py	/^    companyNameUpdate = pyqtSignal(str)$/;"	v	class:Worker1
 companyName_key_in	DO_Ocr.py	/^    def companyName_key_in(self, text):$/;"	m	class:MyWindow
 companyYaml	genYaml.py	/^    companyYaml = yaml.safe_load(file)$/;"	v
+confirm	DO_Processing.py	/^    def confirm(self):$/;"	m	class:DO
 count	Parts/scanner_5.py	/^count = 0$/;"	v
 count	Parts/scanner_6.py	/^count = 0$/;"	v
 count	scanner.py	/^count = 0$/;"	v
@@ -51,6 +52,7 @@ db	genYaml.py	/^db = mysql.connect($/;"	v
 detailWindow	DO_Ocr.py	/^class detailWindow(QMainWindow):$/;"	c
 doDateUpdate	DO_Ocr.py	/^    doDateUpdate = pyqtSignal(str)$/;"	v	class:Worker1
 doDate_key_in	DO_Ocr.py	/^    def doDate_key_in(self):$/;"	m	class:MyWindow
+doExist	DO_Ocr.py	/^    doExist = pyqtSignal(bool)$/;"	v	class:Worker1
 doNumberUpdate	DO_Ocr.py	/^    doNumberUpdate = pyqtSignal(str)$/;"	v	class:Worker1
 doNumber_key_in	DO_Ocr.py	/^    def doNumber_key_in(self):$/;"	m	class:MyWindow
 echo	secondTerminal.py	/^    def echo(self, message):$/;"	m	class:Term
@@ -155,9 +157,11 @@ send	secondTerminal.py	/^    def send(self, cmd):$/;"	m	class:Term
 setupUi	detail.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
 setupUi	detail2.py	/^    def setupUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
 setupUi	test.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
+showExist	DO_Ocr.py	/^    def showExist(self):$/;"	m	class:MyWindow
 split	genYaml.py	/^        split = re.split(r'(^[^\\d]+)', i)[1:]$/;"	v
 statusCmp	DO_Ocr.py	/^    statusCmp = False$/;"	v	class:Worker1
 statusDoDate	DO_Ocr.py	/^    statusDoDate = False$/;"	v	class:Worker1
+statusDoExist	DO_Ocr.py	/^    statusDoExist = False$/;"	v	class:Worker1
 statusDoNumber	DO_Ocr.py	/^    statusDoNumber = False$/;"	v	class:Worker1
 statusItem	DO_Ocr.py	/^    statusItem = False$/;"	v	class:Worker1
 statusPo	DO_Ocr.py	/^    statusPo = False$/;"	v	class:Worker1

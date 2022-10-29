@@ -15,19 +15,20 @@ import cv2
 from DO_Processing import DO
 
 class detailWindow(QMainWindow):
-    def __init__(self, grnString, grnItemList):
+    def __init__(self, DO):
 
         #Qt Stuff..
         super(detailWindow, self).__init__()
         uic.loadUi('detail2.ui', self)        #load the .ui file made from Qt designer -- you can also use pyside-uic -o outpit.py input.ui on terminal to see your .ui file converted to python objects.
+        self.d_o = DO
         self.vbox = QVBoxLayout()
-        length = len(grnItemList)
+        length = len(self.d_o.grnItemStringList)
         self.hboxList = []
         for i in range(0, math.ceil(length)):
             self.hboxList.append(QHBoxLayout())
 
         index = 0
-        self.plainTextEdit_4.setPlainText(grnString)
+        self.plainTextEdit_4.setPlainText(self.d_o.grnString)
         for i in range(0,length):
             plain = QPlainTextEdit()
             font = QFont()
@@ -50,23 +51,8 @@ class detailWindow(QMainWindow):
             plain.setStyleSheet("border-width: 2px;\n"
                                 "border-radius: 20px;\n"
                                 "background-color: rgb(114, 159, 207);")
-            """
-            plain.setPlainText("                id: 1\n"
-"            grn_id: 1\n"
-"        po_item_id: 2\n"
-"         wo_number: null\n"
-"           item_id: 7350\n"
-"  ordered_quantity: 1000.0000\n"
-"recieving_quantity: 1000.0000\n"
-"            status: 14\n"
-"        created_at: 2021-10-25 17:14:30\n"
-"        updated_at: 2021-10-25 17:14:30\n"
-"        deleted_at: NULL\n"
-"   supinvunitprice: 0.0000\n"
-"       supinvtotal: 0.0000")
-            """
 
-            plain.setPlainText(grnItemList[i])
+            plain.setPlainText(self.d_o.grnItemStringList[i])
             if i%3 == 0 and i!=0:
                 index = index + 1
             self.hboxList[index].addWidget(plain)
@@ -80,6 +66,7 @@ class detailWindow(QMainWindow):
 
 
     def on_click_confirm(self):
+        self.d_o.confirm()
         self.close()
 
     def on_click_cancel(self):
@@ -127,6 +114,7 @@ class MyWindow(QWidget):
         self.Worker1.itemAddDetected.connect(self.add_detected_item)
         self.Worker1.itemQuantityUpdate.connect(self.add_quantity)
         self.Worker1.infoUpdate.connect(self.update_info)
+        self.Worker1.doExist.connect(self.showExist)
 
          
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
@@ -162,8 +150,6 @@ class MyWindow(QWidget):
     @pyqtSlot()
     def on_click_PO(self):
         print('retake PO')
-        self.detWin = detailWindow(self.Worker1.d_o.grnString, self.Worker1.d_o.grnItemList)
-        self.detWin.show()
 
         """
         self.tPOLineEdit.setText('')
@@ -190,6 +176,9 @@ class MyWindow(QWidget):
     
     def on_click_insert(self):
         self.Worker1.d_o.insertDatabase()
+        if self.Worker1.d_o.insertConfirm == True:
+            self.detWin = detailWindow(self.Worker1.d_o)
+            self.detWin.show()
 
     def on_click_next(self):
         self.tPOLineEdit.setText('')
@@ -201,6 +190,16 @@ class MyWindow(QWidget):
             self.orderedEditList[i].setText('')
             self.receivedEditList[i].setText('')
         self.Worker1.d_o.next()
+        self.Worker1.statusPo = False
+        self.Worker1.statusCmp = False
+        self.Worker1.statusDoDate = False
+        self.Worker1.statusDoNumber = False
+        self.Worker1.statusItem = False
+        self.Worker1.lastItemDetectedCount = 0
+        self.Worker1.lastQuantityDetectedCount = 0
+        self.Worker1.statusQuantity.clear()
+        self.Worker1.lastDebugString = ''
+        self.Worker1.statusDoExist = False
 
     def ImageUpdateSlot(self, Image):
         self.feedLabel.setPixmap(QPixmap.fromImage(Image))
@@ -247,15 +246,10 @@ class MyWindow(QWidget):
 
         except:
             pass #when it is not available
-        """
-        horScrollBar = self.infoTextBrowser.horizontalScrollBar()
-        verScrollBar = self.infoTextBrowser.verticalScrollBar()
-        scrollIsAtEnd = verScrollBar.maximum() - verScrollBar.value() <= 10
 
-        if scrollIsAtEnd:
-            verScrollBar.setValue(verScrollBar.maximum()) # Scrolls to the bottom
-            horScrollBar.setValue(0) # scroll to the left
-        """
+    def showExist(self):
+        self.detWin = detailWindow(self.Worker1.d_o)
+        self.detWin.show()
 
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
@@ -284,6 +278,8 @@ class Worker1(QThread):
     statusQuantity = []
     infoUpdate = pyqtSignal(str)
     lastDebugString = ''
+    doExist = pyqtSignal(bool)
+    statusDoExist = False
 
     def run(self):
         self.ThreadActive = True
@@ -292,12 +288,16 @@ class Worker1(QThread):
         Capture = cv2.VideoCapture(0,cv2.CAP_V4L2)
         Capture.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
         Capture.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
-        self.d_o = DO(debugEnable=False, showQuantityCrop=False)
+        self.d_o = DO(debugEnable=False, showQuantityCrop=False, insertConfirm=True)
         while self.ThreadActive:
             ret, frame = Capture.read()
             if ret:
                 self.d_o.run(frame)
                 
+                if self.d_o.goodsreceiptsnotesExist == True and self.statusDoExist == False:
+                    self.statusDoExist = True
+                    self.doExist.emit(True)
+
                 if self.lastDebugString != self.d_o.debugString:
                     self.infoUpdate.emit(self.d_o.debugString)
                     self.lastDebugString = self.d_o.debugString
