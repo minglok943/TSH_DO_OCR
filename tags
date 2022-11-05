@@ -13,9 +13,10 @@ Term	secondTerminal.py	/^class Term:$/;"	c
 Ui_Form	detail.py	/^class Ui_Form(object):$/;"	c
 Ui_Form	test.py	/^class Ui_Form(object):$/;"	c
 Ui_MainWindow	detail2.py	/^class Ui_MainWindow(object):$/;"	c
+Ui_MainWindow	detail3.py	/^class Ui_MainWindow(object):$/;"	c
 Worker1	DO_Ocr.py	/^class Worker1(QThread):$/;"	c
 __init__	DO_Ocr.py	/^    def __init__(self):$/;"	m	class:MyWindow
-__init__	DO_Ocr.py	/^    def __init__(self, DO):$/;"	m	class:detailWindow
+__init__	DO_Ocr.py	/^    def __init__(self, Worker, exist):$/;"	m	class:detailWindow
 __init__	DO_Processing.py	/^    def __init__(self, debugEnable, showQuantityCrop, insertConfirm):$/;"	m	class:DO
 __init__	secondTerminal.py	/^    def __init__(self, width=80, height=24, winX=1400, winY=1400): #open a gnome-terminal at the bottom right on default$/;"	m	class:Term
 __init__	test1.py	/^    def __init__(self):$/;"	m	class:MainWindow
@@ -35,8 +36,9 @@ cap	scanner.py	/^cap = cv2.VideoCapture(0, cv2.CAP_V4L2)$/;"	v
 center_text	Parts/scanner_5.py	/^def center_text(image, text):$/;"	f
 center_text	Parts/scanner_6.py	/^def center_text(image, text):$/;"	f
 checkDatabase	DO_Processing.py	/^    def checkDatabase(self):$/;"	m	class:DO
+closeEvent	DO_Ocr.py	/^    def closeEvent(self,event):$/;"	m	class:detailWindow
 companyNameUpdate	DO_Ocr.py	/^    companyNameUpdate = pyqtSignal(str)$/;"	v	class:Worker1
-companyName_key_in	DO_Ocr.py	/^    def companyName_key_in(self, text):$/;"	m	class:MyWindow
+companyName_key_in	DO_Ocr.py	/^    def companyName_key_in(self):$/;"	m	class:MyWindow
 companyYaml	genYaml.py	/^    companyYaml = yaml.safe_load(file)$/;"	v
 confirm	DO_Processing.py	/^    def confirm(self):$/;"	m	class:DO
 count	Parts/scanner_5.py	/^count = 0$/;"	v
@@ -109,6 +111,7 @@ ocr_text	Parts/scanner_3.py	/^    ocr_text = pytesseract.image_to_string(warped)
 ocr_text	Parts/scanner_4.py	/^    ocr_text = pytesseract.image_to_string(warped)$/;"	v
 ocr_text	Parts/scanner_5.py	/^        ocr_text = pytesseract.image_to_string(warped)$/;"	v
 ocr_text	Parts/scanner_6.py	/^        ocr_text = pytesseract.image_to_string(warped)$/;"	v
+onItemIndexChanged	DO_Ocr.py	/^    def onItemIndexChanged(self, id):$/;"	m	class:MyWindow
 on_click_PO	DO_Ocr.py	/^    def on_click_PO(self):$/;"	m	class:MyWindow
 on_click_cancel	DO_Ocr.py	/^    def on_click_cancel(self):$/;"	m	class:detailWindow
 on_click_companyName	DO_Ocr.py	/^    def on_click_companyName(self):$/;"	m	class:MyWindow
@@ -131,11 +134,24 @@ processed	Parts/scanner_6.py	/^    processed = image_processing(warped)$/;"	v
 processed	Parts/scanner_6.py	/^    processed = processed[10:processed.shape[0] - 10, 10:processed.shape[1] - 10]$/;"	v
 q	genYaml.py	/^    q = myCursor.fetchall()$/;"	v
 quantityString	genYaml.py	/^quantityString = [$/;"	v
+quantity_key_in_0	DO_Ocr.py	/^    def quantity_key_in_0(self):$/;"	m	class:MyWindow
+quantity_key_in_1	DO_Ocr.py	/^    def quantity_key_in_1(self):$/;"	m	class:MyWindow
+quantity_key_in_10	DO_Ocr.py	/^    def quantity_key_in_10(self):$/;"	m	class:MyWindow
+quantity_key_in_11	DO_Ocr.py	/^    def quantity_key_in_11(self):$/;"	m	class:MyWindow
+quantity_key_in_2	DO_Ocr.py	/^    def quantity_key_in_2(self):$/;"	m	class:MyWindow
+quantity_key_in_3	DO_Ocr.py	/^    def quantity_key_in_3(self):$/;"	m	class:MyWindow
+quantity_key_in_4	DO_Ocr.py	/^    def quantity_key_in_4(self):$/;"	m	class:MyWindow
+quantity_key_in_5	DO_Ocr.py	/^    def quantity_key_in_5(self):$/;"	m	class:MyWindow
+quantity_key_in_6	DO_Ocr.py	/^    def quantity_key_in_6(self):$/;"	m	class:MyWindow
+quantity_key_in_7	DO_Ocr.py	/^    def quantity_key_in_7(self):$/;"	m	class:MyWindow
+quantity_key_in_8	DO_Ocr.py	/^    def quantity_key_in_8(self):$/;"	m	class:MyWindow
+quantity_key_in_9	DO_Ocr.py	/^    def quantity_key_in_9(self):$/;"	m	class:MyWindow
 register	DO_Processing.py	/^    def register(self, compName):$/;"	m	class:DO
 res	genYaml.py	/^res = myCursor.fetchall()$/;"	v
 result	genYaml.py	/^    result = re.search(row[1], row[2])$/;"	v
 retranslateUi	detail.py	/^    def retranslateUi(self, Form):$/;"	m	class:Ui_Form
 retranslateUi	detail2.py	/^    def retranslateUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
+retranslateUi	detail3.py	/^    def retranslateUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
 retranslateUi	test.py	/^    def retranslateUi(self, Form):$/;"	m	class:Ui_Form
 run	DO_Ocr.py	/^    def run(self):$/;"	m	class:Worker1
 run	DO_Processing.py	/^    def run(self, frame):$/;"	m	class:DO
@@ -156,6 +172,7 @@ searchItem	DO_Processing.py	/^    def searchItem(self, text):$/;"	m	class:DO
 send	secondTerminal.py	/^    def send(self, cmd):$/;"	m	class:Term
 setupUi	detail.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
 setupUi	detail2.py	/^    def setupUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
+setupUi	detail3.py	/^    def setupUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
 setupUi	test.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
 showExist	DO_Ocr.py	/^    def showExist(self):$/;"	m	class:MyWindow
 split	genYaml.py	/^        split = re.split(r'(^[^\\d]+)', i)[1:]$/;"	v
