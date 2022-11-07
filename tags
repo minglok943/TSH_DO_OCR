@@ -10,12 +10,15 @@ ImageUpdateSlot	DO_Ocr.py	/^    def ImageUpdateSlot(self, Image):$/;"	m	class:My
 MainWindow	test1.py	/^class MainWindow(QMainWindow):$/;"	c
 MyWindow	DO_Ocr.py	/^class MyWindow(QWidget):$/;"	c
 Term	secondTerminal.py	/^class Term:$/;"	c
+Ui_Form	DO.py	/^class Ui_Form(object):$/;"	c
 Ui_Form	detail.py	/^class Ui_Form(object):$/;"	c
 Ui_Form	test.py	/^class Ui_Form(object):$/;"	c
 Ui_MainWindow	detail2.py	/^class Ui_MainWindow(object):$/;"	c
 Ui_MainWindow	detail3.py	/^class Ui_MainWindow(object):$/;"	c
+Ui_MainWindow	login.py	/^class Ui_MainWindow(object):$/;"	c
 Worker1	DO_Ocr.py	/^class Worker1(QThread):$/;"	c
 __init__	DO_Ocr.py	/^    def __init__(self):$/;"	m	class:MyWindow
+__init__	DO_Ocr.py	/^    def __init__(self):$/;"	m	class:loginWindow
 __init__	DO_Ocr.py	/^    def __init__(self, Worker, exist):$/;"	m	class:detailWindow
 __init__	DO_Processing.py	/^    def __init__(self, debugEnable, showQuantityCrop, insertConfirm):$/;"	m	class:DO
 __init__	secondTerminal.py	/^    def __init__(self, width=80, height=24, winX=1400, winY=1400): #open a gnome-terminal at the bottom right on default$/;"	m	class:Term
@@ -62,6 +65,7 @@ f	genYaml.py	/^f = open("test.yaml", "w")$/;"	v
 file	Parts/scanner_5.py	/^        file = open("output\/recognized_" + str(count - 1) + ".txt", "w")$/;"	v
 file	Parts/scanner_6.py	/^        file = open("output\/recognized_" + str(count - 1) + ".txt", "w")$/;"	v
 first_page	output/plumber.py	/^    first_page = pdf.pages[0]$/;"	v
+focusOnLoginButton	DO_Ocr.py	/^    def focusOnLoginButton(self):$/;"	m	class:loginWindow
 font	Parts/scanner_5.py	/^font = cv2.FONT_HERSHEY_SIMPLEX$/;"	v
 font	Parts/scanner_6.py	/^font = cv2.FONT_HERSHEY_SIMPLEX$/;"	v
 frame	Parts/scanner_0.py	/^    frame = cv2.rotate(frame, cv2.ROTATE_180)$/;"	v
@@ -99,12 +103,16 @@ lastDebugString	DO_Ocr.py	/^    lastDebugString = ''$/;"	v	class:Worker1
 lastItemDetectedCount	DO_Ocr.py	/^    lastItemDetectedCount = 0$/;"	v	class:Worker1
 lastQuantityDetectedCount	DO_Ocr.py	/^    lastQuantityDetectedCount = 0$/;"	v	class:Worker1
 loadItemDetails	DO_Processing.py	/^    def loadItemDetails(self):$/;"	m	class:DO
+login	DO_Ocr.py	/^    login = loginWindow()$/;"	v
+loginCheck	DO_Ocr.py	/^    def loginCheck(self):$/;"	m	class:loginWindow
+loginWindow	DO_Ocr.py	/^class loginWindow(QMainWindow):$/;"	c
 main	test1.py	/^def main():$/;"	f
 mouseMoveEvent	DO_Ocr.py	/^    def mouseMoveEvent(self, event):$/;"	m	class:MyWindow
+mouseMoveEvent	DO_Ocr.py	/^    def mouseMoveEvent(self, event):$/;"	m	class:loginWindow
 mousePressEvent	DO_Ocr.py	/^    def mousePressEvent(self, event):$/;"	m	class:MyWindow
+mousePressEvent	DO_Ocr.py	/^    def mousePressEvent(self, event):$/;"	m	class:loginWindow
 myCursor	genYaml.py	/^myCursor = db.cursor()$/;"	v
 mySqlTable	DO_Processing.py	/^    def mySqlTable(self, results, description):$/;"	m	class:DO
-myWindow	DO_Ocr.py	/^    myWindow = MyWindow()$/;"	v
 next	DO_Processing.py	/^    def next(self):$/;"	m	class:DO
 nothing	scanner.py	/^def nothing(x):$/;"	f
 ocr_text	Parts/scanner_3.py	/^    ocr_text = pytesseract.image_to_string(warped)$/;"	v
@@ -149,9 +157,11 @@ quantity_key_in_9	DO_Ocr.py	/^    def quantity_key_in_9(self):$/;"	m	class:MyWin
 register	DO_Processing.py	/^    def register(self, compName):$/;"	m	class:DO
 res	genYaml.py	/^res = myCursor.fetchall()$/;"	v
 result	genYaml.py	/^    result = re.search(row[1], row[2])$/;"	v
+retranslateUi	DO.py	/^    def retranslateUi(self, Form):$/;"	m	class:Ui_Form
 retranslateUi	detail.py	/^    def retranslateUi(self, Form):$/;"	m	class:Ui_Form
 retranslateUi	detail2.py	/^    def retranslateUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
 retranslateUi	detail3.py	/^    def retranslateUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
+retranslateUi	login.py	/^    def retranslateUi(self, MainWindow):$/;"	f
 retranslateUi	test.py	/^    def retranslateUi(self, Form):$/;"	m	class:Ui_Form
 run	DO_Ocr.py	/^    def run(self):$/;"	m	class:Worker1
 run	DO_Processing.py	/^    def run(self, frame):$/;"	m	class:DO
@@ -170,9 +180,11 @@ searchCompanyFromYaml	DO_Processing.py	/^    def searchCompanyFromYaml(self, tex
 searchDate	DO_Processing.py	/^    def searchDate(self, text):$/;"	m	class:DO
 searchItem	DO_Processing.py	/^    def searchItem(self, text):$/;"	m	class:DO
 send	secondTerminal.py	/^    def send(self, cmd):$/;"	m	class:Term
+setupUi	DO.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
 setupUi	detail.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
 setupUi	detail2.py	/^    def setupUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
 setupUi	detail3.py	/^    def setupUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
+setupUi	login.py	/^    def setupUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
 setupUi	test.py	/^    def setupUi(self, Form):$/;"	m	class:Ui_Form
 showExist	DO_Ocr.py	/^    def showExist(self):$/;"	m	class:MyWindow
 split	genYaml.py	/^        split = re.split(r'(^[^\\d]+)', i)[1:]$/;"	v

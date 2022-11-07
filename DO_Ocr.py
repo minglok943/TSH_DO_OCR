@@ -14,24 +14,105 @@ from python_qt_binding.QtCore import *
 import cv2
 from DO_Processing import DO
 
+import res1
+
+class loginWindow(QMainWindow):
+    def __init__(self):
+        super(loginWindow, self).__init__()
+        uic.loadUi('login2.ui', self)        #load the .ui file made from Qt designer -- you can also use pyside-uic -o outpit.py input.ui on terminal to see your .ui file converted to python objects.
+
+     #   self.label.setPixmap(QPixmap('tsh.png').scaled(self.logoLabel.size(), Qt.KeepAspectRatio))
+        self.logoLabel.setPixmap(QPixmap('logo.PNG').scaled(self.logoLabel.size(), Qt.KeepAspectRatio))
+        self.loginButton.clicked.connect(self.loginCheck)
+        self.lineEdit_2.editingFinished.connect(self.focusOnLoginButton)
+
+        self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+
+        qtRectangle = self.frameGeometry()
+        centerPoint = QDesktopWidget().availableGeometry().center()
+        qtRectangle.moveCenter(centerPoint)
+        self.move(qtRectangle.topLeft())
+        
+        self.loginButton.setShortcut('Return')
+
+
+    def loginCheck(self):
+        self.MyWindow = MyWindow()
+        self.MyWindow.show()
+        self.close()
+        
+    def focusOnLoginButton(self):
+        self.loginButton.setFocus()
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint (event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+
+        #def userIdKeyIn(self):
+         #   self.userIdEdit.setText('')
+
+
 class detailWindow(QMainWindow):
     def __init__(self, Worker, exist):
 
         #Qt Stuff..
         super(detailWindow, self).__init__()
-        uic.loadUi('detail2.ui', self)        #load the .ui file made from Qt designer -- you can also use pyside-uic -o outpit.py input.ui on terminal to see your .ui file converted to python objects.
+        uic.loadUi('detail3.ui', self)        #load the .ui file made from Qt designer -- you can also use pyside-uic -o outpit.py input.ui on terminal to see your .ui file converted to python objects.
+
+        # move to center of screen
+        qtRectangle = self.frameGeometry()
+        centerPoint = QDesktopWidget().availableGeometry().center()
+        qtRectangle.moveCenter(centerPoint)
+        self.move(qtRectangle.topLeft())
+        
         self.exist = exist
         self.Worker1 = Worker
         self.d_o = Worker.d_o
         self.vbox = QVBoxLayout()
-        length = len(self.d_o.grnItemStringList)
+        length = 1+len(self.d_o.grnItemStringList)+len(self.d_o.siStringList)\
+                +len(self.d_o.silStringList)+len(self.d_o.sitStringList)
         self.hboxList = []
-        for i in range(0, math.ceil(length)):
+        for i in range(0, math.ceil(length/3)):
             self.hboxList.append(QHBoxLayout())
 
+        member = 0
         index = 0
-        self.plainTextEdit_4.setPlainText(self.d_o.grnString)
-        for i in range(0,length):
+        pilWidth = 381
+        pilHeight = 281
+
+        plain = QPlainTextEdit()
+        font = QFont()
+        font.setFamily("Ubuntu Mono")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        plain.setFont(font)
+
+        plain.setGeometry(QRect(60, 50, pilWidth, pilHeight))
+
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(plain.sizePolicy().hasHeightForWidth())
+        plain.setSizePolicy(sizePolicy)
+        plain.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        plain.setMinimumSize(QSize(pilWidth, pilHeight))
+
+        plain.setStyleSheet("border-width: 2px;\n"
+                            "border-radius: 20px;\n"
+                            "background-color: rgb(80, 200, 120);")
+
+        plain.setPlainText(self.d_o.grnString)
+        self.hboxList[index].addWidget(plain)
+        member += 1
+        #self.plainTextEdit_4.setPlainText(self.d_o.grnString)
+        
+        for i in range(member,member+len(self.d_o.grnItemStringList)):
             plain = QPlainTextEdit()
             font = QFont()
             font.setFamily("Ubuntu Mono")
@@ -40,7 +121,7 @@ class detailWindow(QMainWindow):
             font.setWeight(75)
             plain.setFont(font)
 
-            plain.setGeometry(QRect(60, 50, 271, 251))
+            plain.setGeometry(QRect(60, 50, pilWidth, pilHeight))
 
             sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
             sizePolicy.setHorizontalStretch(0)
@@ -48,16 +129,111 @@ class detailWindow(QMainWindow):
             sizePolicy.setHeightForWidth(plain.sizePolicy().hasHeightForWidth())
             plain.setSizePolicy(sizePolicy)
             plain.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-            plain.setMinimumSize(QSize(271, 251))
+            plain.setMinimumSize(QSize(pilWidth, pilHeight))
 
             plain.setStyleSheet("border-width: 2px;\n"
                                 "border-radius: 20px;\n"
                                 "background-color: rgb(114, 159, 207);")
 
-            plain.setPlainText(self.d_o.grnItemStringList[i])
+            plain.setPlainText(self.d_o.grnItemStringList[i-member])
             if i%3 == 0 and i!=0:
                 index = index + 1
             self.hboxList[index].addWidget(plain)
+        
+        member += len(self.d_o.grnItemStringList)
+
+        # stock_inventories
+        for i in range(member,member+len(self.d_o.siStringList)):
+            plain = QPlainTextEdit()
+            font = QFont()
+            font.setFamily("Ubuntu Mono")
+            font.setPointSize(12)
+            font.setBold(True)
+            font.setWeight(75)
+            plain.setFont(font)
+
+            plain.setGeometry(QRect(60, 50, pilWidth, pilHeight))
+
+            sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+            sizePolicy.setHorizontalStretch(0)
+            sizePolicy.setVerticalStretch(0)
+            sizePolicy.setHeightForWidth(plain.sizePolicy().hasHeightForWidth())
+            plain.setSizePolicy(sizePolicy)
+            plain.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+            plain.setMinimumSize(QSize(pilWidth, pilHeight))
+
+            plain.setStyleSheet("border-width: 2px;\n"
+                                "border-radius: 20px;\n"
+                                "background-color: rgb(245, 121, 0);")
+
+            plain.setPlainText(self.d_o.siStringList[i-member])
+            if i%3 == 0 and i!=0:
+                index = index + 1
+            self.hboxList[index].addWidget(plain)
+        
+        member += len(self.d_o.siStringList)
+
+        # stock_inventory_locations
+        for i in range(member,member+len(self.d_o.silStringList)):
+            plain = QPlainTextEdit()
+            font = QFont()
+            font.setFamily("Ubuntu Mono")
+            font.setPointSize(12)
+            font.setBold(True)
+            font.setWeight(75)
+            plain.setFont(font)
+
+            plain.setGeometry(QRect(60, 50, pilWidth, pilHeight))
+
+            sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+            sizePolicy.setHorizontalStretch(0)
+            sizePolicy.setVerticalStretch(0)
+            sizePolicy.setHeightForWidth(plain.sizePolicy().hasHeightForWidth())
+            plain.setSizePolicy(sizePolicy)
+            plain.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+            plain.setMinimumSize(QSize(pilWidth, pilHeight))
+
+            plain.setStyleSheet("border-width: 2px;\n"
+                                "border-radius: 20px;\n"
+                                "background-color: rgb(173, 127, 168);")
+
+            plain.setPlainText(self.d_o.silStringList[i-member])
+            if i%3 == 0 and i!=0:
+                index = index + 1
+            self.hboxList[index].addWidget(plain)
+        
+        member += len(self.d_o.silStringList)
+
+        # stock_inventory_transactions
+        for i in range(member,member+len(self.d_o.sitStringList)):
+            plain = QPlainTextEdit()
+            font = QFont()
+            font.setFamily("Ubuntu Mono")
+            font.setPointSize(12)
+            font.setBold(True)
+            font.setWeight(75)
+            plain.setFont(font)
+
+            plain.setGeometry(QRect(60, 50, pilWidth, pilHeight))
+
+            sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+            sizePolicy.setHorizontalStretch(0)
+            sizePolicy.setVerticalStretch(0)
+            sizePolicy.setHeightForWidth(plain.sizePolicy().hasHeightForWidth())
+            plain.setSizePolicy(sizePolicy)
+            plain.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+            plain.setMinimumSize(QSize(pilWidth, pilHeight))
+
+            plain.setStyleSheet("border-width: 2px;\n"
+                                "border-radius: 20px;\n"
+                                "background-color: rgb(252, 233, 79);")
+
+            plain.setPlainText(self.d_o.sitStringList[i-member])
+            if i%3 == 0 and i!=0:
+                index = index + 1
+            self.hboxList[index].addWidget(plain)
+        
+        member += len(self.d_o.sitStringList)
 
         for hbox in self.hboxList:
             self.vbox.addLayout(hbox)
@@ -69,8 +245,8 @@ class detailWindow(QMainWindow):
         if self.exist == True:
             self.confirmButton.hide()
             self.cancelButton.setText("Quit")
-        else:
-            self.statusText.hide()
+        #else:
+            #self.statusText.hide()
 
     def on_click_confirm(self):
         self.d_o.confirm()
@@ -114,16 +290,11 @@ class MyWindow(QWidget):
         super(MyWindow, self).__init__()
         uic.loadUi('DO.ui', self)        #load the .ui file made from Qt designer -- you can also use pyside-uic -o outpit.py input.ui on terminal to see your .ui file converted to python objects.
 
-        #initialise your rviz widget
-        #self.map_widget = MyViz()
-        #add the widget to a layout present in the main window.(This will depend on the name of your layout defined by you in the designer file)
-        #self.gridLayout.addWidget(self.map_widget)
-
-        """
-        self.tableWidget.setColumnWidth(0,400)
-        self.tableWidget.setColumnWidth(1,100)
-        self.tableWidget.setColumnWidth(2,100)
-        """
+        # move to center of screen
+        qtRectangle = self.frameGeometry()
+        centerPoint = QDesktopWidget().availableGeometry().center()
+        qtRectangle.moveCenter(centerPoint)
+        self.move(qtRectangle.topLeft())
 
         self.itemComboList = [self.comboBox0, self.comboBox1, self.comboBox2, self.comboBox3,
                           self.comboBox4, self.comboBox5, self.comboBox6, self.comboBox7,
@@ -579,6 +750,8 @@ class Worker1(QThread):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    myWindow = MyWindow()
-    myWindow.show()
+    #myWindow = MyWindow()
+    #myWindow.show()
+    login = loginWindow()
+    login.show()
     app.exec_()

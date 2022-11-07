@@ -104,6 +104,57 @@ class DO:
             "supinvtotal": 'NULL'
         }
 
+        self.siStringList = []
+        self.siList = []
+        self.stock_inventories ={
+            "id": 'NULL',
+            "inventory_id": 'NULL',
+            "safety_quantity": 'NULL',
+            "current_quantity": 'NULL',
+            "converted_quantity": 'NULL',
+            "location_id": 'NULL',
+            "location_id2": 'NULL',
+            "stock_item_category_id": 'NULL',
+            "uom_converter_id": 'NULL',
+            "change_log": 'NULL',
+            "created_at": 'NULL',
+            "updated_at": 'NULL',
+            "deleted_at": 'NULL'
+        }
+
+        self.silStringList = []
+        self.silList = []
+        self.stock_inventory_locations={
+            "id": 'NULL',
+            "stock_inventory_id": 'NULL',
+            "location_id": 'NULL',
+            "current_quantity": 'NULL',
+            "converted_quantity": 'NULL',
+            "inventory_id": 'NULL',
+            "created_at": 'NULL',
+            "updated_at": 'NULL',
+            "deleted_at": 'NULL'
+        }
+
+        self.sitStringList = []
+        self.sitList = []
+        self.stock_inventory_transactions={
+            "id": 'NULL',
+            "inventory_id": 'NULL',
+            "transaction_id": 'NULL',
+            "po_number": 'NULL',
+            "supplier_do": 'NULL',
+            "quantity": 'NULL',
+            "station_id": 'NULL',
+            "transaction_by": 'NULL',
+            "transaction_reference_id": 'NULL',
+            "stock_inventory_location_id": 'NULL',
+            "remark": 'NULL',
+            "created_at": 'NULL',
+            "updated_at": 'NULL',
+            "deleted_at": 'NULL'
+        }
+
 
 
     def run(self, frame):
@@ -287,6 +338,12 @@ class DO:
         self.grnItemList.clear()
         self.grnItemStringList.clear()
         self.goodsreceiptsnotesExist = False
+        self.sitStringList.clear()
+        self.siStringList.clear()
+        self.silStringList.clear()
+        self.sitList.clear()
+        self.siList.clear()
+        self.silList.clear()
 
     def checkDatabase(self):
         self.queried = True
@@ -359,6 +416,58 @@ class DO:
                     self.myCursor.execute(query)
                     res = self.myCursor.fetchall()
                     self.grnItemStringList[index] = '  ' + res[0][0] + '\n' + self.grnItemStringList[index]
+
+                #stock_inventory_transactions 
+                for index, inv_id in enumerate(tempItemId):
+                    query = "select * from stock_inventory_transactions where\
+                            po_number="+self.grn["po_number"]+\
+                            " and inventory_id="+inv_id+\
+                            " and supplier_do='"+self.grn["supplier_do_number"]+"'"
+                    self.myCursor.execute(query)
+                    res = self.myCursor.fetchall()
+                    if res:
+                        i = 0
+                        sitString = ''
+                        for key, value in self.stock_inventory_transactions.items():
+                            value = res[0][i]
+                            self.stock_inventory_transactions[key] = value
+                            i += 1
+                            sitString += '{:^19}: {}\n'.format(key, value)
+                        sitString = sitString[:sitString.rfind('\n')]
+                        self.sitList.append(self.stock_inventory_transactions)
+                        self.sitStringList.append(sitString)
+
+                    query = "select * from stock_inventories where inventory_id="+inv_id
+                    self.myCursor.execute(query)
+                    res = self.myCursor.fetchall()
+                    if res:
+                        i = 0
+                        siString = ''
+                        for key, value in self.stock_inventories.items():
+                            value = res[0][i]
+                            self.stock_inventories[key] = value
+                            i += 1
+                            siString += '{:^19}: {}\n'.format(key, value)
+                        siString = siString[:siString.rfind('\n')]
+                        self.sitList.append(self.stock_inventories)
+                        self.siStringList.append(siString)
+
+                        query = "select * from stock_inventory_locations\
+                                where stock_inventory_id="+str(self.stock_inventories["id"])
+                        self.myCursor.execute(query)
+                        qres = self.myCursor.fetchall()
+                        if qres:
+                            i = 0
+                            silString = ''
+                            for key, value in self.stock_inventory_locations.items():
+                                value = qres[0][i]
+                                self.stock_inventory_locations[key] = value
+                                i += 1
+                                silString += '{:^19}: {}\n'.format(key, value)
+                            silString = silString[:silString.rfind('\n')]
+                            self.silList.append(self.stock_inventory_locations)
+                            self.silStringList.append(silString)
+
 
         else:
             self.debugString += "No record found\n"
@@ -436,6 +545,7 @@ class DO:
             #print("self.itemDetected")
             #print(self.itemDetected)
             first = True
+            firstStockInventoryTransaction = True
             for index, item in enumerate(self.itemDetected):
                 if self.itemQuantityToBeDetected[index][0] == False:
                     query = "select id, grn_id, ordered_quantity, recieving_quantity from goodrecieptsnoteitems where po_item_id='"+str(item[0])+"'"
@@ -450,6 +560,7 @@ class DO:
                             self.grn_item_id = qResults[0][0]+1
                             first = False
                         else:
+                            # need to increment by ourselves because database is not committed until user confirm
                             self.grn_item_id += 1
                         self.debugString += "inserting goodrecieptsnoteitems\n"
                         if self.debugEnable == True:
@@ -489,6 +600,130 @@ class DO:
                             grnItemString += '{:^19}: {}\n'.format(key, value)
                         grnItemString = grnItemString[:grnItemString.rfind('\n')]
                         self.grnItemStringList.append(grnItemString)
+
+                        # insert stock_inventory_transactions
+                        if firstStockInventoryTransaction == True:
+                            self.myCursor.execute("select id from stock_inventory_transactions order by id desc limit 1")
+                            res = self.myCursor.fetchall()
+                            self.stock_inventory_transactions_id = res[0][0] + 1
+                            firstStockInventoryTransaction = False
+                        else:
+                            self.stock_inventory_transactions_id += 1
+
+                        nowDateTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+                        self.stock_inventory_transactions["id"] = self.stock_inventory_transactions_id
+                        self.stock_inventory_transactions["inventory_id"] = self.grnItem["item_id"]
+                        self.stock_inventory_transactions["transaction_id"] = 1 # do is to be 1
+                        self.stock_inventory_transactions["po_number"] = self.grn["po_number"]
+                        self.stock_inventory_transactions["supplier_do"] = self.grn["supplier_do_number"]
+                        self.stock_inventory_transactions["quantity"] = self.grnItem["recieving_quantity"]
+                        self.stock_inventory_transactions["station_id"] = 'NULL'
+                        self.stock_inventory_transactions["transaction_by"] = 'NULL' # user code
+                        self.stock_inventory_transactions["transaction_reference_id"] = 'NULL'
+                        self.stock_inventory_transactions["stock_inventory_location_id"] = 'NULL'
+                        self.stock_inventory_transactions["remark"] = 'NULL'
+                        self.stock_inventory_transactions["created_at"] = nowDateTime
+                        self.stock_inventory_transactions["updated_at"] = nowDateTime
+                        self.stock_inventory_transactions["deleted_at"] = 'NULL'
+
+                        self.sitList.append(self.stock_inventory_transactions)
+
+                        
+                        sitString = ''
+                        query = "INSERT INTO stock_inventory_transactions("
+                        valS="("
+                        valT=[]
+                        for key, value in self.stock_inventory_transactions.items():
+                            query += key
+                            query += ", "
+                            valS += "%s,"
+                            valT.append(value)
+                            sitString += '{:^19}: {}\n'.format(key, value)
+                        sitString = sitString[:sitString.rfind('\n')]
+                        self.sitStringList.append(sitString)
+
+                        valT = tuple(valT)
+                        query = query[:-2]
+                        valS = valS[:-1]
+                        query += ") VALUES"
+                        query += valS
+                        query += ")"
+                        self.myCursor.execute(query, valT)
+                        if self.insertConfirm == False:
+                            self.db.commit()
+
+                        # Update stock_inventories
+                        query = "select * from stock_inventories where inventory_id="+self.grnItem["item_id"]
+                        self.myCursor.execute(query)
+                        res = self.myCursor.fetchall()
+                        if res:
+                            i = 0
+                            for key, value in self.stock_inventories.items():
+                                value = res[0][i]
+                                i += 1
+                                self.stock_inventories[key] = value
+                            
+                            curQty = int(float(self.stock_inventories["current_quantity"]))
+                            rcvQty = int(float(self.grnItem["recieving_quantity"]))
+                            curQty += rcvQty
+                            newCurQty = str(curQty)+".0000"
+                            nowDateTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                            self.stock_inventories["current_quantity"] = newCurQty
+                            self.stock_inventories["updated_at"] = nowDateTime
+                            self.siList.append(self.stock_inventories)
+                            
+                            val = (self.stock_inventories["current_quantity"],\
+                                    self.stock_inventories["updated_at"])
+                            query = "UPDATE stock_inventories SET current_quantity=%s, updated_at=%s \
+                                    where inventory_id="+self.stock_inventories["inventory_id"]
+                            self.myCursor.execute(query, val)
+                            if self.insertConfirm == False:
+                                self.db.commit()
+                                siString = ''
+                                for key, value in self.stock_inventories.items():
+                                    siString += '{:^19}: {}\n'.format(key, value)
+                                siString = siString[:siString.rfind('\n')]
+                                self.siStringList.append(siString)
+
+                            # Update stock_inventory_locations
+                            query = "select * from stock_inventory_locations where stock_inventory_id="+self.stock_inventories["id"]
+                            self.myCursor.execute(query)
+                            res = self.myCursor.fetchall()
+                            if res:
+                                i = 0
+                                for key, value in self.stock_inventory_locations.items():
+                                    value = res[0][i]
+                                    i += 1
+                                    self.stock_inventory_locations[key] = value
+                                
+                                curQty = int(float(self.stock_inventory_locations["current_quantity"]))
+                                rcvQty = int(float(self.grnItem["recieving_quantity"]))
+                                curQty += rcvQty
+                                newCurQty = str(curQty)+".0000"
+                                nowDateTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                self.stock_inventory_locations["current_quantity"] = newCurQty
+                                self.stock_inventory_locations["updated_at"] = nowDateTime
+                                self.silList.append(self.stock_inventories)
+                                
+                                val = (self.stock_inventory_locations["current_quantity"],\
+                                        self.stock_inventory_locations["updated_at"])
+                                query = "UPDATE stock_inventory_locations SET current_quantity=%s, updated_at=%s \
+                                        where stock_inventory_id="+self.stock_inventories["id"]
+                                self.myCursor.execute(query, val)
+                                if self.insertConfirm == False:
+                                    self.db.commit()
+                                    silString = ''
+                                    for key, value in self.stock_inventory_locations.items():
+                                        silString += '{:^19}: {}\n'.format(key, value)
+                                    silString = silString[:silString.rfind('\n')]
+                                    self.silStringList.append(silString)
+
+                        else:
+                            # prompt user to insert new stock_inventories
+                            self.debugString += "no stock_inventory record\n"
+                        
+
                     else:
                         #loop through po_item_id, compare recieving_quantity with ordered_quantity
                         total = 0

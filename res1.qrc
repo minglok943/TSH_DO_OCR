@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="images">
+    <file>tsh.png</file>
+    <file>TSH CM Company Frontview.jpg</file>
+  </qresource>
+</RCC>
