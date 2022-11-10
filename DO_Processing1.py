@@ -1,14 +1,8 @@
 import cv2
 import numpy as np
 from imutils.perspective import four_point_transform
-
-"""
 import pytesseract
 from pytesseract import Output
-"""
-from tesserocr import PyTessBaseAPI, RIL
-#raw_padding = 8
-
 import re
 from datetime import datetime
 from datetime import date
@@ -38,8 +32,6 @@ class DO:
 
         self.myCursor = self.db.cursor()
         
-        self.api = PyTessBaseAPI()
-
         self.board = np.zeros((360,900,3), np.uint8)
 
         self.debugEnable = debugEnable
@@ -167,14 +159,7 @@ class DO:
 
     def run(self, frame):
         if self.companyNameMatched == False:
-            self.api.SetImageBytes(imagedata=frame.tobytes(),\
-                                width=frame.shape[1],\
-                                height=frame.shape[0],\
-                                bytes_per_pixel=3,\
-                                bytes_per_line=3*frame.shape[1])
-            ocr_text = self.api.GetUTF8Text()
-
-            #ocr_text = pytesseract.image_to_string(frame)
+            ocr_text = pytesseract.image_to_string(frame)
             if self.companyNameFoundFromPO == False:
                 self.searchCompanyFromPO(ocr_text)
             if self.companyNameFoundFromYaml == False:
@@ -199,15 +184,8 @@ class DO:
         else:
             if (self.numFieldFound != self.numField and self.numField != 0) \
                     or self.dateFound == False:
-
-                self.api.SetImageBytes(imagedata=frame.tobytes(),\
-                                    width=frame.shape[1],\
-                                    height=frame.shape[0],\
-                                    bytes_per_pixel=3,\
-                                    bytes_per_line=3*frame.shape[1])
-                ocr_text = self.api.GetUTF8Text()
                 #ocr_text = pytesseract.image_to_string(warped)
-                #ocr_text = pytesseract.image_to_string(frame)
+                ocr_text = pytesseract.image_to_string(frame)
                 
                 if self.dateFound == False:
                     self.searchDate(ocr_text)
@@ -942,7 +920,7 @@ class DO:
 
     def getQuantity(self, img):
 
-        #data = pytesseract.image_to_data(img, output_type='dict')
+        data = pytesseract.image_to_data(img, output_type='dict')
         stringLoc = []
         quantityY = []
         quantityX = 0
@@ -950,24 +928,6 @@ class DO:
 
         # Sorting string according to y coordinate to stringLoc
         # stringLoc = [text, (x,y,w,h)]
-        boxes = self.api.GetComponentImages(RIL.TEXTLINE, True, raw_image=True, raw_padding=8)
-        for i, (im, box, _, _) in enumerate(boxes):
-            # im is a PIL image object
-            # box is a dict with x, y, w and h keys
-            self.api.SetRectangle(box['x'], box['y'], box['w'], box['h'])
-            text = self.api.GetUTF8Text()
-            stringLoc.append([text, [box['x'],box['y'],box['w'],box['h']]])
-            for ele in self.companyYaml['quantity_format']:
-                match = re.search(ele[0], text)
-                if match != None:
-                    cv2.rectangle(img, \
-                            (box['x'], box['y']), (box['x']+box['w'], box['y']+box['h']), \
-                            (255, 0, 0), \
-                            2)
-                    quantityX = x - 20
-                    quantityW = w + 50
-                    break
-        """
         for i in range(0, len(data['text'])):
             x = data['left'][i]
             y = data['top'][i]
@@ -1001,8 +961,7 @@ class DO:
                             break
                     if inserted == False:
                         stringLoc.append([text,[x,y,w,h]])
-        """
-
+        
         # Find ITEM #############################################################
         record = []
         # itemDetails[0] = purchase_order_items.id
@@ -1084,13 +1043,7 @@ class DO:
                         cv2.moveWindow("cropped", 0, 4000)
                 #quantiteY.append( [j[1][1]-20, j[1][3]+50, item_index] )
                     cropped = cv2.resize(cropped, (int(3.0*cropped.shape[1]),int(3.0*cropped.shape[0])))
-                    self.api.SetImageBytes(imagedata=cropped.tobytes(),\
-                                        width=cropped.shape[1],\
-                                        height=cropped.shape[0],\
-                                        bytes_per_pixel=3,\
-                                        bytes_per_line=3*cropped.shape[1])
-                    text = self.api.GetUTF8Text()
-                    #text = pytesseract.image_to_string(cropped)
+                    text = pytesseract.image_to_string(cropped)
                     #secondGnome.echo(text)
                     match = re.search('\s*(\d*,*\d*,*\d*,*\d*,*\d*,*\d*.\d{2,4})\s*.*', text)
                     if match!=None:

@@ -7,6 +7,7 @@ from PyQt5 import uic
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5 import QtTest
 
 from python_qt_binding.QtGui import *
 from python_qt_binding.QtCore import *
@@ -24,7 +25,7 @@ class loginWindow(QMainWindow):
      #   self.label.setPixmap(QPixmap('tsh.png').scaled(self.logoLabel.size(), Qt.KeepAspectRatio))
         self.logoLabel.setPixmap(QPixmap('logo.PNG').scaled(self.logoLabel.size(), Qt.KeepAspectRatio))
         self.loginButton.clicked.connect(self.loginCheck)
-        self.lineEdit_2.editingFinished.connect(self.focusOnLoginButton)
+        self.passwordEdit.editingFinished.connect(self.focusOnLoginButton)
 
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
@@ -35,12 +36,27 @@ class loginWindow(QMainWindow):
         self.move(qtRectangle.topLeft())
         
         self.loginButton.setShortcut('Return')
-
+        self.errorEdit.hide()
+        self.DO_check_login = DO(debugEnable=False, showQuantityCrop=False, insertConfirm=True)
 
     def loginCheck(self):
-        self.MyWindow = MyWindow()
-        self.MyWindow.show()
-        self.close()
+        userID = self.userEdit.text()
+        password = self.passwordEdit.text()
+        query = "select * from users where staff_id=%s and password=%s"
+        val = (userID, password)
+        self.DO_check_login.myCursor.execute(query, val)
+        res = self.DO_check_login.myCursor.fetchall()
+        if res:
+            self.MyWindow = MyWindow()
+            self.MyWindow.show()
+            self.close()
+        else:
+            self.errorEdit.show()
+            QtTest.QTest.qWait(888)
+            self.errorEdit.hide()
+            self.passwordEdit.setText('')
+            if self.userEdit.text() != "":
+                self.passwordEdit.setFocus()
         
     def focusOnLoginButton(self):
         self.loginButton.setFocus()
@@ -320,6 +336,7 @@ class MyWindow(QWidget):
         self.Worker1.itemQuantityUpdate.connect(self.add_quantity)
         self.Worker1.infoUpdate.connect(self.update_info)
         self.Worker1.doExist.connect(self.showExist)
+        self.Worker1.fpsSig.connect(self.showFps)
 
         
          
@@ -638,6 +655,9 @@ class MyWindow(QWidget):
             self.orderedEditList[i].setText('')
             self.receivedEditList[i].setText('')
 
+    def showFps(self, fps):
+        self.fpsLabel.setText(str(fps))
+
     def onItemIndexChanged(self, id):
         #print("currentIndex:", id)
         self.orderedEditList[id].setText(str(self.Worker1.d_o.itemDetails[id][2]))
@@ -674,16 +694,25 @@ class Worker1(QThread):
     lastDebugString = ''
     doExist = pyqtSignal(bool)
     statusDoExist = False
+    fpsSig = pyqtSignal(int)
 
     def run(self):
         self.ThreadActive = True
         WIDTH, HEIGHT = 1280, 720
-
         Capture = cv2.VideoCapture(0,cv2.CAP_V4L2)
+
+        """
+        WIDTH, HEIGHT = 640, 480
+        Capture = cv2.VideoCapture(3,cv2.CAP_V4L2)
+        """
+
+        Capture.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M','J','P','G'))
         Capture.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
         Capture.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
+        print("fps: ", Capture.get(cv2.CAP_PROP_FPS))
         self.d_o = DO(debugEnable=False, showQuantityCrop=False, insertConfirm=True)
         while self.ThreadActive:
+            start = time.time()
             ret, frame = Capture.read()
             if ret:
                 self.d_o.run(frame)
@@ -742,6 +771,9 @@ class Worker1(QThread):
                 ConvertToQtFormat = QImage(Image.data, Image.shape[1], Image.shape[0], QImage.Format_RGB888)
                 Pic = ConvertToQtFormat.scaled(640, 480, Qt.KeepAspectRatio)
                 self.ImageUpdate.emit(Pic)
+
+                end = time.time()
+                self.fpsSig.emit(int(1/(end-start)))
     def stop(self):
         self.ThreadActive = False
         self.quit()
